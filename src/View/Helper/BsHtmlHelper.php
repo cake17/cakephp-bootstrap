@@ -67,9 +67,10 @@ class BsHtmlHelper extends HtmlHelper {
 			'icon' => '<span class="glyphicon glyphicon-{{attrs}}"{{content}}></span>',
 			'label' => '<span class="label label-{{attrs}}">{{content}}</span>',
 			'badge' => '<span class="badge">{{content}}</span>',
-			'alert' => '<div class="alert alert-{{type}}">{{content}}</div>',
-			'button_alert' => '<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>',
+			'alert' => '<div class="alert alert-{{type}}" role="alert">{{content}}</div>',
+			'button_alert' => '<button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span</button>',
 			'button' => '<button type="button" class="btn btn-{{attrs}}">{{content}}</button>',
+			'navbar' => '<nav class="navbar navbar-{{navbarClass}} navbar-{{type}}" role="navigation"><div class="{{containerClass}}">{{content}}</div></nav>'
 			//'breadcrumb' => '',
 			//'jumbotron' => '<div class="jumbotron"><h1>%s</h1><p>%s</p>%s</div></div>',
 			//'page-header' => '<div class="page-header"><h1>%s<small>%s</small></h1></div>',
@@ -88,6 +89,7 @@ class BsHtmlHelper extends HtmlHelper {
 			'foundation' => false,
 		],
 		'responsive_viewport' => true,
+		'my_bootstrap_css' => true,
 		// ne pas changer en-dessous, ou alors uniquement 'last' lorqu'il y a des nouvelles versions disponibles
 		'libs' => [
 			'js' => [
@@ -134,6 +136,7 @@ class BsHtmlHelper extends HtmlHelper {
 		'alert' => ['success', 'info', 'warning', 'danger'],
 		'label' => ['default', 'primary', 'success', 'info', 'warning', 'danger'],
 		'button' => ['default', 'primary', 'success', 'info', 'warning', 'danger'],
+		'error' => 'Error in BsHtml Helper : '
 		//'button_sizes' => ['xs', 'lg', 'sm', ''],
 	];
 
@@ -149,6 +152,7 @@ class BsHtmlHelper extends HtmlHelper {
  * - jquery-ui
  *
  * @param array $options
+ * @return string
  */
 	public function head($type = 'default', $options = []) {
 		$this->_defaultConfig = Hash::merge($this->_defaultConfig, $options);
@@ -158,6 +162,7 @@ class BsHtmlHelper extends HtmlHelper {
 		// chemins vers librairie
 		$myJsUrl = '';
 		$myCssUrl = '';
+		$html = '';
 		// on ajoute au block script les librairies souhaitées
 		foreach ($this->config('js') as $jsLib => $jsVersion) {
 			// si à true, on utilise la dernière version de js connue, sinon la version demandée, et sinon rien
@@ -171,9 +176,9 @@ class BsHtmlHelper extends HtmlHelper {
 			if ($jsVersion !== false) {
 				if (isset($myJsVersion) && !empty($myJsVersion)) {
 					$myJsUrl = sprintf($this->config('libs.js.' . $jsLib . '.url'), $myJsVersion);
-					echo $this->_View->Html->script($myJsUrl);
+					$html .= $this->script($myJsUrl, ['block' => 'scriptBottom']) . "\n\t\t";
 				} elseif (isset($myJsVersion) && empty($myJsVersion)) {
-					echo $this->_View->Html->script($this->config('libs.js.' . $jsLib . '.url'));
+					$html .= $this->script($this->config('libs.js.' . $jsLib . '.url'), ['block' => 'scriptBottom']) . "\n";
 				}
 			}
 		}
@@ -190,41 +195,47 @@ class BsHtmlHelper extends HtmlHelper {
 			if ($cssVersion !== false) {
 				if (isset($myCssVersion) && !empty($myCssVersion)) {
 					$myCssUrl = sprintf($this->config('libs.css.' . $cssLib . '.url'), $myCssVersion);
-					echo $this->css($myCssUrl);
+					$html .= $this->css($myCssUrl) . "\n\t\t";
 				} elseif (isset($myCssVersion) && empty($myCssVersion)) {
-					echo $this->css($this->config('libs.css.' . $cssLib . '.url'));
+					$html .= $this->css($this->config('libs.css.' . $cssLib . '.url')) . "\n\t";
 				}
 			}
 		}
 		// on met en responsive si responsive_viewport à true
 		if ($this->config('responsive_viewport')) {
-			echo $this->config('templates.responsive_viewport');
+			$html .= $this->config('templates.responsive_viewport') . "\n\t\t";
 		}
+		// on met le css du Plugin
+		if ($this->config('my_bootstrap_css')) {
+			$html .= $this->css('my_bootstrap');
+		}
+		return $html;
 	}
 
 /**
  * Print a footer
  *
+ * @param string $title : title of the site
  * @param string $type
+ * => either 'fixed-bottom'
+ * => default to fixed-bottom
  * @param array $options
+ * - Description
+ * - webcreateur
+ * - url_webcreateur
  * @return $html
  */
-	public function footer($type = 'default', $title, $options = []) {
-		$options = [
-			'description' => '',
-			'webcreateur' => '',
-			'url_webcreateur' => ''
+	public function footer($title, $options = []) {
+		$html = '';
+		$defaultOptions = [
+			'type' => 'fixed-bottom', 
+			'description' => 'Description',
+			'webcreateur' => 'WebCreateur',
+			'url_webcreateur' => 'http://cake17.github.io/'
 		];
-		if ($type === 'static') {
-			$html = '<nav class="navbar navbar-default navbar-fixed-bottom" role="navigation">
-				<div class="container-fluid">';
-		} else {
-			$html = '<footer id="footer" role="navigation">
-				<div class="container-fluid">';
-		}
-		$this->_defaultConfig = Hash::merge($this->_defaultConfig, $options);
-		if (isset($title) && !empty($title)):
-			$html .= $title;
+		$options = Hash::merge($defaultOptions, $options);
+		if (isset($options['type']) && !empty($options['type'])):
+			$html .= $options['type'];
 		endif;
 		if (isset($options['description']) && !empty($options['description'])):
 			$html .= ' - ' . $options['description'] . ' ';
@@ -239,12 +250,38 @@ class BsHtmlHelper extends HtmlHelper {
 				]
 			);
 		endif;
-		if ($type === 'static') {
-			$html .= '</div></nav>';
-		} else {
-			$html .= '</div></footer>';
-		}
-		return $html;
+		return $this->navbar($options['type'], $html);
+	}
+
+/**
+ * Print a navbar
+ *
+ * @param string $type
+ * => either 'fixed-top', 'fixed-bottom' or 'static-top'
+ * => default to fixed-top
+ * @param string $content
+ * @param array $options
+ * => containerClass
+ *	either 'container' or anything else
+ *	default to container
+ * => navbarClass
+ *	either 'default' or 'inverse'
+ *	default to default
+ * 
+ * @return string
+ */
+	public function navbar($type = 'fixed-top', $content, array $options = []) {
+		$defaultOptions = [
+			'containerClass' => 'container-fluid',
+			'navbarClass' => 'default'
+		];
+		$options = Hash::merge($defaultOptions, $options);
+		return $this->formatTemplate('navbar', [
+			'type' => $type,
+			'content' => $content,
+			'containerClass' => $options['containerClass'],
+			'navbarClass' => $options['navbarClass']
+		]);
 	}
 
 /************************************
@@ -258,28 +295,30 @@ class BsHtmlHelper extends HtmlHelper {
  * @param array $options
  * - type
  * => either 'success', 'info', 'warning', 'danger' (see $_types)
- * => default to sucess
+ * => default to success
  * - dismissable
  * => true and the alert is dismissable
  * @return string
  */
-	public function alert($message, $options = []) {
-		$default = [
+	public function alert($message, array $options = []) {
+		$defaultOptions = [
 			'type' => 'success',
 			'dismissable' => false
 		];
-		$options = array_merge($default, $options);
-		if (in_array($options['type'], $this->_types['alert'])) {
+		$options = array_merge($defaultOptions, $options);
+
+		if (in_array($options['type'], $this->_types['alert'])):
 			$classAlert = $options['type'];
-		}
-		if (isset ($options['dismissable']) && $options['dismissable'] === true) {
-			$classAlert .=  ' alert-dismissable';
-			$message .= $this->config('templates.button_alert');
-		}
-		return $this->formatTemplate('alert', [
-			'type' => $classAlert,
-			'content' => $message
-		]);
+			if (isset ($options['dismissable']) && $options['dismissable'] === true) {
+				$classAlert .=  ' alert-dismissable';
+				$message .= $this->config('templates.button_alert');
+			}
+			return $this->formatTemplate('alert', [
+				'type' => $classAlert,
+				'content' => $message
+			]);
+		endif;
+		return $this->alert(__d('bootstrap', $this->_types['error'] . 'Alert should be one of the following : ' . implode(', ', $this->_types['alert'])), ['type' => 'danger']);
 	}
 
 /**
@@ -329,6 +368,11 @@ class BsHtmlHelper extends HtmlHelper {
  *
  * @param string $message
  * @param array $options
+ * - type
+ *	=> either 'default', 'primary', 'success', 'info', 'warning' or 'danger' (see $_types)
+ *	=> default to default
+ * - class : add a class
+ * - id : add an id
  * @return string
  */
 	public function button($message, $options = []) {
@@ -348,9 +392,8 @@ class BsHtmlHelper extends HtmlHelper {
 				'attrs' => $attrs,
 				'content' => $message
 			]);
-		} else {
-			return $this->alert(__d('bootstrap', 'Le button doit être parmi : ' . implode(', ', $this->_types['button'])), ['type' => 'danger']);
 		}
+		return $this->alert(__d('bootstrap', $this->_types['error'] . 'Button should be one of the following : ' . implode(', ', $this->_types['button'])), ['type' => 'danger']);
 	}
 
 /**
@@ -376,9 +419,8 @@ class BsHtmlHelper extends HtmlHelper {
 				'attrs' => $classLabel,
 				'content' => $message
 			]);
-		} else {
-			return $this->alert(__d('bootstrap', 'Le label doit être parmi : ' . implode(', ', $this->_types['label'])), ['type' => 'danger']);
 		}
+		return $this->alert(__d('bootstrap', $this->_types['error'] . 'Label should be one of the following : ' . implode(', ', $this->_types['label'])), ['type' => 'danger']);
 	}
 
 /**

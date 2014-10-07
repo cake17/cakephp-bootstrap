@@ -41,7 +41,6 @@ public $helpers = [
 			'className' => 'Bootstrap.BsForm',
 		],
 		'Html' => [
-			'templates' => 'Bootstrap.bs_html.php',
 			'className' => 'Bootstrap.BsHtml'
 		],
 		'Paginator' => [
