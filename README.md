@@ -10,7 +10,7 @@ Versions:
 - CakePHP 3.x
 - Bootstrap Twitter 3.x
 
-## Installation du plugin ##
+## Installation of plugin ##
 
 Add the following require in composer.json. This will install the plugin into
 plugins/Bootstrap:
@@ -50,7 +50,7 @@ public $helpers = [
 }
 ```
 
-## Installation du plugin ##
+## Usage of plugin ##
 
 More info in the [github docs](http://cake17.github.io/cakephp-bootstrap)
 
