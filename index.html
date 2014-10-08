@@ -5,314 +5,335 @@
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"/>
 		<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.1/themes/smoothness/jquery-ui.css"/>
 		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
 		<!--<link href='https://fonts.googleapis.com/css?family=Chivo:900' rel='stylesheet' type='text/css'>-->
-<!--		<link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
-		<link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen">
-		<link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">-->
+		<!--		<link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+				<link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen">
+				<link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">-->
 		<!--[if lt IE 9]>
 		<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 		<![endif]-->
 		<title>cakephp-bootstrap by cake17</title>
 	</head>
 	<body>
-		<div id="container">
-			<div class="inner">
-				<header>
-					<h1>cakephp-bootstrap</h1>
-					<h2>To easily use Bootstrap Twitter 3.x in CakePHP projects</h2>
-				</header>
-
-				<section id="downloads" class="clearfix">
-					<a href="https://github.com/cake17/cakephp-bootstrap/zipball/master" id="download-zip" class="button"><span>Download .zip</span></a>
-					<a href="https://github.com/cake17/cakephp-bootstrap/tarball/master" id="download-tar-gz" class="button"><span>Download .tar.gz</span></a>
-					<a href="https://github.com/cake17/cakephp-bootstrap" id="view-on-github" class="button"><span>View on GitHub</span></a>
-				</section>
-				<hr>
-
-				<section id="main_content">
-					<h2>Alerts</h2>
-					<div class="panel panel-default">
-						<div class="panel-heading">
-							<h3 class="panel-title">EXAMPLE</h3>
-						</div>
-						<div class="panel-body">
-							<div class="table-responsive">
-								<table  class="table table-condensed table-striped" cellpadding="0" cellspacing="0">
-									<thead>
-										<tr>
-											<th>Results</th>
-											<th>Code</th>
-										</tr>
-									</thead>
-									<tbody>
-										<tr>
-											<td><div class="alert alert-success" role="alert">This is an alert, "success" by default</div></td>
-											<td><code>echo $this->Html->alert('This is an alert, "success" by default'))</code></td>
-										</tr>
-										<tr>
-											<td><div class="alert alert-danger" role="alert">This is an alert with option danger</div></td>
-											<td><code>echo $this->Html->alert('This is an alert with option danger'), ['type' => 'danger'])</code></td>
-										</tr>
-										<tr>
-											<td>
-												<div class="alert alert-warning alert-dismissible" role="alert">
-													<button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-													<strong>Warning!</strong> Better check yourself, you're not looking too good.
-												</div>
-											</td>
-											<td><code>echo $this->Html->alert('This is an alert with option warning and dismissable'), ['type' => 'warning', 'dismissable' => true])</code></td>
-										</tr>
-									</tbody>
-								</table>
-							</div>
-						</div>
-					</div>
-
-					<h2>Images & Icones</h2>
-					<div class="panel panel-default">
-						<div class="panel-heading">
-							<h3 class="panel-title">EXAMPLE</h3>
-						</div>
-						<div class="panel-body">
-							<div class="table-responsive">
-								<table  class="table table-condensed table-striped" cellpadding="0" cellspacing="0">
-									<thead>
-										<tr>
-											<th>Results</th>
-											<th>Code</th>
-										</tr>
-									</thead>
-									<tbody>
-										<tr>
-											<td><?= $this->Html->image('Bootstrap.logo.png') ?></td>
-											<td><code>echo $this->Html->image('Bootstrap.logo.png')</code></td>
-										</tr>
-										<tr>
-											<td><?= $this->Html->icon('euro') ?><?= $this->Html->icon('search') ?></td>
-											<td><code>echo $this->Html->icon('euro');<br />echo $this->Html->icon('search');</code></td>
-										</tr>
-									</tbody>
-								</table>
-							</div>
-						</div>
-					</div>
-
-					<h2>Buttons, Labels & Badges</h2>
-					<!--<h3>EXAMPLES of Buttons</h3>-->
-					<div class="panel panel-default">
-						<div class="panel-heading">
-							<h3 class="panel-title">Buttons</h3>
-						</div>
-						<div class="panel-body">
-							<div class="table-responsive">
-								<table  class="table table-condensed table-striped" cellpadding="0" cellspacing="0">
-									<thead>
-										<tr>
-											<th>Results</th>
-											<th>Code</th>
-										</tr>
-									</thead>
-									<tbody>
-										<tr>
-											<td><?php
-											// print a button
-											echo $this->Html->button('This is a button with default')) . "<br />";
-											echo $this->Html->button('This is a button with option primary'), ['type' => 'primary']) . "<br />";
-											echo $this->Html->button('This is a button with option danger and a class and id defined'), ['type' => 'danger', 'class' => 'my-class', 'id' => 'my-id']) . "<br />";
-											?></td>
-										</tr>
-										<tr>
-										</tr>
-									</tbody>
-								</table>
-							</div>
-						</div>
-					</div>
-					<div class="panel panel-default">
-						<div class="panel-heading">
-							<h3 class="panel-title">Labels</h3>
-						</div>
-						<div class="panel-body">
-							<div class="table-responsive">
-								<table  class="table table-condensed table-striped" cellpadding="0" cellspacing="0">
-									<thead>
-										<tr>
-											<th>Results</th>
-											<th>Code</th>
-										</tr>
-									</thead>
-									<tbody>
-										<tr>
-											<td><?php
-											// print a label
-											echo $this->Html->label('This is a label with default');
-											?></td>
-										</tr>
-										<tr>
-										</tr>
-									</tbody>
-								</table>
-							</div>
-						</div>
-					</div>
-					<div class="panel panel-default">
-						<div class="panel-heading">
-							<h3 class="panel-title">Badges</h3>
-						</div>
-						<div class="panel-body">
-							<div class="table-responsive">
-								<table  class="table table-condensed table-striped" cellpadding="0" cellspacing="0">
-									<thead>
-										<tr>
-											<th>Results</th>
-											<th>Code</th>
-										</tr>
-									</thead>
-									<tbody>
-										<tr>
-											<td><?php
-											// print a badge
-											echo $this->Html->badge('This is a badge with default');
-											?></td>
-										</tr>
-										<tr>
-										</tr>
-									</tbody>
-								</table>
-							</div>
-						</div>
-					</div>
-
-					<h3>Pagination</h3>
-					<div class="panel panel-default">
-						<div class="panel-heading">
-							<h3 class="panel-title">EXAMPLE</h3>
-						</div>
-						<div class="panel-body">
-							<div class="table-responsive">
-								<table  class="table table-condensed table-striped" cellpadding="0" cellspacing="0">
-									<thead>
-										<tr>
-											<th>Results</th>
-											<th>Code</th>
-										</tr>
-									</thead>
-									<tbody>
-										<tr>
-											<td><?php
-											// print a pagination
-											echo $this->Html->pagination();
-											?></td>
-											<td>echo $this->Html->pagination();</td>
-										</tr>
-									</tbody>
-								</table>
-							</div>
-						</div>
-					</div>
-
-					<h2>Links</h2>
-					<div class="panel panel-default">
-						<div class="panel-heading">
-							<h3 class="panel-title">Link</h3>
-						</div>
-						<div class="panel-body">
-							<div class="table-responsive">
-								<table  class="table table-condensed table-striped" cellpadding="0" cellspacing="0">
-									<thead>
-										<tr>
-											<th>Results</th>
-											<th>Code</th>
-										</tr>
-									</thead>
-									<tbody>
-										<tr>
-											<td><?php
-											// print a link
-											echo $this->Html->link('My Link'), ['']) . "<br />";
-											?></td>
-											<td>echo $this->Html->link('My Link'), [''])</td>
-										</tr>
-										<tr>
-											<td><?php
-											// print a link
-											echo $this->Html->link('My Link with active'), ['']) . "<br />";
-											?></td>
-											<td>echo $this->Html->link('My Link with active'), [''])</td>
-										</tr>
-									</tbody>
-								</table>
-							</div>
-						</div>
-					</div>
-					<div class="panel panel-default">
-						<div class="panel-heading">
-							<h3 class="panel-title">Default & Tree</h3>
-						</div>
-						<div class="panel-body">
-							<div class="table-responsive">
-								<table  class="table table-condensed table-striped" cellpadding="0" cellspacing="0">
-									<thead>
-										<tr>
-											<th>Results</th>
-											<th>Code</th>
-										</tr>
-									</thead>
-									<tbody>
-										<tr>
-											<td><?= $this->Html->links('default', ['id' => 1]) ?></td>
-											<td>echo $this->Html->links('default', ['id' => 1]);</td>
-										</tr>
-										<tr>
-											<td><?= $this->Html->links('tree', ['id' => 1]) ?></td>
-											<td>echo $this->Html->links('tree', ['id' => 1])</td>
-										</tr>
-									</tbody>
-								</table>
-							</div>
-						</div>
-					</div>
-					<div class="panel panel-default">
-						<div class="panel-heading">
-							<h3 class="panel-title">Actif & Principal</h3>
-						</div>
-						<div class="panel-body">
-							<div class="table-responsive">
-								<table  class="table table-condensed table-striped" cellpadding="0" cellspacing="0">
-									<thead>
-										<tr>
-											<th>Results</th>
-											<th>Code</th>
-										</tr>
-									</thead>
-									<tbody>
-										<tr>
-											<td><?php
-											// print links_actif
-											echo $this->Html->links_actif(true, 'my-id') . "<br />";
-											?></td>
-											<td>echo $this->Html->links_actif(true, 'my-id')</td>
-										</tr>
-										<tr>
-											<td><?php
-											// print links_principal
-											echo $this->Html->links_principal(true, 'my-id') . "<br />";
-											?></td>
-											<td>echo $this->Html->links_principal(true, 'my-id')</td>
-										</tr>
-									</tbody>
-								</table>
-							</div>
-						</div>
-					</div>
-				</section>
-
-				<footer>
-					cakephp-bootstrap is maintained by <a href="https://github.com/cake17">cake17</a><br>
-					This page was generated by <a href="http://pages.github.com">GitHub Pages</a>. Tactile theme by <a href="https://twitter.com/jasonlong">Jason Long</a>.
-				</footer>
+		<nav class="navbar navbar-default navbar-static-top" role="navigation">
+			<div class="container-fluid">
+				<!-- Brand and toggle get grouped for better mobile display -->
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<a class="navbar-brand" href="#">cakephp-bootstrap</a>
+				</div>
+				<!-- Collect the nav links, forms, and other content for toggling -->
+				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+					<ul class="nav navbar-nav">
+						<li><a href="#">Alerts</a></li>
+						<li><a href="#">Images & Icones</a></li>
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <span class="caret"></span></a>
+							<ul class="dropdown-menu" role="menu">
+								<li><a href="#">Action</a></li>
+								<li><a href="#">Another action</a></li>
+								<li><a href="#">Something else here</a></li>
+								<li class="divider"></li>
+								<li><a href="#">Separated link</a></li>
+								<li class="divider"></li>
+								<li><a href="#">One more separated link</a></li>
+							</ul>
+						</li>
+					</ul>
+				</div><!-- /.navbar-collapse -->
 			</div>
+		</nav>
+		<h2>To easily use Bootstrap Twitter 3.x in CakePHP projects</h2>
+		<div class="btn-group">
+			<button type="button" class="btn btn-default"><a href="https://github.com/cake17/cakephp-bootstrap/zipball/master" id="download-zip" class="button"><span>Download .zip</span></a></button>
+			<button type="button" class="btn btn-default"><a href="https://github.com/cake17/cakephp-bootstrap/tarball/master" id="download-tar-gz" class="button"><span>Download .tar.gz</span></a></button>
+			<button type="button" class="btn btn-default"><a href="https://github.com/cake17/cakephp-bootstrap" id="view-on-github" class="button"><span>View on GitHub</span></a></button>
 		</div>
+		<hr>
+
+		<section id="main_content">
+			<h2>Alerts</h2>
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h3 class="panel-title">EXAMPLE</h3>
+				</div>
+				<div class="panel-body">
+					<div class="table-responsive">
+						<table  class="table table-condensed table-striped" cellpadding="0" cellspacing="0">
+							<thead>
+								<tr>
+									<th>Results</th>
+									<th>Code</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td><div class="alert alert-success" role="alert">This is an alert, "success" by default</div></td>
+									<td><code>echo $this->Html->alert('This is an alert, "success" by default'))</code></td>
+								</tr>
+								<tr>
+									<td><div class="alert alert-danger" role="alert">This is an alert with option danger</div></td>
+									<td><code>echo $this->Html->alert('This is an alert with option danger'), ['type' => 'danger'])</code></td>
+								</tr>
+								<tr>
+									<td>
+										<div class="alert alert-warning alert-dismissible" role="alert">
+											<button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+											<strong>Warning!</strong> This is an alert with option warning and dismissable.
+										</div>
+									</td>
+									<td><code>echo $this->Html->alert('This is an alert with option warning and dismissable'), ['type' => 'warning', 'dismissable' => true])</code></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+
+			<h2>Images & Icones</h2>
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h3 class="panel-title">EXAMPLE</h3>
+				</div>
+				<div class="panel-body">
+					<div class="table-responsive">
+						<table  class="table table-condensed table-striped" cellpadding="0" cellspacing="0">
+							<thead>
+								<tr>
+									<th>Results</th>
+									<th>Code</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td><?= $this->Html->image('Bootstrap.logo.png') ?></td>
+									<td><code>echo $this->Html->image('Bootstrap.logo.png')</code></td>
+								</tr>
+								<tr>
+									<td><?= $this->Html->icon('euro') ?><?= $this->Html->icon('search') ?></td>
+									<td><code>echo $this->Html->icon('euro');<br />echo $this->Html->icon('search');</code></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+
+			<h2>Buttons, Labels & Badges</h2>
+			<!--<h3>EXAMPLES of Buttons</h3>-->
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h3 class="panel-title">Buttons</h3>
+				</div>
+				<div class="panel-body">
+					<div class="table-responsive">
+						<table  class="table table-condensed table-striped" cellpadding="0" cellspacing="0">
+							<thead>
+								<tr>
+									<th>Results</th>
+									<th>Code</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td><?php
+										// print a button
+										echo $this->Html->button('This is a button with default')) . "<br />";
+										echo $this->Html->button('This is a button with option primary'), ['type' => 'primary']) . "<br />";
+										echo $this->Html->button('This is a button with option danger and a class and id defined'), ['type' => 'danger', 'class' => 'my-class', 'id' => 'my-id']) . "<br />";
+										?></td>
+								</tr>
+								<tr>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h3 class="panel-title">Labels</h3>
+				</div>
+				<div class="panel-body">
+					<div class="table-responsive">
+						<table  class="table table-condensed table-striped" cellpadding="0" cellspacing="0">
+							<thead>
+								<tr>
+									<th>Results</th>
+									<th>Code</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td><?php
+										// print a label
+										echo $this->Html->label('This is a label with default');
+										?></td>
+								</tr>
+								<tr>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h3 class="panel-title">Badges</h3>
+				</div>
+				<div class="panel-body">
+					<div class="table-responsive">
+						<table  class="table table-condensed table-striped" cellpadding="0" cellspacing="0">
+							<thead>
+								<tr>
+									<th>Results</th>
+									<th>Code</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td><?php
+										// print a badge
+										echo $this->Html->badge('This is a badge with default');
+										?></td>
+								</tr>
+								<tr>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+
+			<h3>Pagination</h3>
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h3 class="panel-title">EXAMPLE</h3>
+				</div>
+				<div class="panel-body">
+					<div class="table-responsive">
+						<table  class="table table-condensed table-striped" cellpadding="0" cellspacing="0">
+							<thead>
+								<tr>
+									<th>Results</th>
+									<th>Code</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td><?php
+										// print a pagination
+										echo $this->Html->pagination();
+										?></td>
+									<td>echo $this->Html->pagination();</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+
+			<h2>Links</h2>
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h3 class="panel-title">Link</h3>
+				</div>
+				<div class="panel-body">
+					<div class="table-responsive">
+						<table  class="table table-condensed table-striped" cellpadding="0" cellspacing="0">
+							<thead>
+								<tr>
+									<th>Results</th>
+									<th>Code</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td><?php
+										// print a link
+										echo $this->Html->link('My Link'), ['']) . "<br />";
+										?></td>
+									<td>echo $this->Html->link('My Link'), [''])</td>
+								</tr>
+								<tr>
+									<td><?php
+										// print a link
+										echo $this->Html->link('My Link with active'), ['']) . "<br />";
+										?></td>
+									<td>echo $this->Html->link('My Link with active'), [''])</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h3 class="panel-title">Default & Tree</h3>
+				</div>
+				<div class="panel-body">
+					<div class="table-responsive">
+						<table  class="table table-condensed table-striped" cellpadding="0" cellspacing="0">
+							<thead>
+								<tr>
+									<th>Results</th>
+									<th>Code</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td><?= $this->Html->links('default', ['id' => 1]) ?></td>
+									<td>echo $this->Html->links('default', ['id' => 1]);</td>
+								</tr>
+								<tr>
+									<td><?= $this->Html->links('tree', ['id' => 1]) ?></td>
+									<td>echo $this->Html->links('tree', ['id' => 1])</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h3 class="panel-title">Actif & Principal</h3>
+				</div>
+				<div class="panel-body">
+					<div class="table-responsive">
+						<table  class="table table-condensed table-striped" cellpadding="0" cellspacing="0">
+							<thead>
+								<tr>
+									<th>Results</th>
+									<th>Code</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td><?php
+										// print links_actif
+										echo $this->Html->links_actif(true, 'my-id') . "<br />";
+										?></td>
+									<td>echo $this->Html->links_actif(true, 'my-id')</td>
+								</tr>
+								<tr>
+									<td><?php
+										// print links_principal
+										echo $this->Html->links_principal(true, 'my-id') . "<br />";
+										?></td>
+									<td>echo $this->Html->links_principal(true, 'my-id')</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</section>
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 		<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.1/jquery-ui.min.js"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
