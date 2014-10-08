@@ -52,7 +52,7 @@ public $helpers = [
 
 ## Installation du plugin ##
 
-More info in the (github docs)[http://cake17.github.io/cakephp-bootstrap]
+More info in the [github docs](http://cake17.github.io/cakephp-bootstrap)
 
 ## License ##
 
