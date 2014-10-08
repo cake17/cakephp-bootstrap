@@ -16,7 +16,7 @@
 		<title>cakephp-bootstrap by cake17</title>
 	</head>
 	<body>
-		<nav class="navbar navbar-default navbar-static-top" role="navigation">
+		<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
 			<div class="container-fluid">
 				<!-- Brand and toggle get grouped for better mobile display -->
 				<div class="navbar-header">
@@ -33,31 +33,30 @@
 					<ul class="nav navbar-nav">
 						<li><a href="#">Alerts</a></li>
 						<li><a href="#">Images & Icones</a></li>
+						<li><a href="#">Images & Icones</a></li>
+						<li><a href="#">Buttons, Labels & Badges</a></li>
+						<li><a href="#">Pagination</a></li>
+						<li><a href="#">Links</a></li>
+					</ul>
+					<ul class="nav navbar-nav navbar-right">
 						<li class="dropdown">
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <span class="caret"></span></a>
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown">On Github <span class="caret"></span></a>
 							<ul class="dropdown-menu" role="menu">
-								<li><a href="#">Action</a></li>
-								<li><a href="#">Another action</a></li>
-								<li><a href="#">Something else here</a></li>
-								<li class="divider"></li>
-								<li><a href="#">Separated link</a></li>
-								<li class="divider"></li>
-								<li><a href="#">One more separated link</a></li>
+								<li><a href="https://github.com/cake17/cakephp-bootstrap/zipball/master" id="download-zip" class="button"><span>Download .zip</span></a></li>
+								<li><a href="https://github.com/cake17/cakephp-bootstrap/tarball/master" id="download-tar-gz" class="button"><span>Download .tar.gz</span></a></li>
+								<li><a href="https://github.com/cake17/cakephp-bootstrap" id="view-on-github" class="button"><span>View on GitHub</span></a></li>
 							</ul>
 						</li>
 					</ul>
-				</div><!-- /.navbar-collapse -->
+				</div>
 			</div>
 		</nav>
-		<h2>To easily use Bootstrap Twitter 3.x in CakePHP projects</h2>
-		<div class="btn-group">
-			<button type="button" class="btn btn-default"><a href="https://github.com/cake17/cakephp-bootstrap/zipball/master" id="download-zip" class="button"><span>Download .zip</span></a></button>
-			<button type="button" class="btn btn-default"><a href="https://github.com/cake17/cakephp-bootstrap/tarball/master" id="download-tar-gz" class="button"><span>Download .tar.gz</span></a></button>
-			<button type="button" class="btn btn-default"><a href="https://github.com/cake17/cakephp-bootstrap" id="view-on-github" class="button"><span>View on GitHub</span></a></button>
-		</div>
-		<hr>
 
 		<section id="main_content">
+			<h2>To easily use Bootstrap Twitter 3.x in CakePHP projects</h2>
+			<p>Description du message</p>
+			<hr>
+
 			<h2>Alerts</h2>
 			<div class="panel panel-default">
 				<div class="panel-heading">
@@ -112,11 +111,11 @@
 							</thead>
 							<tbody>
 								<tr>
-									<td><?= $this->Html->image('Bootstrap.logo.png') ?></td>
+									<td><img src="/images/octocat-icon.png" class="img-responsive" alt="Responsive image"></td>
 									<td><code>echo $this->Html->image('Bootstrap.logo.png')</code></td>
 								</tr>
 								<tr>
-									<td><?= $this->Html->icon('euro') ?><?= $this->Html->icon('search') ?></td>
+									<td><span class="glyphicon glyphicon-euro"></span><span class="glyphicon glyphicon-search"></span></td>
 									<td><code>echo $this->Html->icon('euro');<br />echo $this->Html->icon('search');</code></td>
 								</tr>
 							</tbody>
@@ -142,14 +141,26 @@
 							</thead>
 							<tbody>
 								<tr>
-									<td><?php
-										// print a button
-										echo $this->Html->button('This is a button with default')) . "<br />";
-										echo $this->Html->button('This is a button with option primary'), ['type' => 'primary']) . "<br />";
-										echo $this->Html->button('This is a button with option danger and a class and id defined'), ['type' => 'danger', 'class' => 'my-class', 'id' => 'my-id']) . "<br />";
-										?></td>
+									<td>
+										<button type="button" class="btn btn-default btn-lg">This is a button with default</button>
+									</td>
+									<td>echo $this->Html->button('This is a button with default'))</td>
 								</tr>
 								<tr>
+									<td>
+										<button type="button" class="btn btn-primary btn-lg">This is a button with option primary</button>
+									</td>
+									<td>
+										echo $this->Html->button('This is a button with option danger and a class and id defined'), ['type' => 'danger', 'class' => 'my-class', 'id' => 'my-id'])
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<button type="button" class="btn btn-danger btn-lg my-class" id="my-id">This is a button with default</button>
+									</td>
+									<td>
+										echo $this->Html->button('This is a button with option danger and a class and id defined'), ['type' => 'danger', 'class' => 'my-class', 'id' => 'my-id'])
+									</td>
 								</tr>
 							</tbody>
 						</table>
@@ -171,10 +182,10 @@
 							</thead>
 							<tbody>
 								<tr>
-									<td><?php
-										// print a label
-										echo $this->Html->label('This is a label with default');
-										?></td>
+									<td>
+										<span class="label label-default">This is a label with default</span>
+									</td>
+									<td>echo $this->Html->label('This is a label with default') </td>
 								</tr>
 								<tr>
 								</tr>
@@ -198,10 +209,10 @@
 							</thead>
 							<tbody>
 								<tr>
-									<td><?php
-										// print a badge
-										echo $this->Html->badge('This is a badge with default');
-										?></td>
+									<td>
+										<span class="badge">This is a badge with default</span>
+									</td>
+									<td>echo $this->Html->badge('This is a badge with default'); </td>
 								</tr>
 								<tr>
 								</tr>
@@ -227,11 +238,13 @@
 							</thead>
 							<tbody>
 								<tr>
-									<td><?php
-										// print a pagination
-										echo $this->Html->pagination();
-										?></td>
-									<td>echo $this->Html->pagination();</td>
+									<td>
+										<ul class="pagination">
+											<li class="disabled"><a href="#">&laquo;</a></li>
+											<li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
+										</ul>
+									</td>
+									<td>echo $this->Html->pagination() </td>
 								</tr>
 							</tbody>
 						</table>
