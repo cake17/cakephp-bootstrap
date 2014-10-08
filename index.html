@@ -5,10 +5,10 @@
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"/>
 		<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.1/themes/smoothness/jquery-ui.css"/>
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<link href='https://fonts.googleapis.com/css?family=Chivo:900' rel='stylesheet' type='text/css'>
-		<link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+		<!--<link href='https://fonts.googleapis.com/css?family=Chivo:900' rel='stylesheet' type='text/css'>-->
+<!--		<link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
 		<link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen">
-		<link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
+		<link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">-->
 		<!--[if lt IE 9]>
 		<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 		<![endif]-->
@@ -46,15 +46,20 @@
 									</thead>
 									<tbody>
 										<tr>
-											<td><?= $this->Html->alert('This is an alert, "success" by default'); ?></td>
+											<td><div class="alert alert-success" role="alert">This is an alert, "success" by default</div></td>
 											<td><code>echo $this->Html->alert('This is an alert, "success" by default'))</code></td>
 										</tr>
 										<tr>
-											<td><?= $this->Html->alert('This is an alert with option danger'), ['type' => 'danger']); ?></td>
+											<td><div class="alert alert-danger" role="alert">This is an alert with option danger</div></td>
 											<td><code>echo $this->Html->alert('This is an alert with option danger'), ['type' => 'danger'])</code></td>
 										</tr>
 										<tr>
-											<td><?= $this->Html->alert('This is an alert with option warning and dismissable'), ['type' => 'warning', 'dismissable' => true]); ?></td>
+											<td>
+												<div class="alert alert-warning alert-dismissible" role="alert">
+													<button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+													<strong>Warning!</strong> Better check yourself, you're not looking too good.
+												</div>
+											</td>
 											<td><code>echo $this->Html->alert('This is an alert with option warning and dismissable'), ['type' => 'warning', 'dismissable' => true])</code></td>
 										</tr>
 									</tbody>
@@ -308,5 +313,8 @@
 				</footer>
 			</div>
 		</div>
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+		<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.1/jquery-ui.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 	</body>
 </html>
