@@ -23,4 +23,7 @@ h1 {
 	border-top-width: 1px;
 	border-top-style: solid;
 	border-top-color: #eeeeee;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+	border-bottom-color: #eeeeee;
 }
