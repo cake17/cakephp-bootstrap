@@ -41,9 +41,9 @@
 							</ul>
 						</li>
 						<li class="dropdown">
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Bake <span class="caret"></span></a>
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Bake & Layout <span class="caret"></span></a>
 							<ul class="dropdown-menu" role="menu">
-								<li><a href="#section-bake-templates">Forms, index and view templates</a></li>
+								<li><a href="#section-bake-templates">Bake views</a></li>
 								<li><a href="#section-layout">Layout example</a></li>
 							</ul>
 						</li>
@@ -63,7 +63,7 @@
 		</nav>
 
 		<section id="main_content">
-			<h2>To easily use Bootstrap Twitter 3.x in CakePHP projects</h2>
+			<h1>To easily use Bootstrap Twitter 3.x in CakePHP projects</h1>
 			<p>
 				With this plugin, you can do the following things:<br />
 				- Change the Html Elements with BsHtml Helper<br />
@@ -73,6 +73,7 @@
 			</p>
 			<hr>
 
+			<h1>BsHtml</h1>
 			<h2 id="section-alert">Alerts</h2>
 			<div class="panel panel-default">
 				<div class="panel-heading">
@@ -238,7 +239,7 @@
 				</div>
 			</div>
 
-			<h3 id="section-pagination">Pagination</h3>
+			<h2 id="section-pagination">Pagination</h2>
 			<div class="panel panel-default">
 				<div class="panel-heading">
 					<h3 class="panel-title">EXAMPLE</h3>
@@ -375,6 +376,181 @@
 										</div>
 									</td>
 									<td><code>echo $this->Html->links_principal(true, 'my-id')</code></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+
+			<hr />
+
+			<h1>BsHtml</h1>
+
+			<h2 id="section-form">Form</h2>
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h3 class="panel-title">EXAMPLE</h3>
+				</div>
+				<div class="panel-body">
+					<div class="table-responsive">
+						<table  class="table table-condensed table-striped" cellpadding="0" cellspacing="0">
+							<thead>
+								<tr>
+									<th>Results</th>
+									<th>Code</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>
+									</td>
+									<td><code></code></td>
+								</tr>
+								<tr>
+									<td>
+									</td>
+									<td><code></code></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+			<h2 id="section-form-inline">Form Inline</h2>
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h3 class="panel-title">EXAMPLE</h3>
+				</div>
+				<div class="panel-body">
+					<div class="table-responsive">
+						<table  class="table table-condensed table-striped" cellpadding="0" cellspacing="0">
+							<thead>
+								<tr>
+									<th>Results</th>
+									<th>Code</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>
+									</td>
+									<td><code></code></td>
+								</tr>
+								<tr>
+									<td>
+									</td>
+									<td><code></code></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+			<h2 id="section-form-horizontal">Form Horizontal</h2>
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h3 class="panel-title">EXAMPLE</h3>
+				</div>
+				<div class="panel-body">
+					<div class="table-responsive">
+						<table  class="table table-condensed table-striped" cellpadding="0" cellspacing="0">
+							<thead>
+								<tr>
+									<th>Results</th>
+									<th>Code</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>
+									</td>
+									<td><code></code></td>
+								</tr>
+								<tr>
+									<td>
+									</td>
+									<td><code></code></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+
+			<hr />
+
+			<h1>Bake and Layout</h1>
+			<h2 id="section-bake-templates">Bake Templates</h2>
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h3 class="panel-title">EXAMPLE</h3>
+				</div>
+				<div class="panel-body">
+					<div class="table-responsive">
+						<table  class="table table-condensed table-striped" cellpadding="0" cellspacing="0">
+							<thead>
+								<tr>
+									<th>Results</th>
+									<th>Code</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>
+									</td>
+									<td><code></code></td>
+								</tr>
+								<tr>
+									<td>
+									</td>
+									<td><code></code></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+			<h2 id="section-layout">Example of Layout</h2>
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h3 class="panel-title">EXAMPLE</h3>
+				</div>
+				<div class="panel-body">
+					<div class="table-responsive">
+						<table  class="table table-condensed table-striped" cellpadding="0" cellspacing="0">
+							<thead>
+								<tr>
+									<th>Results</th>
+									<th>Code</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>
+									</td>
+									<td><code></code></td>
+								</tr>
+								<tr>
+									<td>
+									</td>
+									<td><pre>
+										<?= $this->Html->docType(); ?>
+										&lt;html xmlns="http://www.w3.org/1999/xhtml"&gt;
+										&lt;head&gt;
+										<?= $this->Html->charset() . "\n" ?>
+										&lt;title&gt;<?= $this->fetch('title') ?>&lt;/title&gt;
+										<?= $this->Html->head() ?>
+										<?php
+										echo $this->fetch('meta');
+										echo $this->fetch('css');
+										echo $this->fetch('script');
+										?>
+										&lt;/head&gt;
+										&lt;body&gt;
+										&lt;/body&gt;
+										&lt;/html&gt;
+										</pre></td>
 								</tr>
 							</tbody>
 						</table>
