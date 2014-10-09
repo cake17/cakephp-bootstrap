@@ -528,24 +528,20 @@
 							<tbody>
 								<tr>
 									<td>
-									</td>
-									<td><code></code></td>
-								</tr>
-								<tr>
-									<td>
+										Basic Layout
 									</td>
 									<td><pre>
-										<?= $this->Html->docType(); ?>
+										\<?= $this->Html->docType(); ?>
 										&lt;html xmlns="http://www.w3.org/1999/xhtml"&gt;
 										&lt;head&gt;
-										<?= $this->Html->charset() . "\n" ?>
-										&lt;title&gt;<?= $this->fetch('title') ?>&lt;/title&gt;
-										<?= $this->Html->head() ?>
+										\<?= $this->Html->charset() . "\n" ?>
+										&lt;title&gt;\<?= $this->fetch('title') ?>&lt;/title&gt;
+										\<?= $this->Html->head() ?>
 										<?php
 										echo $this->fetch('meta');
 										echo $this->fetch('css');
 										echo $this->fetch('script');
-										?>
+										\?>
 										&lt;/head&gt;
 										&lt;body&gt;
 										&lt;/body&gt;

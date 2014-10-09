@@ -5,3 +5,8 @@ body {
 #main_content {
 	margin-top: 80px;
 }
+
+.hr {
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
