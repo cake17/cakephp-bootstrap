@@ -154,7 +154,7 @@ class BsHtmlHelper extends HtmlHelper {
  * @param array $options
  * @return string
  */
-	public function head($type = 'default', $options = []) {
+	public function head($type = 'default', array $options = []) {
 		$this->_defaultConfig = Hash::merge($this->_defaultConfig, $options);
 		// versions choisie
 		$myJsVersion = '';
@@ -225,7 +225,7 @@ class BsHtmlHelper extends HtmlHelper {
  * - url_webcreateur
  * @return $html
  */
-	public function footer($title, $options = []) {
+	public function footer($title, array $options = []) {
 		$html = '';
 		$defaultOptions = [
 			'type' => 'fixed-bottom', 
@@ -250,17 +250,17 @@ class BsHtmlHelper extends HtmlHelper {
 				]
 			);
 		endif;
-		return $this->navbar($options['type'], $html);
+		return $this->navbar($html, $options['type']);
 	}
 
 /**
  * Print a navbar
  *
- * @param string $type
- * => either 'fixed-top', 'fixed-bottom' or 'static-top'
- * => default to fixed-top
  * @param string $content
  * @param array $options
+ * => type
+ *	either 'fixed-top', 'fixed-bottom' or 'static-top'
+ *	default to fixed-top
  * => containerClass
  *	either 'container' or anything else
  *	default to container
@@ -270,14 +270,15 @@ class BsHtmlHelper extends HtmlHelper {
  * 
  * @return string
  */
-	public function navbar($type = 'fixed-top', $content, array $options = []) {
+	public function navbar($content, array $options = []) {
 		$defaultOptions = [
 			'containerClass' => 'container-fluid',
-			'navbarClass' => 'default'
+			'navbarClass' => 'default',
+			'type' => 'fixed-top'
 		];
 		$options = Hash::merge($defaultOptions, $options);
 		return $this->formatTemplate('navbar', [
-			'type' => $type,
+			'type' => $options['type'],
 			'content' => $content,
 			'containerClass' => $options['containerClass'],
 			'navbarClass' => $options['navbarClass']
@@ -393,7 +394,7 @@ class BsHtmlHelper extends HtmlHelper {
 				'content' => $message
 			]);
 		}
-		return $this->alert(__d('bootstrap', $this->_types['error'] . 'Button should be one of the following : ' . implode(', ', $this->_types['button'])), ['type' => 'danger']);
+		return $this->alert(__d('bootstrap', '{0}Button should be one of the following : {1}', $this->_types['error'], implode(', ', $this->_types['button'])), ['type' => 'danger']);
 	}
 
 /**
@@ -420,7 +421,7 @@ class BsHtmlHelper extends HtmlHelper {
 				'content' => $message
 			]);
 		}
-		return $this->alert(__d('bootstrap', $this->_types['error'] . 'Label should be one of the following : ' . implode(', ', $this->_types['label'])), ['type' => 'danger']);
+		return $this->alert(__d('bootstrap', '{0}Label should be one of the following : {1}', $this->_types['error'], implode(', ', $this->_types['label'])), ['type' => 'danger']);
 	}
 
 /**
@@ -523,7 +524,7 @@ class BsHtmlHelper extends HtmlHelper {
  *
  * @retrun string
  */
-	public function links($type, $options = []) {
+	public function links($type, array $options = []) {
 		$html = "";
 		$group = "";
 		if (isset($options['controller']) && !empty($options['controller'])) {
@@ -547,17 +548,17 @@ class BsHtmlHelper extends HtmlHelper {
 		$cheminMoveUp = ['plugin' => $plugin, 'prefix' => $prefix, 'controller' => $controller, 'action' => 'move_up', $options['id']];
 		$cheminMoveDown = ['plugin' => $plugin, 'prefix' => $prefix, 'controller' => $controller, 'action' => 'move_down', $options['id']];
 
-		$linkView = $this->link(__d('bootstrap', 'Voir'), $cheminView, ['class' => 'btn btn-default btn-xs']);
-		$linkEdit = $this->link($this->icon('pencil', ['title' => __d('bootstrap', 'Edit'), 'alt' => __d('bootstrap', 'Modifier')]), $cheminEdit, ['escape' => false, 'class' => 'btn btn-default btn-xs']);
-		$linkDelete = $this->_View->Form->postLink($this->icon('trash', ['title' => __d('bootstrap', 'Supprimer'), 'alt' => __d('bootstrap', 'delete')]),
+		$linkView = $this->link(__d('bootstrap', 'View'), $cheminView, ['class' => 'btn btn-default btn-xs']);
+		$linkEdit = $this->link($this->icon('pencil', ['title' => __d('bootstrap', 'Edit'), 'alt' => __d('bootstrap', 'Edit')]), $cheminEdit, ['escape' => false, 'class' => 'btn btn-default btn-xs']);
+		$linkDelete = $this->_View->Form->postLink($this->icon('trash', ['title' => __d('bootstrap', 'Delete'), 'alt' => __d('bootstrap', 'delete')]),
 			$cheminDelete,
 			['escape' => false, 'class' => 'btn btn-default btn-xs', 'confirm' => __d('bootstrap','Are you sure you want to delete # {0}?', $options['id'])]
 		);
-		$linkMoveUp = $this->_View->Form->postLink($this->icon('arrow-up', ['title' => __d('bootstrap', 'Monter'), 'alt' => __d('bootstrap', 'Monter')]),
+		$linkMoveUp = $this->_View->Form->postLink($this->icon('arrow-up', ['title' => __d('bootstrap', 'Up'), 'alt' => __d('bootstrap', 'Up')]),
 			$cheminMoveUp,
 			['escape' => false, 'class' => 'btn btn-default btn-xs', 'confirm' => __d('bootstrap','Are you sure you want to up # {0}?', $options['id'])]
 		);
-		$linkMoveDown = $this->_View->Form->postLink($this->icon('arrow-down', ['title' => __d('bootstrap', 'Descendre'), 'alt' => __d('bootstrap', 'Descendre')]),
+		$linkMoveDown = $this->_View->Form->postLink($this->icon('arrow-down', ['title' => __d('bootstrap', 'Down'), 'alt' => __d('bootstrap', 'Down')]),
 			$cheminMoveDown,
 			['escape' => false, 'class' => 'btn btn-default btn-xs', 'confirm' => __d('bootstrap','Are you sure you want to down # {0}?', $options['id'])]
 		);
@@ -603,19 +604,19 @@ class BsHtmlHelper extends HtmlHelper {
  * @param array $options
  * @return string
  */
-	public function links_actif($actif, $id, $options = []) {
+	public function linksActives($actif, $id, array $options = []) {
 		$defaultOptions = [
 			"active" => [
 				"label" => "success",
-				"name" => "Actif",
-				"btn_name" => __d('bootstrap', "Désactiver"),
+				"name" => "Active",
+				"btn_name" => __d('bootstrap', "Deactivate"),
 				"btn_icon" => 'unchecked',
 				'action' => 'desactivate'
 			],
 			"desactive" => [
 				"label" => "danger",
-				"name" => "Inactif",
-				"btn_name" => __d('bootstrap', "Activer"),
+				"name" => "Not Active",
+				"btn_name" => __d('bootstrap', "Activate"),
 				"btn_icon" => 'check',
 				'action' => 'activate'
 			]
@@ -665,7 +666,7 @@ class BsHtmlHelper extends HtmlHelper {
  * @param array $options
  * @return string
  */
-	public function links_principal($principal, $id, $options = []) {
+	public function linksPrincipal($principal, $id, array $options = []) {
 		$defaultOptions = [
 			"principal" => [
 				"label" => "danger",
@@ -673,8 +674,8 @@ class BsHtmlHelper extends HtmlHelper {
 			],
 			"not_principal" => [
 				"label" => "danger",
-				"name" => "Non Principal",
-				"btn_name" => __d('bootstrap', "Mettre en Principal"),
+				"name" => "Not Principal",
+				"btn_name" => __d('bootstrap', "Put as Principal"),
 				"btn_icon" => 'check',
 				'action' => 'put_principal'
 			]
