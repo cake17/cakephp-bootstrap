@@ -160,14 +160,14 @@
 									<td>
 										<button type="button" class="btn btn-default btn-lg">This is a button with default</button>
 									</td>
-									<td>echo $this->Html->button('This is a button with default'))</td>
+									<td><code>echo $this->Html->button('This is a button with default'))</code></td>
 								</tr>
 								<tr>
 									<td>
 										<button type="button" class="btn btn-primary btn-xs">This is a button with option primary</button>
 									</td>
 									<td>
-										echo $this->Html->button('This is a button with option primary and a class and id defined'), ['type' => 'primary', 'class' => 'btn-xs'])
+										<code>echo $this->Html->button('This is a button with option primary and a class and id defined'), ['type' => 'primary', 'class' => 'btn-xs'])</code>
 									</td>
 								</tr>
 								<tr>
@@ -175,7 +175,7 @@
 										<button type="button" class="btn btn-danger btn-md my-class" id="my-id">This is a button with danger</button>
 									</td>
 									<td>
-										echo $this->Html->button('This is a button with option danger and a class and id defined'), ['type' => 'danger', 'class' => 'btn-md my-class', 'id' => 'my-id'])
+										<code>echo $this->Html->button('This is a button with option danger and a class and id defined'), ['type' => 'danger', 'class' => 'btn-md my-class', 'id' => 'my-id'])</code>
 									</td>
 								</tr>
 							</tbody>
@@ -201,7 +201,7 @@
 									<td>
 										<span class="label label-default">This is a label with default</span>
 									</td>
-									<td>echo $this->Html->label('This is a label with default') </td>
+									<td><code>echo $this->Html->label('This is a label with default') </code></td>
 								</tr>
 								<tr>
 								</tr>
@@ -228,7 +228,7 @@
 									<td>
 										<span class="badge">This is a badge with default</span>
 									</td>
-									<td>echo $this->Html->badge('This is a badge with default'); </td>
+									<td><code>echo $this->Html->badge('This is a badge with default'); </code></td>
 								</tr>
 								<tr>
 								</tr>
@@ -260,7 +260,7 @@
 											<li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
 										</ul>
 									</td>
-									<td>echo $this->Html->pagination() </td>
+									<td><code>echo $this->Html->pagination() </code></td>
 								</tr>
 							</tbody>
 						</table>
@@ -284,18 +284,12 @@
 							</thead>
 							<tbody>
 								<tr>
-									<td><?php
-										// print a link
-										echo $this->Html->link('My Link'), ['']) . "<br />";
-										?></td>
-									<td>echo $this->Html->link('My Link'), [''])</td>
+									<td></td>
+									<td><code>echo $this->Html->link('My Link'), [''])</code></td>
 								</tr>
 								<tr>
-									<td><?php
-										// print a link
-										echo $this->Html->link('My Link with active'), ['']) . "<br />";
-										?></td>
-									<td>echo $this->Html->link('My Link with active'), [''])</td>
+									<td></td>
+									<td><code>echo $this->Html->link('My Link with active'), [''])</code></td>
 								</tr>
 							</tbody>
 						</table>
@@ -317,12 +311,12 @@
 							</thead>
 							<tbody>
 								<tr>
-									<td><?= $this->Html->links('default', ['id' => 1]) ?></td>
-									<td>echo $this->Html->links('default', ['id' => 1]);</td>
+									<td></td>
+									<td><code>echo $this->Html->links('default', ['id' => 1]);</code></td>
 								</tr>
 								<tr>
-									<td><?= $this->Html->links('tree', ['id' => 1]) ?></td>
-									<td>echo $this->Html->links('tree', ['id' => 1])</td>
+									<td></td>
+									<td><code>echo $this->Html->links('tree', ['id' => 1])</code></td>
 								</tr>
 							</tbody>
 						</table>
@@ -344,18 +338,12 @@
 							</thead>
 							<tbody>
 								<tr>
-									<td><?php
-										// print links_actif
-										echo $this->Html->links_actif(true, 'my-id') . "<br />";
-										?></td>
-									<td>echo $this->Html->links_actif(true, 'my-id')</td>
+									<td></td>
+									<td><code>echo $this->Html->links_actif(true, 'my-id')</code></td>
 								</tr>
 								<tr>
-									<td><?php
-										// print links_principal
-										echo $this->Html->links_principal(true, 'my-id') . "<br />";
-										?></td>
-									<td>echo $this->Html->links_principal(true, 'my-id')</td>
+									<td></td>
+									<td><code>echo $this->Html->links_principal(true, 'my-id')</code></td>
 								</tr>
 							</tbody>
 						</table>
