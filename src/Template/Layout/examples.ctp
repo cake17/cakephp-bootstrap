@@ -288,17 +288,17 @@
 							<tbody>
 								<tr>
 									<td><?php
-									// print links_actif
-									echo $this->Html->links_actif(true, 'my-id') . "<br />";
+									// print linksActives
+									echo $this->Html->linksActives(true, 'my-id') . "<br />";
 									?></td>
-									<td>echo $this->Html->links_actif(true, 'my-id')</td>
+									<td>echo $this->Html->linksActives(true, 'my-id')</td>
 								</tr>
 								<tr>
 									<td><?php
-									// print links_principal
-									echo $this->Html->links_principal(true, 'my-id') . "<br />";
+									// print linksPrincipal
+									echo $this->Html->linksPrincipal(true, 'my-id') . "<br />";
 									?></td>
-									<td>echo $this->Html->links_principal(true, 'my-id')</td>
+									<td>echo $this->Html->linksPrincipal(true, 'my-id')</td>
 								</tr>
 							</tbody>
 						</table>
