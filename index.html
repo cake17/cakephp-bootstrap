@@ -69,7 +69,7 @@
 				- Change the Html Elements with BsHtml Helper<br />
 				- Change the Form Elements with BsForm Helper<br />
 				- Bake the view templates<br />
-				- Example of layout<br />
+				At the end, you can see an example of layout<br />
 			</p>
 
 			<h1>BsHtml</h1>
@@ -509,47 +509,23 @@
 				</div>
 			</div>
 			<h2 id="section-layout">Example of Layout</h2>
-			<div class="panel panel-default">
-				<div class="panel-heading">
-					<h3 class="panel-title">EXAMPLE</h3>
-				</div>
-				<div class="panel-body">
-					<div class="table-responsive">
-						<table  class="table table-condensed table-striped" cellpadding="0" cellspacing="0">
-							<thead>
-								<tr>
-									<th>Results</th>
-									<th>Code</th>
-								</tr>
-							</thead>
-							<tbody>
-								<tr>
-									<td>
-										Basic Layout
-									</td>
-									<td><pre>
-										\<?= $this->Html->docType(); ?>
-										&lt;html xmlns="http://www.w3.org/1999/xhtml"&gt;
-										&lt;head&gt;
-										\<?= $this->Html->charset() . "\n" ?>
-										&lt;title&gt;\<?= $this->fetch('title') ?>&lt;/title&gt;
-										\<?= $this->Html->head() ?>
-										<?php
-										echo $this->fetch('meta');
-										echo $this->fetch('css');
-										echo $this->fetch('script');
-										\?>
-										&lt;/head&gt;
-										&lt;body&gt;
-										&lt;/body&gt;
-										&lt;/html&gt;
-										</pre></td>
-								</tr>
-							</tbody>
-						</table>
-					</div>
-				</div>
-			</div>
+			<pre>
+				\<?= $this->Html->docType(); ?>
+				&lt;html xmlns="http://www.w3.org/1999/xhtml"&gt;
+				&lt;head&gt;
+				\<?= $this->Html->charset() . "\n" ?>
+				&lt;title&gt;\<?= $this->fetch('title') ?>&lt;/title&gt;
+				\<?= $this->Html->head() ?>
+				<?php
+				echo $this->fetch('meta');
+				echo $this->fetch('css');
+				echo $this->fetch('script');
+				\?>
+				&lt;/head&gt;
+				&lt;body&gt;
+				&lt;/body&gt;
+				&lt;/html&gt;
+			</pre>
 		</section>
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 		<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.1/jquery-ui.min.js"></script>
