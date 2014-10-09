@@ -669,7 +669,7 @@ class BsHtmlHelper extends HtmlHelper {
 	public function linksPrincipal($principal, $id, array $options = []) {
 		$defaultOptions = [
 			"principal" => [
-				"label" => "danger",
+				"label" => "success",
 				"name" => "Principal",
 			],
 			"not_principal" => [
