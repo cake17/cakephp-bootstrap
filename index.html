@@ -75,7 +75,7 @@
 				- Bake the view templates<br />
 
 				<h2>Installation</h2>
-				- Please read how to install the plugin with composer in the <a href="https://github.com/cake17/cakephp-bootstrap">README</a> in github in the <br />
+				- Please read how to install the plugin with composer in the <a href="https://github.com/cake17/cakephp-bootstrap">README</a> in github <br />
 				- Then you need to add <code>&lt;?= $this->Html->head() ?&gt;</code> in your layout head tag<br />
 					<pre>
 ```php
@@ -84,7 +84,7 @@
 	&lt;head&gt;
 		&lt;?= $this->Html->charset() . "\n" ?&gt;
 		&lt;title&gt;&lt;?= $this->fetch('title') ?>&lt;/title&gt;
-		&lt;?= $this->Html->head() ?&gt;
+		<b>&lt;?= $this->Html->head() ?&gt;<b>
 		&lt;?php
 		echo $this->fetch('meta');
 		echo $this->fetch('css');
@@ -326,6 +326,7 @@ public $helpers = [
 					<h3 class="panel-title">Link</h3>
 				</div>
 				<div class="panel-body">
+					Great feature with the links, if a link maps to the url where you are, it adds a 'class' => 'activation' for the link
 					<div class="table-responsive">
 						<table  class="table table-condensed table-striped" cellpadding="0" cellspacing="0">
 							<thead>
@@ -340,7 +341,7 @@ public $helpers = [
 									<td><code>echo $this->Html->link('My Link'), [''])</code></td>
 								</tr>
 								<tr>
-									<td><button type="button" class="btn btn-default btn-xs activation">Link</button></td>
+									<td><button type="button" class="btn btn-default btn-xs active">Link</button></td>
 									<td><code>echo $this->Html->link('My Link with active'), [''])</code></td>
 								</tr>
 							</tbody>
