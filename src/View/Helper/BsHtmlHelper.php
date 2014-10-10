@@ -125,6 +125,13 @@ class BsHtmlHelper extends HtmlHelper {
 				]
 			]
 		],
+		// the following options of links are defined in construct
+		'links' => [
+		],
+		'linksActives' => [
+		],
+		'linksPrincipal' => [
+		]
 	];
 
 /**
@@ -132,13 +139,103 @@ class BsHtmlHelper extends HtmlHelper {
  *
  * @var array $_types
  */
-	public $_types = [
+	protected $_types = [
 		'alert' => ['success', 'info', 'warning', 'danger'],
 		'label' => ['default', 'primary', 'success', 'info', 'warning', 'danger'],
 		'button' => ['default', 'primary', 'success', 'info', 'warning', 'danger'],
 		'error' => 'Error in BsHtml Helper : '
 		//'button_sizes' => ['xs', 'lg', 'sm', ''],
 	];
+
+/**
+ * Construct
+ *
+ * Merge defaultOptions for linksPrincipal, linksActives
+ * @param \Bootstrap\View\Helper\View $View
+ * @param array $config
+ */
+	public function __construct(\Cake\View\View $View, array $config = array()) {
+		parent::__construct($View, $config);
+
+		// put default options for links
+		$defaultOptionsLinks = [
+			"wrap" => [
+				"class" => "btn-group"
+			],
+			"view" => [
+				"name" => __d('bootstrap', 'View'),
+				"action" => "view",
+				"class" => "btn btn-default btn-xs",
+			],
+			"edit" => [
+				"name" => $this->icon('pencil', ['title' => __d('bootstrap', 'Edit'), 'alt' => __d('bootstrap', 'Edit')]),
+				"action" => "edit",
+				"class" => "btn btn-default btn-xs",
+			],
+			"delete" => [
+				"name" => $this->icon('trash', ['title' => __d('bootstrap', 'Delete'), 'alt' => __d('bootstrap', 'delete')]),
+				"action" => "delete",
+				"class" => "btn btn-default btn-xs",
+			],
+			"moveUp" => [
+				"name" => $this->icon('arrow-up', ['title' => __d('bootstrap', 'Up'), 'alt' => __d('bootstrap', 'Up')]),
+				"action" => "move_up",
+				"class" => "btn btn-default btn-xs",
+			],
+			"moveDown" => [
+				"name" => $this->icon('arrow-down', ['title' => __d('bootstrap', 'Down'), 'alt' => __d('bootstrap', 'Down')]),
+				"action" => "move_down",
+				"class" => "btn btn-default btn-xs",
+			]
+		];
+		$this->config('links', $defaultOptionsLinks);
+
+		// put default options for links principal
+		$defaultOptionsLinksPrincipal = [
+			"wrap" => [
+				"class" => "btn-group"
+			],
+			"principal" => [
+				"label" => "success",
+				"name" => "Principal",
+				'class' => 'btn btn-default btn-xs'
+			],
+			"not_principal" => [
+				"label" => "danger",
+				"name" => "Not Principal",
+				"btn_name" => __d('bootstrap', "Put as Principal"),
+				"btn_icon" => 'check',
+				'action' => 'put_principal',
+				'class' => 'btn btn-default btn-xs'
+			]
+		];
+		$this->config('linksPrincipal', $defaultOptionsLinksPrincipal);
+
+		// put default options for links actives
+		$defaultOptionsLinksActives = [
+			"wrap" => [
+				"class" => "btn-group"
+			],
+			"active" => [
+				"label" => "success",
+				"name" => "Active",
+				"btn_name" => __d('bootstrap', "Deactivate"),
+				"btn_icon" => 'unchecked',
+				'action' => 'desactivate',
+				'class' => 'btn btn-default btn-xs'
+			],
+			"desactive" => [
+				"label" => "danger",
+				"name" => "Not Active",
+				"btn_name" => __d('bootstrap', "Activate"),
+				"btn_icon" => 'check',
+				'action' => 'activate',
+				'class' => 'btn btn-default btn-xs'
+			]
+		];
+		$this->config('linksActives', $defaultOptionsLinksActives);
+		
+	}
 
 /************************************
  *		LAYOUTS
@@ -525,45 +622,32 @@ class BsHtmlHelper extends HtmlHelper {
  * @retrun string
  */
 	public function links($type, array $options = []) {
-		$html = "";
-		$group = "";
-		if (isset($options['controller']) && !empty($options['controller'])) {
-			$controller = $options['controller'];
-		} else {
-			$controller = $this->_View->request->params['controller'];
-		}
-		if (isset($options['plugin']) && !empty($options['plugin'])) {
-			$plugin = $options['plugin'];
-		} else {
-			$plugin = $this->_View->request->params['plugin'];
-		}
-		if (isset($options['prefix']) && !empty($options['prefix'])) {
-			$prefix = $options['prefix'];
-		} else {
-			$prefix = $this->_View->request->params['prefix'];
-		}
-		$cheminView = ['plugin' => $plugin, 'prefix' => $prefix, 'controller' => $controller, 'action' => 'view', $options['id']];
-		$cheminEdit = ['plugin' => $plugin, 'prefix' => $prefix, 'controller' => $controller, 'action' => 'edit', $options['id']];
-		$cheminDelete = ['plugin' => $plugin, 'prefix' => $prefix, 'controller' => $controller, 'action' => 'delete', $options['id']];
-		$cheminMoveUp = ['plugin' => $plugin, 'prefix' => $prefix, 'controller' => $controller, 'action' => 'move_up', $options['id']];
-		$cheminMoveDown = ['plugin' => $plugin, 'prefix' => $prefix, 'controller' => $controller, 'action' => 'move_down', $options['id']];
+		$options = Hash::merge($this->config('links'), $options);
+		// parse elements of url routes to fix eventual issues
+		$options = $this->parseUrlElements($options);
 
-		$linkView = $this->link(__d('bootstrap', 'View'), $cheminView, ['class' => 'btn btn-default btn-xs']);
-		$linkEdit = $this->link($this->icon('pencil', ['title' => __d('bootstrap', 'Edit'), 'alt' => __d('bootstrap', 'Edit')]), $cheminEdit, ['escape' => false, 'class' => 'btn btn-default btn-xs']);
-		$linkDelete = $this->_View->Form->postLink($this->icon('trash', ['title' => __d('bootstrap', 'Delete'), 'alt' => __d('bootstrap', 'delete')]),
+		$cheminView = ['plugin' => $options['plugin'], 'prefix' => $options['prefix'], 'controller' => $options['controller'], 'action' => $options['view']['action'], $options['id']];
+		$cheminEdit = ['plugin' => $options['plugin'], 'prefix' => $options['prefix'], 'controller' => $options['controller'], 'action' => $options['edit']['action'], $options['id']];
+		$cheminDelete = ['plugin' => $options['plugin'], 'prefix' => $options['prefix'], 'controller' => $options['controller'], 'action' => $options['delete']['action'], $options['id']];
+		$cheminMoveUp = ['plugin' => $options['plugin'], 'prefix' => $options['prefix'], 'controller' => $options['controller'], 'action' => $options['moveUp']['action'], $options['id']];
+		$cheminMoveDown = ['plugin' => $options['plugin'], 'prefix' => $options['prefix'], 'controller' => $options['controller'], 'action' => $options['moveDown']['action'], $options['id']];
+
+		$linkView = $this->link($options['view']['name'], $cheminView, ['class' => $options['view']['class']]);
+		$linkEdit = $this->link($options['edit']['name'], $cheminEdit, ['escape' => false, 'class' => $options['edit']['class']]);
+		$linkDelete = $this->_View->Form->postLink($options['delete']['name'],
 			$cheminDelete,
-			['escape' => false, 'class' => 'btn btn-default btn-xs', 'confirm' => __d('bootstrap','Are you sure you want to delete # {0}?', $options['id'])]
+			['escape' => false, 'class' => $options['delete']['class'], 'confirm' => __d('bootstrap','Are you sure you want to delete # {0}?', $options['id'])]
 		);
-		$linkMoveUp = $this->_View->Form->postLink($this->icon('arrow-up', ['title' => __d('bootstrap', 'Up'), 'alt' => __d('bootstrap', 'Up')]),
+		$linkMoveUp = $this->_View->Form->postLink($options['moveUp']['name'],
 			$cheminMoveUp,
-			['escape' => false, 'class' => 'btn btn-default btn-xs', 'confirm' => __d('bootstrap','Are you sure you want to up # {0}?', $options['id'])]
+			['escape' => false, 'class' => $options['moveUp']['class'], 'confirm' => __d('bootstrap','Are you sure you want to up # {0}?', $options['id'])]
 		);
-		$linkMoveDown = $this->_View->Form->postLink($this->icon('arrow-down', ['title' => __d('bootstrap', 'Down'), 'alt' => __d('bootstrap', 'Down')]),
+		$linkMoveDown = $this->_View->Form->postLink($options['moveDown']['name'],
 			$cheminMoveDown,
-			['escape' => false, 'class' => 'btn btn-default btn-xs', 'confirm' => __d('bootstrap','Are you sure you want to down # {0}?', $options['id'])]
+			['escape' => false, 'class' => $options['moveDown']['class'], 'confirm' => __d('bootstrap','Are you sure you want to down # {0}?', $options['id'])]
 		);
+		$html = ' <div class="' . $options['wrap']['class'] . '">';
 		if ($type === 'default') {
-			$html .= '<div class="btn-group">';
 			if (isset($options['actions']) && is_array($options['actions'])) {
 				foreach ($options['actions'] as $action):
 					$html .= ${'link' . ucfirst($action)};
@@ -571,14 +655,10 @@ class BsHtmlHelper extends HtmlHelper {
 			} else {
 				$html .= $linkView . $linkEdit . $linkDelete;
 			}
-			$html .= '</div>';
 		} elseif ($type === 'tree') {
-			$html .= '<div class="btn-group">';
 			$html .= $linkView . $linkEdit . $linkMoveUp . $linkMoveDown . $linkDelete;
-			$html .= '</div>';
 		}
 		elseif ($type === 'mix') {
-			$html .= '<div class="btn-group">';
 			if (isset ($options['view'])) {
 				$html .= $linkView;
 			}
@@ -588,8 +668,8 @@ class BsHtmlHelper extends HtmlHelper {
 			if (isset ($options['delete'])) {
 				$html .= $linkDelete;
 			}
-			$html .= '</div>';
 		}
+		$html .= '</div>';
 		//debug($html);
 		return $html;
 	}
@@ -605,51 +685,23 @@ class BsHtmlHelper extends HtmlHelper {
  * @return string
  */
 	public function linksActives($actif, $id, array $options = []) {
-		$defaultOptions = [
-			"active" => [
-				"label" => "success",
-				"name" => "Active",
-				"btn_name" => __d('bootstrap', "Deactivate"),
-				"btn_icon" => 'unchecked',
-				'action' => 'desactivate'
-			],
-			"desactive" => [
-				"label" => "danger",
-				"name" => "Not Active",
-				"btn_name" => __d('bootstrap', "Activate"),
-				"btn_icon" => 'check',
-				'action' => 'activate'
-			]
-		];
-		$options = Hash::merge($defaultOptions, $options);
-		//debug($options);
-		if (isset($options['controller']) && !empty($options['controller'])) {
-			$controller = $options['controller'];
-		} else {
-			$controller = $this->_View->request->params['controller'];
-		}
-		if (isset($options['plugin']) && !empty($options['plugin'])) {
-			$plugin = $options['plugin'];
-		} else {
-			$plugin = $this->_View->request->params['plugin'];
-		}
-		if (isset($options['prefix']) && !empty($options['prefix'])) {
-			$prefix = $options['prefix'];
-		} else {
-			$prefix = $this->_View->request->params['prefix'];
-		}
-		$html = ' <div class="btn-group">';
+		$options = Hash::merge($this->config('linksActives'), $options);
+
+		// parse elements of url routes to fix eventual issues
+		$options = $this->parseUrlElements($options);
+
+		$html = ' <div class="' . $options['wrap']['class'] . '">';
 		if ($actif) {
 			$html .= $this->button($options['active']['name'], ['type' => $options['active']['label'], 'class' => 'btn-xs']) . " ";
 			$html .= $this->_View->Form->postLink($this->icon($options['active']['btn_icon']) . $options['active']['btn_name'],
-				['plugin' => $plugin, 'prefix' => $prefix, 'controller' => $controller, 'action' => $options['active']['action'], $id],
-				['escape' => false, 'class' => 'btn btn-default btn-xs', 'confirm' => __d('bootstrap', 'Are you sure you want to {0} # {1}?', $options['active']['action'], $id)]
+				['plugin' => $options['plugin'], 'prefix' => $options['prefix'], 'controller' => $options['controller'], 'action' => $options['active']['action'], $id],
+				['escape' => false, 'class' => $options['active']['class'], 'confirm' => __d('bootstrap', 'Are you sure you want to {0} # {1}?', $options['active']['action'], $id)]
 			);
 		} else {
 			$html .= $this->button($options['desactive']['name'], ['type' => $options['desactive']['label'], 'class' => 'btn-xs']) . " ";
 			$html .= $this->_View->Form->postLink($this->icon($options['desactive']['btn_icon']) . $options['desactive']['btn_name'],
-				['plugin' => $plugin, 'prefix' => $prefix, 'controller' => $controller, 'action' => $options['desactive']['action'], $id],
-				['escape' => false, 'class' => 'btn btn-default btn-xs', 'confirm' => __d('bootstrap','Are you sure you want to {0} # {1}?', $options['desactive']['action'], $id)]
+				['plugin' => $options['plugin'], 'prefix' => $options['prefix'], 'controller' => $options['controller'], 'action' => $options['desactive']['action'], $id],
+				['escape' => false, 'class' => $options['desactive']['class'], 'confirm' => __d('bootstrap','Are you sure you want to {0} # {1}?', $options['desactive']['action'], $id)]
 			);
 		}
 		$html .= '</div>';
@@ -667,48 +719,48 @@ class BsHtmlHelper extends HtmlHelper {
  * @return string
  */
 	public function linksPrincipal($principal, $id, array $options = []) {
-		$defaultOptions = [
-			"principal" => [
-				"label" => "success",
-				"name" => "Principal",
-			],
-			"not_principal" => [
-				"label" => "danger",
-				"name" => "Not Principal",
-				"btn_name" => __d('bootstrap', "Put as Principal"),
-				"btn_icon" => 'check',
-				'action' => 'put_principal'
-			]
-		];
-		$options = Hash::merge($defaultOptions, $options);
-		//debug($options);
-		if (isset($options['controller']) && !empty($options['controller'])) {
-			$controller = $options['controller'];
-		} else {
-			$controller = $this->_View->request->params['controller'];
-		}
-		if (isset($options['plugin']) && !empty($options['plugin'])) {
-			$plugin = $options['plugin'];
-		} else {
-			$plugin = $this->_View->request->params['plugin'];
-		}
-		if (isset($options['prefix']) && !empty($options['prefix'])) {
-			$prefix = $options['prefix'];
-		} else {
-			$prefix = $this->_View->request->params['prefix'];
-		}
-		$html = ' <div class="btn-group">';
+		$options = Hash::merge($this->config('linksPrincipal'), $options);
+
+		// parse elements of url routes to fix eventual issues
+		$options = $this->parseUrlElements($options);
+
+		$html = ' <div class="' . $options['wrap']['class'] . '">';
 		if ($principal) {
-			$html .= $this->button($options['principal']['name'], ['type' => $options['principal']['label'], 'class' => 'btn-xs']) . " ";
+			$html .= $this->button($options['principal']['name'], ['type' => $options['principal']['label'], 'class' => $options['principal']['class']]) . " ";
 		} else {
 			$html .= $this->button($options['not_principal']['name'], ['type' => $options['not_principal']['label'], 'class' => 'btn-xs']) . " ";
 			$html .= $this->_View->Form->postLink($this->icon($options['not_principal']['btn_icon']) . $options['not_principal']['btn_name'],
-				['plugin' => $plugin, 'prefix' => $prefix, 'controller' => $controller, 'action' => $options['not_principal']['action'], $id],
-				['escape' => false, 'class' => 'btn btn-default btn-xs', 'confirm' => __d('bootstrap','Are you sure you want to put as principal # {0}?', $id)]
+				['plugin' => $options['plugin'], 'prefix' => $options['prefix'], 'controller' => $options['controller'], 'action' => $options['not_principal']['action'], $id],
+				['escape' => false, 'class' => $options['not_principal']['class'], 'confirm' => __d('bootstrap','Are you sure you want to put as principal # {0}?', $id)]
 			);
 		}
 		$html .= '</div>';
 		return $html;
+	}
+
+/**
+ * Parse Url Elements of Route
+ * Used in all links methods
+ *
+ * @param array $options
+ * @return array
+ */
+	public function parseUrlElements(array $options = []) {
+		if (isset ($this->_View->request->params['controller']) && !empty ($this->_View->request->params['controller']) && (!isset ($options['controller']) || empty ($options['controller']))):
+			$options['controller'] = $this->_View->request->params['controller'];
+		endif;
+		if (isset ($this->_View->request->params['plugin']) && !empty ($this->_View->request->params['plugin']) && (!isset ($options['plugin']) || empty ($options['plugin']))) {
+			$options['plugin'] = $this->_View->request->params['plugin'];
+		} else {
+			$options['plugin'] = null;
+		}
+		if (isset ($this->_View->request->params['prefix']) && !empty ($this->_View->request->params['prefix']) && (!isset ($options['prefix']) || empty ($options['prefix']))) {
+			$options['prefix'] = $this->_View->request->params['prefix'];
+		} else {
+			$options['prefix'] = null;
+		}
+		$this->config($options);
+		return $options;
 	}
 
 }
