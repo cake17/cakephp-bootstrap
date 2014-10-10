@@ -12,7 +12,7 @@ Versions:
 
 ## Installation of plugin ##
 
-Add the following require in composer.json. This will install the plugin into
+- Add the following require in composer.json. This will install the plugin into
 plugins/Bootstrap:
 
 ```json
@@ -23,32 +23,11 @@ plugins/Bootstrap:
 }
 ```
 
-Composer makes 2 operations for you that you can check:
-
 - Enable the plugin in your config/bootstrap.php file:
 
 	`Plugin::load('Bootstrap', ['routes' => false, 'bootstrap' => false]);`
 
 - Add autoload in your composer.json
-
-Then, add those following lines in your src/Controller/AppController.php file :
-
-```php
-class AppController extends Controller {
-public $helpers = [
-		'Form' => [
-			'templates' => 'Bootstrap.bs_form.php',
-			'className' => 'Bootstrap.BsForm',
-		],
-		'Html' => [
-			'className' => 'Bootstrap.BsHtml'
-		],
-		'Paginator' => [
-			'templates' => 'Bootstrap.bs_paginator.php'
-		]
-	];
-}
-```
 
 ## Usage of plugin ##
 
