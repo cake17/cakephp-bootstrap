@@ -390,63 +390,46 @@ public $helpers = [
 					</div>
 				</div>
 			</div>
-			<div class="panel panel-default">
+			<div class="panel">
 				<div class="panel-heading">
 					<h3 class="panel-title">Actif & Principal</h3>
+					<div class="btn-group">
+						<button type="button" class="btn btn-success btn-xs">Active</button><br />
+						<button type="button" class="btn btn-default btn-xs">Deactivate</button>
+					</div>
+					<div class="btn-group">
+						<label class="btn btn-danger btn-xs">Desactivé</label><br />
+						<button type="button" class="btn btn-default btn-xs">Activer</button>
+					</div>
+					<hr />
+					<div class="btn-group">
+						<button type="button" class="btn btn-success btn-xs">In principal</button>
+					</div>
+					<div class="btn-group">
+						<button type="button" class="btn btn-danger btn-xs">Not in Principal</button><br />
+						<button type="button" class="btn btn-default btn-xs">Put as Principal</button>
+					</div>
 				</div>
 				<div class="panel-body">
-					<div class="table-responsive">
-						<table  class="table table-condensed table-striped" cellpadding="0" cellspacing="0">
-							<thead>
-								<tr>
-									<th>Results</th>
-									<th>Code</th>
-								</tr>
-							</thead>
-							<tbody>
-								<tr>
-									<td>
-										<div class="btn-group">
-											<button type="button" class="btn btn-success btn-xs">Active</button><br />
-											<button type="button" class="btn btn-default btn-xs">Deactivate</button>
-										</div>
-										<div class="btn-group">
-											<label class="btn btn-danger btn-xs">Desactivé</label><br />
-											<button type="button" class="btn btn-default btn-xs">Activer</button>
-										</div>
-									</td>
-									<td>
-										<code>echo $this->Html->linksActives(true, 'my-id')</code><br />
-										<pre>
+					<pre>
+echo $this->Html->linksActives(true, 'my-id')
 ```php
 echo $this->Html->linksActives(false, 'my-id', [
-	"active" => [
-		"label" => "danger",
-		"name" => "Desactivé",
-		"btn_name" => __d('bootstrap', "Activer"),
-		"btn_icon" => 'check',
-		'action' => 'desactivate',
-		'class' => 'btn btn-danger btn-lg'
-	]
+"active" => [
+"label" => "danger",
+"name" => "Desactivé",
+"btn_name" => __d('bootstrap', "Activer"),
+"btn_icon" => 'check',
+'action' => 'desactivate',
+'class' => 'btn btn-danger btn-lg'
+]
 ])
 ```
-										</pre>
-									</td>
-								</tr>
-								<tr>
-									<td>
-										<div class="btn-group">
-											<button type="button" class="btn btn-success btn-xs">In principal</button>
-										</div>
-										<div class="btn-group">
-											<button type="button" class="btn btn-danger btn-xs">Not in Principal</button><br />
-											<button type="button" class="btn btn-default btn-xs">Put as Principal</button>
-										</div>
-									</td>
-									<td>
-										<code>echo $this->Html->linksPrincipal(true, 'my-id')</code><br />
-										<pre>
+					</pre>
+					<pre>
 ```php
+echo $this->Html->linksPrincipal(true, 'my-id')
+
 echo $this->Html->linksPrincipal(false, 'my-id', [
 	'principal' => [
 		'name' => 'In principal'
@@ -456,12 +439,7 @@ echo $this->Html->linksPrincipal(false, 'my-id', [
 	]
 ])
 ```
-										</pre>
-									</td>
-								</tr>
-							</tbody>
-						</table>
-					</div>
+					</pre>
 				</div>
 			</div>
 
