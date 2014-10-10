@@ -410,23 +410,53 @@ public $helpers = [
 											<button type="button" class="btn btn-default btn-xs">Deactivate</button>
 										</div>
 										<div class="btn-group">
-											<button type="button" class="btn btn-danger btn-xs">Not Active</button><br />
-											<button type="button" class="btn btn-default btn-xs">Activate</button>
+											<label class="btn btn-danger btn-xs">Desactivé</label><br />
+											<button type="button" class="btn btn-default btn-xs">Activer</button>
 										</div>
 									</td>
-									<td><code>echo $this->Html->links_actif(true, 'my-id')<br />echo $this->Html->links_actif(false, 'my-id')</code></td>
+									<td>
+										<code>echo $this->Html->linksActives(true, 'my-id')</code><br />
+										<pre>
+```php
+echo $this->Html->linksActives(false, 'my-id', [
+	"active" => [
+		"label" => "danger",
+		"name" => "Desactivé",
+		"btn_name" => __d('bootstrap', "Activer"),
+		"btn_icon" => 'check',
+		'action' => 'desactivate',
+		'class' => 'btn btn-danger btn-lg'
+	]
+])
+```
+										</pre>
+									</td>
 								</tr>
 								<tr>
 									<td>
 										<div class="btn-group">
-											<button type="button" class="btn btn-success btn-xs">Principal</button>
+											<button type="button" class="btn btn-success btn-xs">In principal</button>
 										</div>
 										<div class="btn-group">
-											<button type="button" class="btn btn-danger btn-xs">Not Principal</button><br />
+											<button type="button" class="btn btn-danger btn-xs">Not in Principal</button><br />
 											<button type="button" class="btn btn-default btn-xs">Put as Principal</button>
 										</div>
 									</td>
-									<td><code>echo $this->Html->links_principal(true, 'my-id')<br />echo $this->Html->links_principal(false, 'my-id')</code></td>
+									<td>
+										<code>echo $this->Html->linksPrincipal(true, 'my-id')</code><br />
+										<pre>
+```php
+echo $this->Html->linksPrincipal(false, 'my-id', [
+	'principal' => [
+		'name' => 'In principal'
+	],
+	'not_principal' => [
+		'name' => 'Not in Principal'
+	]
+])
+```
+										</pre>
+									</td>
 								</tr>
 							</tbody>
 						</table>
