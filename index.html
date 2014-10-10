@@ -64,14 +64,19 @@
 		<div id="jumbo" class="jumbotron">
 			<div class="container">
 				<h1>To easily use Bootstrap Twitter 3.x in CakePHP projects</h1>
-				<p>
-					With this plugin, you can do the following things:<br />
-					- Change the Html Elements with BsHtml Helper<br />
-					- Change the Form Elements with BsForm Helper<br />
-					- Bake the view templates<br />
-				</p>
-				<p>
-					But for all these fonctionnalities, you need to add <code>&lt;?= $this->Html->head() ?&gt;</code> in your layout head tag<br />
+				<h2>Versions</h2>
+				- CakePHP 3.x<br />
+				- Boostrap 3.2.x
+
+				<h2>Description</h2>
+				With this plugin, you can do the following things:<br />
+				- Change the Html Elements with BsHtml Helper<br />
+				- Change the Form Elements with BsForm Helper<br />
+				- Bake the view templates<br />
+
+				<h2>Installation</h2>
+				- Please read how to install the plugin with composer in the README in github
+				- Then you need to add <code>&lt;?= $this->Html->head() ?&gt;</code> in your layout head tag<br />
 					<pre>
 ```php
 &lt;?= $this->Html->docType(); ?&gt;
@@ -176,7 +181,10 @@ public $helpers = [
 								</tr>
 								<tr>
 									<td><span class="glyphicon glyphicon-euro"></span><span class="glyphicon glyphicon-search"></span></td>
-									<td><code>echo $this->Html->icon('euro');<br />echo $this->Html->icon('search');</code></td>
+									<td>
+										<code>echo $this->Html->icon('euro');<br />echo $this->Html->icon('search');</code><br />
+										Please check <a href="http://getbootstrap.com/components/#glyphicons">this page</a> to see all the glyphicons available
+									</td>
 								</tr>
 							</tbody>
 						</table>
@@ -406,7 +414,7 @@ public $helpers = [
 											<button type="button" class="btn btn-default btn-xs">Activate</button>
 										</div>
 									</td>
-									<td><code>echo $this->Html->links_actif(true, 'my-id')</code></td>
+									<td><code>echo $this->Html->links_actif(true, 'my-id')<br />echo $this->Html->links_actif(false, 'my-id')</code></td>
 								</tr>
 								<tr>
 									<td>
@@ -418,7 +426,7 @@ public $helpers = [
 											<button type="button" class="btn btn-default btn-xs">Put as Principal</button>
 										</div>
 									</td>
-									<td><code>echo $this->Html->links_principal(true, 'my-id')</code></td>
+									<td><code>echo $this->Html->links_principal(true, 'my-id')<br />echo $this->Html->links_principal(false, 'my-id')</code></td>
 								</tr>
 							</tbody>
 						</table>
@@ -445,8 +453,7 @@ public $helpers = [
 				</pre>
 			</p>
 
-			<span id="section-form"></span>
-			<h2>Form</h2>
+			<h2 id="section-form">Form</h2>
 			<div class="panel panel-default">
 				<div class="panel-heading">
 					<h3 class="panel-title">EXAMPLE</h3>
@@ -537,7 +544,7 @@ public $helpers = [
 				</div>
 			</div>
 
-			<h1>Bake and Layout</h1>
+			<h1>Bake</h1>
 
 			<h2 id="section-bake-templates">Bake Templates</h2>
 			<div class="panel panel-default">
@@ -545,28 +552,11 @@ public $helpers = [
 					<h3 class="panel-title">EXAMPLE</h3>
 				</div>
 				<div class="panel-body">
-					<div class="table-responsive">
-						<table  class="table table-condensed table-striped" cellpadding="0" cellspacing="0">
-							<thead>
-								<tr>
-									<th>Results</th>
-									<th>Code</th>
-								</tr>
-							</thead>
-							<tbody>
-								<tr>
-									<td>
-									</td>
-									<td><code></code></td>
-								</tr>
-								<tr>
-									<td>
-									</td>
-									<td><code></code></td>
-								</tr>
-							</tbody>
-						</table>
-					</div>
+					You can launch the cake bake view with templates provided by this plugin and made for Bootstrap<br />
+					When you bake your views with <code>cake bake</code>, just add <code>--template bootstrap</code>, like this:
+					<pre>
+./bin/cake bake view Users --template bootstrap
+					</pre>
 				</div>
 			</div>
 		</section>
