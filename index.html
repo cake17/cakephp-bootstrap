@@ -62,59 +62,59 @@
 			</div>
 		</nav>
 
-		<section id="main_content">
-			<div class="jumbotron">
-				<div class="container">
-					<h1>To easily use Bootstrap Twitter 3.x in CakePHP projects</h1>
-					<p>
-						With this plugin, you can do the following things:<br />
-						- Change the Html Elements with BsHtml Helper<br />
-						- Change the Form Elements with BsForm Helper<br />
-						- Bake the view templates<br />
-					</p>
-					<p>
-						But for all these fonctionnalities, you need to add this in your head tag<br />
-						<pre>
+		<div class="jumbotron">
+			<div class="container">
+				<h1>To easily use Bootstrap Twitter 3.x in CakePHP projects</h1>
+				<p>
+					With this plugin, you can do the following things:<br />
+					- Change the Html Elements with BsHtml Helper<br />
+					- Change the Form Elements with BsForm Helper<br />
+					- Bake the view templates<br />
+				</p>
+				<p>
+					But for all these fonctionnalities, you need to add this in your head tag<br />
+					<pre>
 ```php
-<?= $this->Html->docType(); ?>
+&lt;?= $this->Html->docType(); ?>
 &lt;html xmlns="http://www.w3.org/1999/xhtml"&gt;
-&lt;head&gt;
-<?= $this->Html->charset() . "\n" ?>
-&lt;title&gt;<?= $this->fetch('title') ?>&lt;/title&gt;
-<?= $this->Html->head() ?>
-<?php
-echo $this->fetch('meta');
-echo $this->fetch('css');
-echo $this->fetch('script');
-?>
-&lt;/head&gt;
-&lt;body&gt;
-&lt;/body&gt;
+	&lt;head&gt;
+		&lt;?= $this->Html->charset() . "\n" ?>
+		&lt;title&gt;&lt;?= $this->fetch('title') ?>&lt;/title&gt;
+		&lt;?= $this->Html->head() ?>
+		&lt;?php
+		echo $this->fetch('meta');
+		echo $this->fetch('css');
+		echo $this->fetch('script');
+		?>
+	&lt;/head&gt;
+	&lt;body&gt;
+	&lt;/body&gt;
 &lt;/html&gt;
 ```
-						</pre>
-					</p>
-				</div>
+					</pre>
+				</p>
 			</div>
-
+		</div>
+		<section id="main_content">
 			<h1>BsHtml</h1>
 			<p>
 				Add those following lines in your src/Controller/AppController.php file :
-
-				```php
-				class AppController extends Controller {
-				public $helpers = [
-						...,
-						'Html' => [
-							'className' => 'Bootstrap.BsHtml'
-						],
-						'Paginator' => [
-							'templates' => 'Bootstrap.bs_paginator.php'
-						],
-						...
-					];
-				}
-				```
+				<pre>
+					```php
+					class AppController extends Controller {
+					public $helpers = [
+							...,
+							'Html' => [
+								'className' => 'Bootstrap.BsHtml'
+							],
+							'Paginator' => [
+								'templates' => 'Bootstrap.bs_paginator.php'
+							],
+							...
+						];
+					}
+					```
+				</pre>
 			</p>
 
 			<h2 id="section-alert">Alerts</h2>
