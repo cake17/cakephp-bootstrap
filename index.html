@@ -41,10 +41,9 @@
 							</ul>
 						</li>
 						<li class="dropdown">
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Bake & Layout <span class="caret"></span></a>
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Bake <span class="caret"></span></a>
 							<ul class="dropdown-menu" role="menu">
 								<li><a href="#section-bake-templates">Bake views</a></li>
-								<li><a href="#section-layout">Layout example</a></li>
 							</ul>
 						</li>
 					</ul>
@@ -62,7 +61,7 @@
 			</div>
 		</nav>
 
-		<div class="jumbotron">
+		<div id="jumbo" class="jumbotron">
 			<div class="container">
 				<h1>To easily use Bootstrap Twitter 3.x in CakePHP projects</h1>
 				<p>
@@ -72,26 +71,27 @@
 					- Bake the view templates<br />
 				</p>
 				<p>
-					But for all these fonctionnalities, you need to add this in your head tag<br />
+					But for all these fonctionnalities, you need to add <code>&lt;?= $this->Html->head() ?&gt;</code> in your layout head tag<br />
 					<pre>
 ```php
-&lt;?= $this->Html->docType(); ?>
+&lt;?= $this->Html->docType(); ?&gt;
 &lt;html xmlns="http://www.w3.org/1999/xhtml"&gt;
 	&lt;head&gt;
-		&lt;?= $this->Html->charset() . "\n" ?>
+		&lt;?= $this->Html->charset() . "\n" ?&gt;
 		&lt;title&gt;&lt;?= $this->fetch('title') ?>&lt;/title&gt;
-		&lt;?= $this->Html->head() ?>
+		&lt;?= $this->Html->head() ?&gt;
 		&lt;?php
 		echo $this->fetch('meta');
 		echo $this->fetch('css');
 		echo $this->fetch('script');
-		?>
+		?&gt;
 	&lt;/head&gt;
 	&lt;body&gt;
 	&lt;/body&gt;
 &lt;/html&gt;
 ```
 					</pre>
+					By default, this add the css and js for bootstrap in your layout
 				</p>
 			</div>
 		</div>
@@ -100,20 +100,20 @@
 			<p>
 				Add those following lines in your src/Controller/AppController.php file :
 				<pre>
-					```php
-					class AppController extends Controller {
-					public $helpers = [
-							...,
-							'Html' => [
-								'className' => 'Bootstrap.BsHtml'
-							],
-							'Paginator' => [
-								'templates' => 'Bootstrap.bs_paginator.php'
-							],
-							...
-						];
-					}
-					```
+```php
+class AppController extends Controller {
+public $helpers = [
+		...,
+		'Html' => [
+			'className' => 'Bootstrap.BsHtml'
+		],
+		'Paginator' => [
+			'templates' => 'Bootstrap.bs_paginator.php'
+		],
+		...
+	];
+}
+```
 				</pre>
 			</p>
 
@@ -429,22 +429,24 @@
 			<h1>BsHtml</h1>
 			<p>
 				Add those following lines in your src/Controller/AppController.php file :
-
-				```php
-				class AppController extends Controller {
-				public $helpers = [
-						...,
-						'Form' => [
-							'templates' => 'Bootstrap.bs_form.php',
-							'className' => 'Bootstrap.BsForm',
-						],
-						...
-					];
-				}
-				```
+				<pre>
+```php
+class AppController extends Controller {
+public $helpers = [
+		...,
+		'Form' => [
+			'templates' => 'Bootstrap.bs_form.php',
+			'className' => 'Bootstrap.BsForm',
+		],
+		...
+	];
+}
+```
+				</pre>
 			</p>
 
-			<h2 id="section-form">Form</h2>
+			<span id="section-form"></span>
+			<h2>Form</h2>
 			<div class="panel panel-default">
 				<div class="panel-heading">
 					<h3 class="panel-title">EXAMPLE</h3>
@@ -567,24 +569,6 @@
 					</div>
 				</div>
 			</div>
-			<h2 id="section-layout">Example of Layout</h2>
-			<pre>
-				\<?= $this->Html->docType(); ?>
-				&lt;html xmlns="http://www.w3.org/1999/xhtml"&gt;
-				&lt;head&gt;
-				\<?= $this->Html->charset() . "\n" ?>
-				&lt;title&gt;\<?= $this->fetch('title') ?>&lt;/title&gt;
-				\<?= $this->Html->head() ?>
-				<?php
-				echo $this->fetch('meta');
-				echo $this->fetch('css');
-				echo $this->fetch('script');
-				\?>
-				&lt;/head&gt;
-				&lt;body&gt;
-				&lt;/body&gt;
-				&lt;/html&gt;
-			</pre>
 		</section>
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 		<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.1/jquery-ui.min.js"></script>

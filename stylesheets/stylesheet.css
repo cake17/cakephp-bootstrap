@@ -1,9 +1,9 @@
-body {
-	padding: 2%;
+#jumbo {
+	margin-top: 80px;
 }
 
 #main_content {
-	margin-top: 80px;
+	padding: 2%;
 }
 
 h1 {
