@@ -77,26 +77,16 @@ echo "\t\t\t\t\t\t<tr>\n";
 
 	$pk = "\${$singularVar}->{$primaryKey[0]}";
 
-	echo "\t\t\t\t\t\t\t<td class=\"actions\"><div class=\"btn-group btn-group-xs\">\n";
-	echo "\t\t\t\t\t\t\t\t<button type=\"button\" class=\"btn btn-default\"><?= \$this->Html->link(__('View'), ['action' => 'view', {$pk}]) ?></button>\n";
-	echo "\t\t\t\t\t\t\t\t<button type=\"button\" class=\"btn btn-default\"><?= \$this->Html->link(__('Edit'), ['action' => 'edit', {$pk}]) ?></button>\n";
-	echo "\t\t\t\t\t\t\t\t<button type=\"button\" class=\"btn btn-default\"><?= \$this->Form->postLink(__('Delete'), ['action' => 'delete', {$pk}], ['confirm' => __('Are you sure you want to delete # {0}?', {$pk})]) ?></button>\n";
-	echo "\t\t\t\t\t\t\t</div></td>\n";
+	echo "\t\t\t\t\t\t\t<td><?= \$this->Html->links('default', ['id' => {$pk}]) ?>\n</td>\n";
 echo "\t\t\t\t\t\t</tr>\n";
 
 echo "\t\t\t\t\t<?php endforeach; ?>\n";
 ?>
 					</tbody>
 				</table>
-				<ul class="pagination">
 <?php
-	echo "\t\t\t\t<?php\n";
-	echo "\t\t\t\t\techo \$this->Paginator->prev('< ' . __('previous'));\n";
-	echo "\t\t\t\t\techo \$this->Paginator->numbers();\n";
-	echo "\t\t\t\t\techo \$this->Paginator->next(__('next') . ' >');\n";
-	echo "\t\t\t\t?>\n";
+	echo "\t\t\t\t<?= \$this->Html->pagination() ?>\n";
 ?>
-				</ul>
 			</div>
 		</div>
 	</div>
