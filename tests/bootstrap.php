@@ -1,6 +1,11 @@
 <?php
 /**
  * Test suite bootstrap for Bootstrap.
+ * 
+ * @author   cake17
+ * @license  http://www.opensource.org/licenses/mit-license.php The MIT License
+ * @link     http://cake17.github.io/
+ *
  */
 // Customize this to be a relative path for embedded plugins.
 // For standalone plugins, this should point at a CakePHP installation.

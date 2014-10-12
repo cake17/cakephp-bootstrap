@@ -1,4 +1,12 @@
 <?php
+/**
+ * configs for horizontal form
+ * 
+ * @author   cake17
+ * @license  http://www.opensource.org/licenses/mit-license.php The MIT License
+ * @link     http://cake17.github.io/
+ *
+ */
 $config = [
 	'button' => '<div class="form-group"><div class="col-sm-offset-2 col-sm-10"><button{{attrs}} class="btn btn-default btn-md">{{text}}</button></div></div>',
 	'checkbox' => '<input type="checkbox" name="{{name}}" value="{{value}}"{{attrs}}>',

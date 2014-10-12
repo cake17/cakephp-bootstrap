@@ -1,4 +1,12 @@
 <?php
+/**
+ * configs for form
+ * 
+ * @author   cake17
+ * @license  http://www.opensource.org/licenses/mit-license.php The MIT License
+ * @link     http://cake17.github.io/
+ *
+ */
 $config = [
 	'button' => '<button{{attrs}} class="btn btn-default btn-md">{{text}}</button>',
 	'checkbox' => '<input type="checkbox" name="{{name}}" value="{{value}}"{{attrs}}>',

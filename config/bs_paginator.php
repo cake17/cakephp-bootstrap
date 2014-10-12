@@ -1,4 +1,12 @@
 <?php
+/**
+ * configs for paginator
+ * 
+ * @author   cake17
+ * @license  http://www.opensource.org/licenses/mit-license.php The MIT License
+ * @link     http://cake17.github.io/
+ *
+ */
 $config = [
 	'nextActive' => '<li class="next"><a rel="next" href="{{url}}">{{text}}</a></li>',
 	'nextDisabled' => '<li class="next disabled"><a href="">{{text}}</a></li>',
