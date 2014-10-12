@@ -150,9 +150,10 @@ class BsHtmlHelper extends HtmlHelper {
 /**
  * Construct
  *
- * Merge defaultOptions for linksPrincipal, linksActives
- * @param \Bootstrap\View\Helper\View $View
- * @param array $config
+ * Merge defaultOptions for linksPrincipal, linksActives & links
+ *
+ * @param \Bootstrap\View\Helper\View $View View
+ * @param array $config : array of options
  */
 	public function __construct(\Cake\View\View $View, array $config = array()) {
 		parent::__construct($View, $config);
@@ -234,7 +235,6 @@ class BsHtmlHelper extends HtmlHelper {
 			]
 		];
 		$this->config('linksActives', $defaultOptionsLinksActives);
-		
 	}
 
 /************************************
@@ -248,7 +248,8 @@ class BsHtmlHelper extends HtmlHelper {
  * - jquery
  * - jquery-ui
  *
- * @param array $options
+ * @param string $type : type for head
+ * @param array $options : options
  * @return string
  */
 	public function head($type = 'default', array $options = []) {
@@ -313,19 +314,19 @@ class BsHtmlHelper extends HtmlHelper {
  * Print a footer
  *
  * @param string $title : title of the site
- * @param string $type
- * => either 'fixed-bottom'
- * => default to fixed-bottom
  * @param array $options
  * - Description
  * - webcreateur
  * - url_webcreateur
+ * - type
+ *	=> either 'fixed-bottom'
+ *	=> default to fixed-bottom
  * @return $html
  */
 	public function footer($title, array $options = []) {
 		$html = '';
 		$defaultOptions = [
-			'type' => 'fixed-bottom', 
+			'type' => 'fixed-bottom',
 			'description' => 'Description',
 			'webcreateur' => 'WebCreateur',
 			'url_webcreateur' => 'http://cake17.github.io/'
@@ -339,11 +340,11 @@ class BsHtmlHelper extends HtmlHelper {
 		endif;
 		if (isset($options['webcreateur']) && !empty($options['webcreateur']) && isset($options['url_webcreateur']) && !empty($options['url_webcreateur'])):
 			$html .= $this->link($this->image('logos/cake-websites.png', [
-					"alt" => __d('bootstrap', "Site crée par " . $options['webcreateur'])
+					"alt" => __d('bootstrap', "Site crée par {0}", $options['webcreateur'])
 				]),
 				$options['url_webcreateur'], [
 					'escape' => false,
-					'target'=>'_blank'
+					'target' => '_blank'
 				]
 			);
 		endif;
@@ -353,7 +354,7 @@ class BsHtmlHelper extends HtmlHelper {
 /**
  * Print a navbar
  *
- * @param string $content
+ * @param string $content : html content for nabar
  * @param array $options
  * => type
  *	either 'fixed-top', 'fixed-bottom' or 'static-top'
@@ -364,7 +365,6 @@ class BsHtmlHelper extends HtmlHelper {
  * => navbarClass
  *	either 'default' or 'inverse'
  *	default to default
- * 
  * @return string
  */
 	public function navbar($content, array $options = []) {
@@ -389,13 +389,13 @@ class BsHtmlHelper extends HtmlHelper {
 /**
  * Print alert elements
  *
- * @param string $message
+ * @param string $message : message to output
  * @param array $options
  * - type
- * => either 'success', 'info', 'warning', 'danger' (see $_types)
- * => default to success
+ *	=> either 'success', 'info', 'warning', 'danger' (see $_types)
+ *	=> default to success
  * - dismissable
- * => true and the alert is dismissable
+ *	=> true and the alert is dismissable
  * @return string
  */
 	public function alert($message, array $options = []) {
@@ -407,8 +407,8 @@ class BsHtmlHelper extends HtmlHelper {
 
 		if (in_array($options['type'], $this->_types['alert'])):
 			$classAlert = $options['type'];
-			if (isset ($options['dismissable']) && $options['dismissable'] === true) {
-				$classAlert .=  ' alert-dismissable';
+			if (isset($options['dismissable']) && $options['dismissable'] === true) {
+				$classAlert .= ' alert-dismissable';
 				$message .= $this->config('templates.button_alert');
 			}
 			return $this->formatTemplate('alert', [
@@ -445,7 +445,7 @@ class BsHtmlHelper extends HtmlHelper {
  * @param array $options : title and alt
  * @return mix string|bolean
  */
-	public function icon($class, $options = []) {
+	public function icon($class, array $options = []) {
 		$default = [
 			'alt' => 'icon',
 			'title' => ''
@@ -464,7 +464,7 @@ class BsHtmlHelper extends HtmlHelper {
 /**
  * Print a button
  *
- * @param string $message
+ * @param string $message : message to output
  * @param array $options
  * - type
  *	=> either 'default', 'primary', 'success', 'info', 'warning' or 'danger' (see $_types)
@@ -473,7 +473,7 @@ class BsHtmlHelper extends HtmlHelper {
  * - id : add an id
  * @return string
  */
-	public function button($message, $options = []) {
+	public function button($message, array $options = []) {
 		$default = [
 			'type' => 'default',
 		];
@@ -497,13 +497,13 @@ class BsHtmlHelper extends HtmlHelper {
 /**
  * Print a label
  *
- * @param string $message
+ * @param string $message : message to output
  * @param array $options
  * => either default, primary, success, info, warning, danger
  * => default to 'default'
  * @return string
  */
-	public function label($message, $options = []) {
+	public function label($message, array $options = []) {
 		$default = [
 			'type' => 'default',
 		];
@@ -524,7 +524,7 @@ class BsHtmlHelper extends HtmlHelper {
 /**
  * Print a badge
  *
- * @param string $message
+ * @param string $message : message to output
  * @return string
  */
 	public function badge($message) {
@@ -565,10 +565,9 @@ class BsHtmlHelper extends HtmlHelper {
  * - Permits to put an icon in a link
  * - add a class 'activation' if the link matches the current page
  *
- * @param string $title
- * @param string $url
- * @param array $options
- * @param bolean $confirmMessage
+ * @param string $title : title of link
+ * @param string $url : url
+ * @param array $options : options for link
  * @return parent::link
  */
 	public function link($title, $url = null, array $options = []) {
@@ -608,18 +607,18 @@ class BsHtmlHelper extends HtmlHelper {
 /**
  * To print links
  * Ex : echo $this->Html->links('default', [
-	'view' => ['id' => '', 'title' => '', 'alt' => ''),
-	'edit' => ['id' => '', 'title' => '', 'alt' => ''),
-	'delete' => ['id' => '', 'title' => '', 'alt' => '')
-));
+ *		'view' => ['id' => '', 'title' => '', 'alt' => ''),
+ *		'edit' => ['id' => '', 'title' => '', 'alt' => ''),
+ *		'delete' => ['id' => '', 'title' => '', 'alt' => '')
+ *	));
  *
  * @param string $type
  * - default: print view, edit and delete links
  * - tree: print view, edit, up, down and delete links
  * - mix: custom values
- * @param array $options
+ * @param array $options : options for links
  *
- * @retrun string
+ * @return string
  */
 	public function links($type, array $options = []) {
 		$options = Hash::merge($this->config('links'), $options);
@@ -636,15 +635,15 @@ class BsHtmlHelper extends HtmlHelper {
 		$linkEdit = $this->link($options['edit']['name'], $cheminEdit, ['escape' => false, 'class' => $options['edit']['class']]);
 		$linkDelete = $this->_View->Form->postLink($options['delete']['name'],
 			$cheminDelete,
-			['escape' => false, 'class' => $options['delete']['class'], 'confirm' => __d('bootstrap','Are you sure you want to delete # {0}?', $options['id'])]
+			['escape' => false, 'class' => $options['delete']['class'], 'confirm' => __d('bootstrap', 'Are you sure you want to delete # {0}?', $options['id'])]
 		);
 		$linkMoveUp = $this->_View->Form->postLink($options['moveUp']['name'],
 			$cheminMoveUp,
-			['escape' => false, 'class' => $options['moveUp']['class'], 'confirm' => __d('bootstrap','Are you sure you want to up # {0}?', $options['id'])]
+			['escape' => false, 'class' => $options['moveUp']['class'], 'confirm' => __d('bootstrap', 'Are you sure you want to up # {0}?', $options['id'])]
 		);
 		$linkMoveDown = $this->_View->Form->postLink($options['moveDown']['name'],
 			$cheminMoveDown,
-			['escape' => false, 'class' => $options['moveDown']['class'], 'confirm' => __d('bootstrap','Are you sure you want to down # {0}?', $options['id'])]
+			['escape' => false, 'class' => $options['moveDown']['class'], 'confirm' => __d('bootstrap', 'Are you sure you want to down # {0}?', $options['id'])]
 		);
 		$html = ' <div class="' . $options['wrap']['class'] . '">';
 		if ($type === 'default') {
@@ -657,15 +656,14 @@ class BsHtmlHelper extends HtmlHelper {
 			}
 		} elseif ($type === 'tree') {
 			$html .= $linkView . $linkEdit . $linkMoveUp . $linkMoveDown . $linkDelete;
-		}
-		elseif ($type === 'mix') {
-			if (isset ($options['view'])) {
+		} elseif ($type === 'mix') {
+			if (isset($options['view'])) {
 				$html .= $linkView;
 			}
-			if (isset ($options['edit'])) {
+			if (isset($options['edit'])) {
 				$html .= $linkEdit;
 			}
-			if (isset ($options['delete'])) {
+			if (isset($options['delete'])) {
 				$html .= $linkDelete;
 			}
 		}
@@ -679,9 +677,9 @@ class BsHtmlHelper extends HtmlHelper {
  * - A label showing the status (active or not) of the object
  * - Links to activate or not objets regardless their case
  *
- * @param string $actif
- * @param int $id
- * @param array $options
+ * @param bool $actif : true or false
+ * @param int $id : id of entity
+ * @param array $options : options
  * @return string
  */
 	public function linksActives($actif, $id, array $options = []) {
@@ -701,7 +699,7 @@ class BsHtmlHelper extends HtmlHelper {
 			$html .= $this->button($options['desactive']['name'], ['type' => $options['desactive']['label'], 'class' => 'btn-xs']) . " ";
 			$html .= $this->_View->Form->postLink($this->icon($options['desactive']['btn_icon']) . $options['desactive']['btn_name'],
 				['plugin' => $options['plugin'], 'prefix' => $options['prefix'], 'controller' => $options['controller'], 'action' => $options['desactive']['action'], $id],
-				['escape' => false, 'class' => $options['desactive']['class'], 'confirm' => __d('bootstrap','Are you sure you want to {0} # {1}?', $options['desactive']['action'], $id)]
+				['escape' => false, 'class' => $options['desactive']['class'], 'confirm' => __d('bootstrap', 'Are you sure you want to {0} # {1}?', $options['desactive']['action'], $id)]
 			);
 		}
 		$html .= '</div>';
@@ -713,9 +711,9 @@ class BsHtmlHelper extends HtmlHelper {
  * - A label showing the status (principal or not) of the object
  * - Links to change the status in principal if status is in non principal
  *
- * @param string $principal
- * @param int $id
- * @param array $options
+ * @param bool $principal : true or false
+ * @param int $id : id of entity
+ * @param array $options : options
  * @return string
  */
 	public function linksPrincipal($principal, $id, array $options = []) {
@@ -731,7 +729,7 @@ class BsHtmlHelper extends HtmlHelper {
 			$html .= $this->button($options['not_principal']['name'], ['type' => $options['not_principal']['label'], 'class' => 'btn-xs']) . " ";
 			$html .= $this->_View->Form->postLink($this->icon($options['not_principal']['btn_icon']) . $options['not_principal']['btn_name'],
 				['plugin' => $options['plugin'], 'prefix' => $options['prefix'], 'controller' => $options['controller'], 'action' => $options['not_principal']['action'], $id],
-				['escape' => false, 'class' => $options['not_principal']['class'], 'confirm' => __d('bootstrap','Are you sure you want to put as principal # {0}?', $id)]
+				['escape' => false, 'class' => $options['not_principal']['class'], 'confirm' => __d('bootstrap', 'Are you sure you want to put as principal # {0}?', $id)]
 			);
 		}
 		$html .= '</div>';
@@ -742,19 +740,19 @@ class BsHtmlHelper extends HtmlHelper {
  * Parse Url Elements of Route
  * Used in all links methods
  *
- * @param array $options
+ * @param array $options : options with controller, plugin, ...
  * @return array
  */
 	public function parseUrlElements(array $options = []) {
-		if (isset ($this->_View->request->params['controller']) && !empty ($this->_View->request->params['controller']) && (!isset ($options['controller']) || empty ($options['controller']))):
+		if (isset($this->_View->request->params['controller']) && !empty($this->_View->request->params['controller']) && (!isset($options['controller']) || empty($options['controller']))):
 			$options['controller'] = $this->_View->request->params['controller'];
 		endif;
-		if (isset ($this->_View->request->params['plugin']) && !empty ($this->_View->request->params['plugin']) && (!isset ($options['plugin']) || empty ($options['plugin']))) {
+		if (isset($this->_View->request->params['plugin']) && !empty($this->_View->request->params['plugin']) && (!isset($options['plugin']) || empty($options['plugin']))) {
 			$options['plugin'] = $this->_View->request->params['plugin'];
 		} else {
 			$options['plugin'] = null;
 		}
-		if (isset ($this->_View->request->params['prefix']) && !empty ($this->_View->request->params['prefix']) && (!isset ($options['prefix']) || empty ($options['prefix']))) {
+		if (isset($this->_View->request->params['prefix']) && !empty($this->_View->request->params['prefix']) && (!isset($options['prefix']) || empty($options['prefix']))) {
 			$options['prefix'] = $this->_View->request->params['prefix'];
 		} else {
 			$options['prefix'] = null;
