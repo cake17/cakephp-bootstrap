@@ -1,6 +1,12 @@
 Bootstrap Twitter for CakePHP
 =============================
 
+[![Build Status](https://api.travis-ci.org/cake17/cakephp-bootstrap.png?branch=master)](https://travis-ci.org/cake17/cakephp-bootstrap)
+[![Latest Stable Version](https://poser.pugx.org/cake17/cakephp-bootstrap/v/stable.png)](https://packagist.org/packages/cake17/cakephp-bootstrap)
+[![Coverage Status](https://coveralls.io/repos/cake17/cakephp-bootstrap/badge.png)](https://coveralls.io/r/cake17/cakephp-bootstrap)
+[![License](https://poser.pugx.org/cake17/cakephp-bootstrap/license.png)](https://packagist.org/packages/cake17/cakephp-bootstrap)
+[![Total Downloads](https://poser.pugx.org/cake17/cakephp-bootstrap/d/total.png)](https://packagist.org/packages/cake17/cakephp-bootstrap)
+
 ## Plugin's Objective ##
 
 This plugin adds functionnalities to use Twitter Bootstrap in CakePHP projects.
