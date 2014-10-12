@@ -61,6 +61,27 @@ li {
 h1, h2, h3, h4, h5, h6 {
 	font-weight: 300;
 }
+h1 {
+	margin-top: 1em;
+	margin-bottom: 1em;
+	border-right-width-value: 0px;
+	border-bottom-width: 0px;
+	border-left-width-value: 0px;
+	border-right-style-value: none;
+	border-bottom-style: none;
+	border-left-style-value: none;
+	border-image-source: none;
+	border-image-slice: 100% 100% 100% 100%;
+	border-image-width: 1 1 1 1;
+	border-image-outset: 0 0 0 0;
+	border-image-repeat: stretch stretch;
+	border-top-width: 1px;
+	border-top-style: solid;
+	border-top-color: #eeeeee;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+	border-bottom-color: #eeeeee;
+}
 /**
 * Links
 */
@@ -152,4 +173,12 @@ pre {
 			fill: $grey-color;
 		}
 	}
+}
+
+#jumbo {
+	margin-top: 80px;
+}
+
+#main_content {
+	padding: 2%;
 }
