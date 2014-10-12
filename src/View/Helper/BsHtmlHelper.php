@@ -348,7 +348,7 @@ class BsHtmlHelper extends HtmlHelper {
 				]
 			);
 		endif;
-		return $this->navbar($html, $options['type']);
+		return $this->navbar($html, $options);
 	}
 
 /**
