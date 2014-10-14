@@ -225,4 +225,15 @@ class BsHtmlHelperTest extends TestCase {
 		$this->assertContains('Put as Principal', $results);
 	}
 
+/**
+ * testCollapse method
+ *
+ * @return void
+ */
+	public function testCollapse() {
+		// default
+		$results = $this->BsHtml->collapse('CollapseNameBox', []);
+		$this->assertContains('<a class="accordion-toggle" data-toggle="collapse" data-parent="#CollapseNameBox', $results);
+	}
+
 }

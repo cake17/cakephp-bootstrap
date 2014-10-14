@@ -623,7 +623,7 @@ class BsHtmlHelper extends HtmlHelper {
 	public function links($type, array $options = []) {
 		$options = Hash::merge($this->config('links'), $options);
 		// parse elements of url routes to fix eventual issues
-		$options = $this->parseUrlElements($options);
+		$options = $this->_parseUrlElements($options);
 
 		$cheminView = ['plugin' => $options['plugin'], 'prefix' => $options['prefix'], 'controller' => $options['controller'], 'action' => $options['view']['action'], $options['id']];
 		$cheminEdit = ['plugin' => $options['plugin'], 'prefix' => $options['prefix'], 'controller' => $options['controller'], 'action' => $options['edit']['action'], $options['id']];
@@ -686,7 +686,7 @@ class BsHtmlHelper extends HtmlHelper {
 		$options = Hash::merge($this->config('linksActives'), $options);
 
 		// parse elements of url routes to fix eventual issues
-		$options = $this->parseUrlElements($options);
+		$options = $this->_parseUrlElements($options);
 
 		$html = ' <div class="' . $options['wrap']['class'] . '">';
 		if ($actif) {
@@ -720,7 +720,7 @@ class BsHtmlHelper extends HtmlHelper {
 		$options = Hash::merge($this->config('linksPrincipal'), $options);
 
 		// parse elements of url routes to fix eventual issues
-		$options = $this->parseUrlElements($options);
+		$options = $this->_parseUrlElements($options);
 
 		$html = ' <div class="' . $options['wrap']['class'] . '">';
 		if ($principal) {
@@ -737,13 +737,64 @@ class BsHtmlHelper extends HtmlHelper {
 	}
 
 /**
+ * To print a collapse box
+ *
+ * @param string $formName : default accordeon
+ * @param array $actions : all links to add to the collapse
+ * @return string : html of collapse box
+ */
+	public function collapse($formName = "accordeon", array $actions = []) {
+		$html = '<div class="panel-group" id="' . $formName . '">';
+		foreach ($actions as $name => $links):
+			$html .= '<div class="panel panel-default">';
+			$html .= '<div class="panel-heading">';
+			$html .= '<h1 class="panel-title">';
+			$html .= '<a class="accordion-toggle" data-toggle="collapse" data-parent="#' . $formName . '" href="#' . $name . '">';
+			$html .= $links['titleMenu'];
+			$html .= "</a>";
+			$html .= "</h1>";
+			$html .= "</div>";
+			$html .= '<div id="' . $name . '" class="panel-collapse collapse';
+			if (isset($links['open']) && $links['open'] === 'in') {
+				$html .= " " . $links['open'];
+			}
+			$html .= '">';
+			$html .= '<div class="panel-body">';
+			if (isset($links['links']) && !empty($links['links'])) {
+				$html .= '<ul class="nav nav-pills nav-stacked">';
+				foreach ($links as $title => $values):
+					if ($title === 'links'):
+						foreach ($values as $link):
+							// On cherche si dans le lien il y a la valeur class=activation
+							$liActive = "";
+							if (strpos($link, 'class="activation"') !== false) {
+								$liActive = ' class="active"';
+							}
+							$html .= "<li" . $liActive . ">" . $link . "</li>";
+						endforeach;
+					endif;
+				endforeach;
+				$html .= "</ul>";
+			}
+			if (isset($links['content']) && !empty($links['content'])) {
+				$html .= $links['content'];
+			}
+			$html .= "</div>";
+			$html .= "</div>";
+			$html .= "</div>";
+		endforeach;
+		$html .= "</div>";
+		return $html;
+	}
+
+/**
  * Parse Url Elements of Route
  * Used in all links methods
  *
  * @param array $options : options with controller, plugin, ...
  * @return array
  */
-	public function parseUrlElements(array $options = []) {
+	protected function _parseUrlElements(array $options = []) {
 		if (isset($this->_View->request->params['controller']) && !empty($this->_View->request->params['controller']) && (!isset($options['controller']) || empty($options['controller']))):
 			$options['controller'] = $this->_View->request->params['controller'];
 		endif;
