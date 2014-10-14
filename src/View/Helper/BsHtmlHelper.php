@@ -162,7 +162,6 @@ class BsHtmlHelper extends HtmlHelper {
 		],
 		'linksPrincipal' => [
 		],
-		
 	];
 
 /**

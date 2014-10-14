@@ -52,9 +52,9 @@ class BsMultiselectHelper extends Helper {
 /**
  * __construct callback
  *
- * @param \Cake\View\View $view
- * @param type $settings
- * @throws LogicException
+ * @param \Cake\View\View $View : View
+ * @param array $config : Config
+ * @throws Cake\Error\NotFoundException
  */
 	public function __construct(\Cake\View\View $View, array $config = []) {
 		parent::__construct($View, $config);
@@ -67,8 +67,8 @@ class BsMultiselectHelper extends Helper {
 /**
  * Select element.
  *
- * @param string $fieldName
- * @param array $options
+ * @param string $fieldName : Field Name
+ * @param array $options : Options
  * @return string
  */
 	public function input($fieldName, array $options = []) {
@@ -127,11 +127,11 @@ class BsMultiselectHelper extends Helper {
 /**
  * Test if a JS framework is supported by this helper.
  *
- * @param $val The 'framework' setting must use a supported framework.
+ * @param $val : The 'framework' setting must use a supported framework.
  *
  * @return bool
  */
-	public function _isSupportedFramework($val) {
+	protected function _isSupportedFramework($val) {
 		return in_array($val, $this->_authorizedJsLibs);
 	}
 

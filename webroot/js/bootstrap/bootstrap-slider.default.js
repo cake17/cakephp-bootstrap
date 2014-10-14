@@ -1,6 +1,6 @@
-$(document).ready(function() {
+$(document).ready(function () {
 	$('#slider').slider({
-		formater: function(value) {
+		formater: function (value) {
 			return 'Current value: ' + value;
 		}
 	});
