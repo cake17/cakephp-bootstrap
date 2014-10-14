@@ -336,7 +336,7 @@ class BsHtmlHelper extends HtmlHelper {
 		}
 		// on met le css du Plugin
 		if ($this->config('head.my_bootstrap_css')) {
-			$html .= $this->css('my_bootstrap');
+			$html .= $this->css('Bootstrap.my_bootstrap');
 		}
 		return $html;
 	}
