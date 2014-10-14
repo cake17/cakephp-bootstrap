@@ -36,6 +36,54 @@ plugins/Bootstrap:
 
 More info in the [github docs](http://cake17.github.io/cakephp-bootstrap)
 
+**JS**
+
+- Bootstrap Twitter v3.1.1 : with CDN netdna
+- Jquery-ui v1.10.4 : with CDN google
+- Jquery v2.1.0 : with CDN google
+- textarea editor based on Twitter Bootstrap's wysihtml5 : wysihtml5-0.3.0.js, bootstrap-wysihtml5.js
+=> To do so:
+	- copy textarea.js or textarea_mini.js where you want to use it
+	- Put the same id in textarea.js copied et in the form id that you want
+	- Possible to change the type of highlight of code in textarea/stylesheets with one the css in css/bootstrap/highlight/
+	- insert in the view echo $this->Html->script('NomPlugin.bootstrap/textarea.js');
+- Multiselect for boostrap : bootstrap-multiselect.js and bootstrap-multiselect.default.js
+
+**CSS**
+
+- Twitter bootstrap css : with CDN
+- Wysihtml5 css : bootstrap-wysihtml5.css and wysiwyg-color.css and css in folder highlight/
+- Bootstrap multiselect : bootstrap-multiselect.css
+
+**HELPERS**
+
+- BootstrapMultiselect
+  To implement a bootstrap multiselect
+
+- BootstrapHtmlHelper
+
+  Déclaration
+
+		``$helpers = array(
+			'Html' => array(
+				'className' => 'CakeWSProjectManagement.BootstrapHtml',
+			)
+		);``
+
+  Fonctions possibles:
+
+		- icon($class, $options = [])
+		- label($message, $options = [])
+		- alert($message, $options = [])
+		- badge($message, $options = [])
+		- button($message, $options = [])
+		- link($title, $url = null, array $options = [], $confirmMessage = false)
+		- links($type, $options = [])
+		- linksActives($actif, $id, $options = [])
+		- linksPrincipal($principal, $id, $options = [])
+		- collapse($formName = "accordeon", $actions = [])
+		- pagination()
+
 ## License ##
 
 cakephp-boostrap Plugin is licensed under the MIT license.

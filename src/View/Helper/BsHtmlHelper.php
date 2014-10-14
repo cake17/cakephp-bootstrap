@@ -77,19 +77,21 @@ class BsHtmlHelper extends HtmlHelper {
 			//'container' => '<div class="container">',
 			//'dropdown' => '<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#"> %s <b class="caret"></b> </a><ul class="dropdown-menu">%s</ul></li>'
 		],
-		'js' => [
-			'jquery' => true,
-			'jquery-ui' => true,
-			'bootstrap' => true,
-			'foundation' => false,
+		'head' => [
+			'js' => [
+				'jquery' => true,
+				'jquery-ui' => true,
+				'bootstrap' => true,
+				'foundation' => false,
+			],
+			'css' => [
+				'bootstrap' => true,
+				'jquery-ui' => true,
+				'foundation' => false,
+			],
+			'responsive_viewport' => true,
+			'my_bootstrap_css' => true,
 		],
-		'css' => [
-			'bootstrap' => true,
-			'jquery-ui' => true,
-			'foundation' => false,
-		],
-		'responsive_viewport' => true,
-		'my_bootstrap_css' => true,
 		// ne pas changer en-dessous, ou alors uniquement 'last' lorqu'il y a des nouvelles versions disponibles
 		'libs' => [
 			'js' => [
@@ -125,13 +127,42 @@ class BsHtmlHelper extends HtmlHelper {
 				]
 			]
 		],
+		'footer' => [
+			'type' => 'fixed-bottom',
+			'description' => 'Description',
+			'webcreateur' => 'WebCreateur',
+			'url_webcreateur' => 'http://cake17.github.io/'
+		],
+		'navbar' => [
+			'containerClass' => 'container-fluid',
+			'navbarClass' => 'default',
+			'type' => 'fixed-top'
+		],
+		'alert' => [
+			'type' => 'success',
+			'dismissable' => false
+		],
+		'image' => [
+			'responsive' => false
+		],
+		'icon' => [
+			'alt' => 'icon',
+			'title' => ''
+		],
+		'button' => [
+			'type' => 'default',
+		],
+		'label' => [
+			'type' => 'default',
+		],
 		// the following options of links are defined in construct
 		'links' => [
 		],
 		'linksActives' => [
 		],
 		'linksPrincipal' => [
-		]
+		],
+		
 	];
 
 /**
@@ -253,7 +284,7 @@ class BsHtmlHelper extends HtmlHelper {
  * @return string
  */
 	public function head($type = 'default', array $options = []) {
-		$this->_defaultConfig = Hash::merge($this->_defaultConfig, $options);
+		$options = Hash::merge($this->config('head'), $options);
 		// versions choisie
 		$myJsVersion = '';
 		$myCssVersion = '';
@@ -262,10 +293,10 @@ class BsHtmlHelper extends HtmlHelper {
 		$myCssUrl = '';
 		$html = '';
 		// on ajoute au block script les librairies souhaitées
-		foreach ($this->config('js') as $jsLib => $jsVersion) {
+		foreach ($this->config('head.js') as $jsLib => $jsVersion) {
 			// si à true, on utilise la dernière version de js connue, sinon la version demandée, et sinon rien
 			if ($jsVersion === true) {
-				$myJsVersion = $this->config('libs.js')[$jsLib]['last'];
+				$myJsVersion = $this->config('libs.js.' . $jsLib . '.last');
 			} elseif (preg_match('#^[0-9]+\.[0-9]+\.[0-9]$#', $jsVersion) === 1) {
 				$myJsVersion = $jsVersion;
 			} else {
@@ -274,14 +305,14 @@ class BsHtmlHelper extends HtmlHelper {
 			if ($jsVersion !== false) {
 				if (isset($myJsVersion) && !empty($myJsVersion)) {
 					$myJsUrl = sprintf($this->config('libs.js.' . $jsLib . '.url'), $myJsVersion);
-					$html .= $this->script($myJsUrl, ['block' => 'scriptBottom']) . "\n\t\t";
+					$html .= $this->script($myJsUrl) . "\n\t\t";
 				} elseif (isset($myJsVersion) && empty($myJsVersion)) {
-					$html .= $this->script($this->config('libs.js.' . $jsLib . '.url'), ['block' => 'scriptBottom']) . "\n";
+					$html .= $this->script($this->config('libs.js.' . $jsLib . '.url')) . "\n";
 				}
 			}
 		}
 		// on ajoute au block css les librairies souhaitées
-		foreach ($this->config('css') as $cssLib => $cssVersion) {
+		foreach ($this->config('head.css') as $cssLib => $cssVersion) {
 			// si à true, on utilise la dernière version de js connue, sinon la version demandée, et sinon rien
 			if ($cssVersion) {
 				$myCssVersion = $this->config('libs.css.' . $cssLib . '.last');
@@ -300,11 +331,11 @@ class BsHtmlHelper extends HtmlHelper {
 			}
 		}
 		// on met en responsive si responsive_viewport à true
-		if ($this->config('responsive_viewport')) {
+		if ($this->config('head.responsive_viewport')) {
 			$html .= $this->config('templates.responsive_viewport') . "\n\t\t";
 		}
 		// on met le css du Plugin
-		if ($this->config('my_bootstrap_css')) {
+		if ($this->config('head.my_bootstrap_css')) {
 			$html .= $this->css('my_bootstrap');
 		}
 		return $html;
@@ -324,14 +355,9 @@ class BsHtmlHelper extends HtmlHelper {
  * @return $html
  */
 	public function footer($title, array $options = []) {
+		$options = Hash::merge($this->config('footer'), $options);
 		$html = '';
-		$defaultOptions = [
-			'type' => 'fixed-bottom',
-			'description' => 'Description',
-			'webcreateur' => 'WebCreateur',
-			'url_webcreateur' => 'http://cake17.github.io/'
-		];
-		$options = Hash::merge($defaultOptions, $options);
+
 		if (isset($options['type']) && !empty($options['type'])):
 			$html .= $options['type'];
 		endif;
@@ -368,12 +394,8 @@ class BsHtmlHelper extends HtmlHelper {
  * @return string
  */
 	public function navbar($content, array $options = []) {
-		$defaultOptions = [
-			'containerClass' => 'container-fluid',
-			'navbarClass' => 'default',
-			'type' => 'fixed-top'
-		];
-		$options = Hash::merge($defaultOptions, $options);
+		$options = Hash::merge($this->config('navbar'), $options);
+
 		return $this->formatTemplate('navbar', [
 			'type' => $options['type'],
 			'content' => $content,
@@ -399,11 +421,7 @@ class BsHtmlHelper extends HtmlHelper {
  * @return string
  */
 	public function alert($message, array $options = []) {
-		$defaultOptions = [
-			'type' => 'success',
-			'dismissable' => false
-		];
-		$options = array_merge($defaultOptions, $options);
+		$options = Hash::merge($this->config('alert'), $options);
 
 		if (in_array($options['type'], $this->_types['alert'])):
 			$classAlert = $options['type'];
@@ -426,14 +444,19 @@ class BsHtmlHelper extends HtmlHelper {
  *
  * @param string $path Path to the image file, relative to the app/webroot/img/ directory.
  * @param array $options Array of HTML attributes. See above for special options.
+ *	=> 'responsive' : add a class 'img-responsive' if true, default to false
  * @return string End tag header
  */
 	public function image($path, array $options = []) {
-		if (isset($options['class'])) {
-			$options['class'] = 'img-responsive ' . $options['class'];
-		} else {
-			$options['class'] = 'img-responsive';
-		}
+		$options = Hash::merge($this->config('image'), $options);
+
+		if ($options['responsive']):
+			if (isset($options['class'])) {
+				$options['class'] = 'img-responsive ' . $options['class'];
+			} else {
+				$options['class'] = 'img-responsive';
+			}
+		endif;
 		return parent::image($path, $options);
 	}
 
@@ -446,11 +469,8 @@ class BsHtmlHelper extends HtmlHelper {
  * @return mix string|bolean
  */
 	public function icon($class, array $options = []) {
-		$default = [
-			'alt' => 'icon',
-			'title' => ''
-		];
-		$options = array_merge($default, $options);
+		$options = Hash::merge($this->config('icon'), $options);
+
 		$htmlOptions = " title=\"" . $options['title'] . "\"";
 		if (is_string($class)) {
 			return $this->formatTemplate('icon', [
@@ -474,10 +494,8 @@ class BsHtmlHelper extends HtmlHelper {
  * @return string
  */
 	public function button($message, array $options = []) {
-		$default = [
-			'type' => 'default',
-		];
-		$options = array_merge($default, $options);
+		$options = Hash::merge($this->config('button'), $options);
+
 		if (in_array($options['type'], $this->_types['button'])) {
 			$attrs = $options['type'];
 			if (isset($options['class']) && !empty($options['class'])):
@@ -504,10 +522,8 @@ class BsHtmlHelper extends HtmlHelper {
  * @return string
  */
 	public function label($message, array $options = []) {
-		$default = [
-			'type' => 'default',
-		];
-		$options = array_merge($default, $options);
+		$options = Hash::merge($this->config('label'), $options);
+
 		if (in_array($options['type'], $this->_types['label'])) {
 			$classLabel = $options['type'];
 			if (isset($options['class']) && !empty($options['class'])):
