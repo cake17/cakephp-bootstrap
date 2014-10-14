@@ -630,7 +630,7 @@ class BsHtmlHelper extends HtmlHelper {
  * @param string $type
  * - default: print view, edit and delete links
  * - tree: print view, edit, up, down and delete links
- * - mix: custom values
+ * - mix: custom values. example : ed => output links edit and delete
  * @param array $options : options for links
  *
  * @return string
@@ -671,16 +671,9 @@ class BsHtmlHelper extends HtmlHelper {
 			}
 		} elseif ($type === 'tree') {
 			$html .= $linkView . $linkEdit . $linkMoveUp . $linkMoveDown . $linkDelete;
-		} elseif ($type === 'mix') {
-			if (isset($options['view'])) {
-				$html .= $linkView;
-			}
-			if (isset($options['edit'])) {
-				$html .= $linkEdit;
-			}
-			if (isset($options['delete'])) {
-				$html .= $linkDelete;
-			}
+		} elseif ($type === 'ed') {
+			$html .= $linkEdit;
+			$html .= $linkDelete;
 		}
 		$html .= '</div>';
 		//debug($html);
