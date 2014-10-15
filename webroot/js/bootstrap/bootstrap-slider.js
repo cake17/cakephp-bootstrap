@@ -542,7 +542,7 @@
 			if (!match) {
 				return 0;
 			}
-			return Math.max(0, (match[1] ? match[1].length : 0) - (match[2] ? +match[2] : 0));
+			return Math.max(0, (match[1] ? match[1].length : 0) - (match[2] ? + match[2] : 0));
 		},
 		applyToFixedAndParseFloat: function (num, toFixedInput) {
 			var truncatedNum = num.toFixed(toFixedInput);

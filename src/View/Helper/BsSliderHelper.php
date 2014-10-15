@@ -127,7 +127,7 @@ class BsSliderHelper extends Helper {
 /**
  * Test if a JS framework is supported by this helper.
  *
- * @param $val : The 'framework' setting must use a supported framework.
+ * @param string $val : The 'framework' setting must use a supported framework.
  *
  * @return bool
  */
