@@ -6,35 +6,68 @@ Bootstrap Twitter for CakePHP
 [![License](https://poser.pugx.org/cake17/cakephp-bootstrap/license.png)](https://packagist.org/packages/cake17/cakephp-bootstrap)
 [![Total Downloads](https://poser.pugx.org/cake17/cakephp-bootstrap/d/total.png)](https://packagist.org/packages/cake17/cakephp-bootstrap)
 
+This plugin is still under development...
+
 ## Plugin's Objective ##
 
 This plugin adds functionnalities to use Twitter Bootstrap in CakePHP projects.
 
-Versions:
+## Requirements ##
 
+- PHP 5.4.16
 - [CakePHP 3.x](http://book.cakephp.org/3.0/en/index.html)
 - [Bootstrap Twitter 3.2.x](http://getbootstrap.com)
 
-## Installation of plugin ##
+## Installation ##
 
-- Add the following require in composer.json. This will install the plugin into
-plugins/Bootstrap:
+_[Using [Composer](http://getcomposer.org/)]_
 
-```json
+Add the plugin to your project's `composer.json` - something like this:
+
+```javascript
 {
-	"require": {
-		"cake17/cakephp-bootstrap": "dev-master"
-	}
+    "require": {
+        "cake17/cakephp-bootstrap": "dev-master"
+    }
 }
 ```
 
-- Enable the plugin in your config/bootstrap.php file:
+Because this plugin has the type `cakephp-plugin` set in it's own `composer.json`, composer knows to install it inside your `/plugins` directory, rather than in the usual vendors file. It is recommended that you add `/plugins/Bootstrap` to your .gitignore file. (Why? [read this](http://getcomposer.org/doc/faqs/should-i-commit-the-dependencies-in-my-vendor-directory.md).)
 
-	`Plugin::load('Bootstrap', ['routes' => false, 'bootstrap' => false]);`
+_[Manual]_
+
+- Download this: http://github.com/cake17/cakephp-bootstrap/zipball/master
+- Unzip that download.
+- Copy the resulting folder to app/plugins
+- Rename the folder you just copied to @Bootstrap@
+
+_[GIT Submodule]_
+
+In your app directory type:
+
+```bash
+git submodule add git://github.com/cake17/cakephp-bootstrap.git plugins/Bootstrap
+git submodule init
+git submodule update
+```
+
+_[GIT Clone]_
+
+In your plugin directory type
+
+```bash
+git clone git://github.com/cake17/cakephp-bootstrap.git Bootstrap
+```
 
 ## Usage of plugin ##
 
+Enable the plugin in your config/bootstrap.php file:
+
+	`Plugin::load('Bootstrap', ['routes' => false, 'bootstrap' => false]);`
+
 More info in the [github docs](http://cake17.github.io/cakephp-bootstrap)
+
+## What's inside ? ##
 
 **JS**
 
@@ -61,15 +94,6 @@ More info in the [github docs](http://cake17.github.io/cakephp-bootstrap)
   To implement a bootstrap multiselect
 
 - BootstrapHtmlHelper
-
-  Déclaration
-
-		``$helpers = array(
-			'Html' => array(
-				'className' => 'CakeWSProjectManagement.BootstrapHtml',
-			)
-		);``
-
   Fonctions possibles:
 
 		- icon($class, $options = [])
@@ -77,13 +101,27 @@ More info in the [github docs](http://cake17.github.io/cakephp-bootstrap)
 		- alert($message, $options = [])
 		- badge($message, $options = [])
 		- button($message, $options = [])
-		- link($title, $url = null, array $options = [], $confirmMessage = false)
+		- link($title, $url = null, array $options = [])
 		- links($type, $options = [])
 		- linksActives($actif, $id, $options = [])
 		- linksPrincipal($principal, $id, $options = [])
 		- collapse($formName = "accordeon", $actions = [])
 		- pagination()
 
+- BootstrapFormHelper
+
+**Bake Templates**
+
+- form
+- index
+- view
+
 ## License ##
 
-cakephp-boostrap Plugin is licensed under the MIT license.
+Copyright (c) [2014] [cake17]
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
