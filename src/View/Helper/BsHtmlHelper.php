@@ -185,7 +185,7 @@ class BsHtmlHelper extends HtmlHelper {
  * @param \Bootstrap\View\Helper\View $View View
  * @param array $config : array of options
  */
-	public function __construct(\Cake\View\View $View, array $config = array()) {
+	public function __construct(\Cake\View\View $View, array $config = []) {
 		parent::__construct($View, $config);
 
 		// put default options for links

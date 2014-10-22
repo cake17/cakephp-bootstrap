@@ -38,8 +38,8 @@ _[Manual]_
 
 - Download this: http://github.com/cake17/cakephp-bootstrap/zipball/master
 - Unzip that download.
-- Copy the resulting folder to app/plugins
-- Rename the folder you just copied to @Bootstrap@
+- Copy the resulting folder to `/plugins`
+- Rename the folder you just copied to `Bootstrap`
 
 _[GIT Submodule]_
 
@@ -77,7 +77,7 @@ More info in the [github docs](http://cake17.github.io/cakephp-bootstrap)
 - textarea editor based on Twitter Bootstrap's wysihtml5 : wysihtml5-0.3.0.js, bootstrap-wysihtml5.js
 => To do so:
 	- copy textarea.js or textarea_mini.js where you want to use it
-	- Put the same id in textarea.js copied et in the form id that you want
+	- Put the same id in textarea.js copied and in the form id that you want
 	- Possible to change the type of highlight of code in textarea/stylesheets with one the css in css/bootstrap/highlight/
 	- insert in the view echo $this->Html->script('NomPlugin.bootstrap/textarea.js');
 - Multiselect for boostrap : bootstrap-multiselect.js and bootstrap-multiselect.default.js
@@ -85,7 +85,7 @@ More info in the [github docs](http://cake17.github.io/cakephp-bootstrap)
 **CSS**
 
 - Twitter bootstrap css : with CDN
-- Wysihtml5 css : bootstrap-wysihtml5.css and wysiwyg-color.css and css in folder highlight/
+- Wysihtml5 css : bootstrap-wysihtml5.css and wysiwyg-color.css and css in folder `highlight/`
 - Bootstrap multiselect : bootstrap-multiselect.css
 
 **HELPERS**
@@ -94,13 +94,13 @@ More info in the [github docs](http://cake17.github.io/cakephp-bootstrap)
   To implement a bootstrap multiselect
 
 - BootstrapHtmlHelper
-  Fonctions possibles:
+  Available functions:
 
-		- icon($class, $options = [])
-		- label($message, $options = [])
-		- alert($message, $options = [])
-		- badge($message, $options = [])
-		- button($message, $options = [])
+		- icon($class, array $options = [])
+		- label($message, array $options = [])
+		- alert($message, array $options = [])
+		- badge($message, array $options = [])
+		- button($message, array $options = [])
 		- link($title, $url = null, array $options = [])
 		- links($type, $options = [])
 		- linksActives($actif, $id, $options = [])
