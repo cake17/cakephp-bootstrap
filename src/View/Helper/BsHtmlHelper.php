@@ -1,7 +1,7 @@
 <?php
 /**
  * BsHtmlHelper
- * 
+ *
  * @author   cake17
  * @license  http://www.opensource.org/licenses/mit-license.php The MIT License
  * @link     http://cake17.github.io/
@@ -811,6 +811,7 @@ class BsHtmlHelper extends HtmlHelper {
 		} else {
 			$options['plugin'] = null;
 		}
+
 		if (isset($this->_View->request->params['prefix']) && !empty($this->_View->request->params['prefix']) && (!isset($options['prefix']) || empty($options['prefix']))) {
 			$options['prefix'] = $this->_View->request->params['prefix'];
 		} else {
