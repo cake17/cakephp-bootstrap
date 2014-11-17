@@ -1,5 +1,5 @@
 <?= $this->Html->docType(); ?>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
 	<head>
 		<?= $this->Html->charset() . "\n" ?>
 		<title><?= $this->fetch('title') ?></title>
