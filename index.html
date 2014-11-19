@@ -43,6 +43,7 @@
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Bake <span class="caret"></span></a>
 							<ul class="dropdown-menu" role="menu">
 								<li><a href="#section-bake-themes">Bake views</a></li>
+								<li><a href="#section-flashs-elements">Flashs Elements</a></li>
 							</ul>
 						</li>
 					</ul>
@@ -97,6 +98,7 @@
 							<li>Change the Html Elements with BsHtml Helper</li>
 							<li>Change the Form Elements with BsForm Helper</li>
 							<li>Bake the view templates</li>
+							<li>Flashs Elements</li>
 						</ul>
 						<h3>Installation</h3>
 						<ul>
@@ -598,6 +600,22 @@ public $helpers = [
 					You can launch the cake bake view with templates provided by this plugin and made for Bootstrap<br />
 					When you bake your views with <code>cake bake</code>, just add <code>--theme bootstrap</code>, like this:
 					<pre class="prettyprint">./bin/cake bake view Users --theme bootstrap</pre>
+			</p>
+			<h2 id="section-flash-elements">Add Flash Elements</h2>
+			<p>
+					You can add flash elements in your layouts:
+					<pre class="prettyprint linenums lang-php">
+<?= $this->element('Bootstrap.Flash/flashs') ?>
+					</pre>
+					you'll be then able to render error, warning, danger and success flash messages in your controllers.
+					<pre class="prettyprint linenums lang-php">
+<?= $this->Flash->set(__('this could be saved.'), ['key' => 'success']) ?>
+<?= $this->Flash->set(__('Pb this could not be saved. Try again.'), ['key' => 'error']) ?>
+					</pre>
+					Or/And add Auth flash elements
+					<pre class="prettyprint linenums lang-php">
+<?= $this->element('Bootstrap.Flash/auth') ?>
+					</pre>
 			</p>
 		</section>
 		<br />
