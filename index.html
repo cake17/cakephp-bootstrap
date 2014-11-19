@@ -3,8 +3,8 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"/>
-		<link rel="stylesheet" href="/css/main.css">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" type="text/css"/>
+		<link rel="stylesheet" href="css/main.css">
 		<title>cakephp-bootstrap by cake17</title>
 	</head>
 	<body>
@@ -60,66 +60,75 @@
 			</div>
 		</nav>
 
-		<div id="jumbo" class="jumbotron">
-			<div class="container">
-				<h1>To easily use Bootstrap Twitter 3.x in CakePHP projects</h1>
-				<h2>Versions</h2>
-				- CakePHP 3.x<br />
-				- Boostrap 3.2.x
-
-				<h2>Description</h2>
-				With this plugin, you can do the following things:<br />
-				- Change the Html Elements with BsHtml Helper<br />
-				- Change the Form Elements with BsForm Helper<br />
-				- Bake the view templates<br />
-
-				<h2>Installation</h2>
-				- Please read how to install the plugin with composer in the <a href="https://github.com/cake17/cakephp-bootstrap">README</a> in github <br />
-				- Then you need to add <code>&lt;?= $this->Html->head() ?&gt;</code> in your layout head tag<br />
-					<pre>
-```php
-&lt;?= $this->Html->docType(); ?&gt;
-&lt;html xmlns="http://www.w3.org/1999/xhtml"&gt;
-	&lt;head&gt;
-		&lt;?= $this->Html->charset() . "\n" ?&gt;
-		&lt;title&gt;&lt;?= $this->fetch('title') ?>&lt;/title&gt;
-		<b>&lt;?= $this->Html->head() ?&gt;</b>
-		&lt;?php
-		echo $this->fetch('meta');
-		echo $this->fetch('css');
-		echo $this->fetch('script');
-		?&gt;
-	&lt;/head&gt;
-	&lt;body&gt;
-	&lt;/body&gt;
-&lt;/html&gt;
-```
-					</pre>
-					By default, this add the css and js for bootstrap in your layout
-				</p>
+		<div class="page-header">
+		  <h1 class="text-center">Bootstrap Twitter 3.x <small>for CakePHP projects</small></h1>
+		</div>
+		<div class="row">
+		  <div class="col-sm-12 col-md-4 text-center">
+		    <div class="thumbnail">
+		      <img src="images/bootstrap.jpg" alt="Bootstrap">
+		      <div class="caption">
+		        <h3>Bootstrap 3.2.x</h3>
+		        <p>
+							CSS Framework
+						</p>
+		        <p><a href="http://getbootstrap.com/" class="btn btn-primary" role="button">Docs</a> </p>
+		      </div>
+		    </div>
+		  </div>
+			<div class="col-sm-12 col-md-4 text-center">
+				<div class="thumbnail">
+					<img src="images/cakephp.png" alt="CakePHP">
+					<div class="caption">
+						<h3>CakePHP 3.x</h3>
+						<p>
+							PHP Framework
+						</p>
+						<p><a href="http://book.cakephp.org/3.0/en/index.html" class="btn btn-primary" role="button">Docs</a></p>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-12 col-md-4">
+				<div class="thumbnail">
+					<!-- <img data-src="holder.js/300x300" alt="..."> -->
+					<div class="caption">
+						<h3>Plugin objective</h3>
+						<ul>
+							<li>Change the Html Elements with BsHtml Helper</li>
+							<li>Change the Form Elements with BsForm Helper</li>
+							<li>Bake the view templates</li>
+						</ul>
+						<h3>Installation</h3>
+						<ul>
+							<li>Please read the readme on how to install the plugin with composer (follow link bellow)</li>
+							<li>Then you need to add <code class="prettyprint"><?= $this->Html->head() ?></code> in your layout head tag.<br />By default, this add the css and js for bootstrap in your layout</li>
+						</ul>
+						<p class="text-center"><a href="https://github.com/cake17/cakephp-bootstrap" class="btn btn-primary" role="button">Readme</a></p>
+					</div>
+				</div>
 			</div>
 		</div>
+
 		<section id="main_content">
 			<h1>BsHtml</h1>
 			<p>
-				Add those following lines in your src/Controller/AppController.php file :
-				<pre>
-```php
+				Add those following lines in your <code>src/Controller/AppController.php</code> file :
+			</p>
+			<pre class="prettyprint linenums lang-php">
 class AppController extends Controller {
 public $helpers = [
-		...,
-		'Html' => [
-			'className' => 'Bootstrap.BsHtml'
-		],
-		'Paginator' => [
-			'templates' => 'Bootstrap.bs_paginator.php'
-		],
-		...
-	];
+	...,
+	'Html' => [
+		'className' => 'Bootstrap.BsHtml'
+	],
+	'Paginator' => [
+		'templates' => 'Bootstrap.bs_paginator.php'
+	],
+	...
+];
 }
-```
-				</pre>
-			</p>
+			</pre>
+
 
 			<h2 id="section-alert">Alerts</h2>
 			<div class="panel panel-default">
@@ -410,8 +419,7 @@ public $helpers = [
 					</div>
 				</div>
 				<div class="panel-body">
-					<pre>
-```php
+					<pre class="prettyprint linenums lang-php">
 echo $this->Html->linksActives(true, 'my-id')
 
 echo $this->Html->linksActives(false, 'my-id', [
@@ -424,10 +432,8 @@ echo $this->Html->linksActives(false, 'my-id', [
 'class' => 'btn btn-danger btn-lg'
 ]
 ])
-```
 					</pre>
-					<pre>
-```php
+					<pre class="prettyprint linenums lang-php">
 echo $this->Html->linksPrincipal(true, 'my-id')
 
 echo $this->Html->linksPrincipal(false, 'my-id', [
@@ -438,16 +444,14 @@ echo $this->Html->linksPrincipal(false, 'my-id', [
 		'name' => 'Not in Principal'
 	]
 ])
-```
 					</pre>
 				</div>
 			</div>
 
-			<h1>BsHtml</h1>
+			<h1>BsForm</h1>
 			<p>
 				Add those following lines in your src/Controller/AppController.php file :
-				<pre>
-```php
+				<pre class="prettyprint linenums lang-php">
 class AppController extends Controller {
 public $helpers = [
 		...,
@@ -458,119 +462,148 @@ public $helpers = [
 		...
 	];
 }
-```
 				</pre>
 			</p>
 
 			<h2 id="section-form">Form</h2>
-			<div class="panel panel-default">
-				<div class="panel-heading">
-					<h3 class="panel-title">EXAMPLE</h3>
-				</div>
-				<div class="panel-body">
-					<div class="table-responsive">
-						<table  class="table table-condensed table-striped" cellpadding="0" cellspacing="0">
-							<thead>
-								<tr>
-									<th>Results</th>
-									<th>Code</th>
-								</tr>
-							</thead>
-							<tbody>
-								<tr>
-									<td>
-									</td>
-									<td><code></code></td>
-								</tr>
-								<tr>
-									<td>
-									</td>
-									<td><code></code></td>
-								</tr>
-							</tbody>
-						</table>
+				<div class="row">
+					<div class="col-md-12">
+						<form role="form">
+						  <div class="form-group">
+						    <label for="input-email">Email address</label>
+						    <input type="email" class="form-control" id="input-email" placeholder="Enter email">
+						  </div>
+						  <div class="form-group">
+						    <label for="input-password">Password</label>
+						    <input type="password" class="form-control" id="input-password" placeholder="Password">
+						  </div>
+						  <div class="form-group">
+						    <label for="input-file">File input</label>
+						    <input type="file" id="input-file">
+						  </div>
+						  <div class="checkbox">
+						    <label>
+						      <input type="checkbox"> Check me out
+						    </label>
+						  </div>
+						  <button type="submit" class="btn btn-default">Submit</button>
+						</form>
 					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-12">
+					<pre class="prettyprint linenums lang-php">
+<?= $this->Form->create($user, ['templates' => 'Bootstrap.bs_form']) ?>
+
+<?= $this->Form->input('input_email', ['label' => __('Email Address'), 'placeholder' => __('Enter email')]) ?>
+<?= $this->Form->input('input_password', ['label' => __('Password'), 'placeholder' => __('Password')]) ?>
+<?= $this->Form->input('input_file', ['label' => __('File input')]) ?>
+<?= $this->Form->input('checkbox', ['label' => __('Check me out')]) ?>
+
+<?= $this->Form->button(__('Submit')) ?>
+<?= $this->Form->end() ?>
+					</pre>
 				</div>
 			</div>
 			<h2 id="section-form-inline">Form Inline</h2>
-			<div class="panel panel-default">
-				<div class="panel-heading">
-					<h3 class="panel-title">EXAMPLE</h3>
+			<div class="row">
+				<div class="col-md-12">
+					<form class="form-inline" role="form">
+						<div class="form-group">
+							<div class="input-group">
+								<label class="sr-only" for="input-email">Email address</label>
+								<div class="input-group-addon">@</div>
+								<input type="email" class="form-control" id="input-email" placeholder="Enter email">
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="sr-only" for="input-password">Password</label>
+							<input type="password" class="form-control" id="input-password" placeholder="Password">
+						</div>
+						<div class="checkbox">
+							<label>
+								<input type="checkbox"> Remember me
+							</label>
+						</div>
+						<button type="submit" class="btn btn-default">Sign in</button>
+					</form>
 				</div>
-				<div class="panel-body">
-					<div class="table-responsive">
-						<table  class="table table-condensed table-striped" cellpadding="0" cellspacing="0">
-							<thead>
-								<tr>
-									<th>Results</th>
-									<th>Code</th>
-								</tr>
-							</thead>
-							<tbody>
-								<tr>
-									<td>
-									</td>
-									<td><code></code></td>
-								</tr>
-								<tr>
-									<td>
-									</td>
-									<td><code></code></td>
-								</tr>
-							</tbody>
-						</table>
-					</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12">
+					<pre class="prettyprint linenums lang-php">
+<?= $this->Form->create($user, ['templates' => 'Bootstrap.bs_form_inline']) ?>
+
+<?= $this->Form->input('input_email', ['label' => __('Email Address'), 'placeholder' => __('Enter email')]) ?>
+<?= $this->Form->input('input_password', ['label' => __('Password'), 'placeholder' => __('Password')]) ?
+<?= $this->Form->input('checkbox', ['label' => __('Remember me')]) ?>
+
+<?= $this->Form->button(__('Sign in')) ?>
+<?= $this->Form->end() ?>
+					</pre>
 				</div>
 			</div>
 			<h2 id="section-form-horizontal">Form Horizontal</h2>
-			<div class="panel panel-default">
-				<div class="panel-heading">
-					<h3 class="panel-title">EXAMPLE</h3>
+			<div class="row">
+				<div class="col-md-12">
+					<form class="form-horizontal" role="form">
+					  <div class="form-group">
+					    <label for="input-email" class="col-sm-2 control-label">Email</label>
+					    <div class="col-sm-10">
+					      <input type="email" class="form-control" id="input-email" placeholder="Email">
+					    </div>
+					  </div>
+					  <div class="form-group">
+					    <label for="input-passwword" class="col-sm-2 control-label">Password</label>
+					    <div class="col-sm-10">
+					      <input type="password" class="form-control" id="input-passwword" placeholder="Password">
+					    </div>
+					  </div>
+					  <div class="form-group">
+					    <div class="col-sm-offset-2 col-sm-10">
+					      <div class="checkbox">
+					        <label>
+					          <input type="checkbox"> Remember me
+					        </label>
+					      </div>
+					    </div>
+					  </div>
+					  <div class="form-group">
+					    <div class="col-sm-offset-2 col-sm-10">
+					      <button type="submit" class="btn btn-default">Sign in</button>
+					    </div>
+					  </div>
+					</form>
 				</div>
-				<div class="panel-body">
-					<div class="table-responsive">
-						<table  class="table table-condensed table-striped" cellpadding="0" cellspacing="0">
-							<thead>
-								<tr>
-									<th>Results</th>
-									<th>Code</th>
-								</tr>
-							</thead>
-							<tbody>
-								<tr>
-									<td>
-									</td>
-									<td><code></code></td>
-								</tr>
-								<tr>
-									<td>
-									</td>
-									<td><code></code></td>
-								</tr>
-							</tbody>
-						</table>
-					</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12">
+					<pre class="prettyprint linenums lang-php">
+<?= $this->Form->create($user, ['templates' => 'Bootstrap.bs_form_horizontal']) ?>
+
+<?= $this->Form->input('input_email', ['label' => __('Email Address'), 'placeholder' => __('Enter email')]) ?>
+<?= $this->Form->input('input_password', ['label' => __('Password'), 'placeholder' => __('Password')]) ?
+<?= $this->Form->input('checkbox', ['label' => __('Remember me')]) ?>
+
+<?= $this->Form->button(__('Sign in')) ?>
+<?= $this->Form->end() ?>
+					</pre>
 				</div>
 			</div>
 
 			<h1>Bake</h1>
 
 			<h2 id="section-bake-templates">Bake Templates</h2>
-			<div class="panel panel-default">
-				<div class="panel-heading">
-					<h3 class="panel-title">EXAMPLE</h3>
-				</div>
-				<div class="panel-body">
+			<p>
 					You can launch the cake bake view with templates provided by this plugin and made for Bootstrap<br />
 					When you bake your views with <code>cake bake</code>, just add <code>--template bootstrap</code>, like this:
-					<pre>
-./bin/cake bake view Users --template bootstrap
-					</pre>
-				</div>
-			</div>
+					<pre class="prettyprint">./bin/cake bake view Users --template bootstrap</pre>
+			</p>
 		</section>
+		<br />
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 		<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.1/jquery-ui.min.js"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+		<script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js?lang=css&skin=defaut"></script>
 	</body>
 </html>
