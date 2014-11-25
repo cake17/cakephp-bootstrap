@@ -1,7 +1,7 @@
 <?php
 /**
  * BsHtmlHelperTest
- * 
+ *
  * @author   cake17
  * @license  http://www.opensource.org/licenses/mit-license.php The MIT License
  * @link     http://cake17.github.io/
@@ -10,7 +10,9 @@
 namespace Bootstrap\Test\TestCase\View\Helper;
 
 use Bootstrap\View\Helper\BsHtmlHelper;
+use Cake\Routing\Router;
 use Cake\TestSuite\TestCase;
+use Cake\View\Helper\HtmlHelper;
 use Cake\View\View;
 
 /**
@@ -175,6 +177,7 @@ class BsHtmlHelperTest extends TestCase {
  * @return void
  */
 	public function testLink() {
+		Router::connect('/:controller/:action/*');
 		// default
 		$results = $this->BsHtml->link('Title', ['controller' => 'Users']);
 		$this->assertContains('Title', $results);
@@ -186,6 +189,7 @@ class BsHtmlHelperTest extends TestCase {
  * @return void
  */
 	public function testLinks() {
+		Router::connect('/:controller/:action/*');
 		// default
 		$results = $this->BsHtml->links('default', ['controller' => 'Users', 'id' => 1]);
 		$this->assertContains('View', $results);
@@ -199,6 +203,7 @@ class BsHtmlHelperTest extends TestCase {
  * @return void
  */
 	public function testLinksActives() {
+		Router::connect('/:controller/:action/*');
 		// for a link that is to true
 		$results = $this->BsHtml->linksActives(true, 1, ['controller' => 'Users']);
 		$this->assertContains('Active', $results);
@@ -215,6 +220,7 @@ class BsHtmlHelperTest extends TestCase {
  * @return void
  */
 	public function testLinksPrincipal() {
+		Router::connect('/:controller/:action/*');
 		// for a link that is to true
 		$results = $this->BsHtml->linksPrincipal(true, 1, ['controller' => 'Users']);
 		$this->assertContains('<div class="btn-group"><button type="button" class="btn btn-success btn btn-default btn-xs">Principal</button> </div>', $results);
@@ -233,7 +239,7 @@ class BsHtmlHelperTest extends TestCase {
 	public function testCollapse() {
 		// default
 		$results = $this->BsHtml->collapse('CollapseNameBox', []);
-		$this->assertContains('<a class="accordion-toggle" data-toggle="collapse" data-parent="#CollapseNameBox', $results);
+		$this->assertContains('<div class="panel-group" id="CollapseNameBox"></div', $results);
 	}
 
 }

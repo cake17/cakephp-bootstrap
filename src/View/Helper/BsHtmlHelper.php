@@ -452,9 +452,8 @@ class BsHtmlHelper extends HtmlHelper {
 		if ($options['responsive']):
 			if (isset($options['class'])) {
 				$options['class'] = 'img-responsive ' . $options['class'];
-			} else {
-				$options['class'] = 'img-responsive';
 			}
+			$options['class'] = 'img-responsive';
 		endif;
 		return parent::image($path, $options);
 	}
