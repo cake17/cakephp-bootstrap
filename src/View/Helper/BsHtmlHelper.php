@@ -660,19 +660,31 @@ class BsHtmlHelper extends HtmlHelper {
 			['escape' => false, 'class' => $options['moveDown']['class'], 'confirm' => __d('bootstrap', 'Are you sure you want to down # {0}?', $options['id'])]
 		);
 		$html = ' <div class="' . $options['wrap']['class'] . '">';
-		if ($type === 'default') {
-			if (isset($options['actions']) && is_array($options['actions'])) {
-				foreach ($options['actions'] as $action):
-					$html .= ${'link' . ucfirst($action)};
-				endforeach;
-			} else {
-				$html .= $linkView . $linkEdit . $linkDelete;
-			}
-		} elseif ($type === 'tree') {
-			$html .= $linkView . $linkEdit . $linkMoveUp . $linkMoveDown . $linkDelete;
-		} elseif ($type === 'ed') {
-			$html .= $linkEdit;
-			$html .= $linkDelete;
+		switch ($type) {
+			case 'default':
+				if (isset($options['actions']) && is_array($options['actions'])) {
+					foreach ($options['actions'] as $action):
+						$html .= ${'link' . ucfirst($action)};
+					endforeach;
+				} else {
+					$html .= $linkView . $linkEdit . $linkDelete;
+				}
+			break;
+			case 'tree':
+				$html .= $linkView . $linkEdit . $linkMoveUp . $linkMoveDown . $linkDelete;
+			break;
+			case 'ed':
+				$html .= $linkEdit;
+				$html .= $linkDelete;
+			break;
+			case 'vd':
+				$html .= $linkView;
+				$html .= $linkDelete;
+			break;
+			case 've':
+				$html .= $linkView;
+				$html .= $linkEdit;
+			break;
 		}
 		$html .= '</div>';
 		//debug($html);
