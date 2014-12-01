@@ -1,0 +1,217 @@
+# LANGUAGE translation of CakePHP Application
+# Copyright YEAR NAME <EMAIL@ADDRESS>
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"POT-Creation-Date: 2014-12-01 16:11+0000\n"
+"PO-Revision-Date: YYYY-mm-DD HH:MM+ZZZZ\n"
+"Last-Translator: NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+
+#: Template/Layout/examples.ctp:24
+msgid " Project Name"
+msgstr ""
+
+#: Template/Layout/examples.ctp:28
+msgid "Nos Offres"
+msgstr ""
+
+#: Template/Layout/examples.ctp:31
+msgid "Connexion"
+msgstr ""
+
+#: Template/Layout/examples.ctp:38
+msgid "Alerts"
+msgstr ""
+
+#: Template/Layout/examples.ctp:41;74;189
+msgid "EXAMPLE"
+msgstr ""
+
+#: Template/Layout/examples.ctp:48;81;111;140;167;196;224;257;284
+msgid "Results"
+msgstr ""
+
+#: Template/Layout/examples.ctp:49;82;112;141;168;197;225;258;285
+msgid "Code"
+msgstr ""
+
+#: Template/Layout/examples.ctp:54
+msgid "This is an alert, \"success\" by default"
+msgstr ""
+
+#: Template/Layout/examples.ctp:58
+msgid "This is an alert with option danger"
+msgstr ""
+
+#: Template/Layout/examples.ctp:62
+msgid "This is an alert with option warning and dismissable"
+msgstr ""
+
+#: Template/Layout/examples.ctp:71
+msgid "Images & Icones"
+msgstr ""
+
+#: Template/Layout/examples.ctp:100
+msgid "Buttons, Labels & Badges"
+msgstr ""
+
+#: Template/Layout/examples.ctp:101
+msgid "EXAMPLES of Buttons"
+msgstr ""
+
+#: Template/Layout/examples.ctp:104
+msgid "Buttons"
+msgstr ""
+
+#: Template/Layout/examples.ctp:119
+msgid "This is a button with default"
+msgstr ""
+
+#: Template/Layout/examples.ctp:120
+msgid "This is a button with option primary"
+msgstr ""
+
+#: Template/Layout/examples.ctp:121
+msgid "This is a button with option danger and a class and id defined"
+msgstr ""
+
+#: Template/Layout/examples.ctp:133
+msgid "Labels"
+msgstr ""
+
+#: Template/Layout/examples.ctp:148
+msgid "This is a label with default"
+msgstr ""
+
+#: Template/Layout/examples.ctp:160
+msgid "Badges"
+msgstr ""
+
+#: Template/Layout/examples.ctp:175
+msgid "This is a badge with default"
+msgstr ""
+
+#: Template/Layout/examples.ctp:186
+msgid "Pagination"
+msgstr ""
+
+#: Template/Layout/examples.ctp:214
+msgid "Links"
+msgstr ""
+
+#: Template/Layout/examples.ctp:217
+msgid "Link"
+msgstr ""
+
+#: Template/Layout/examples.ctp:232
+msgid "My Link"
+msgstr ""
+
+#: Template/Layout/examples.ctp:239
+msgid "My Link with active"
+msgstr ""
+
+#: Template/Layout/examples.ctp:250
+msgid "Default & Tree"
+msgstr ""
+
+#: Template/Layout/examples.ctp:277
+msgid "Actif & Principal"
+msgstr ""
+
+#: Template/Layout/examples.ctp:311
+msgid "My Website Name"
+msgstr ""
+
+#: View/Helper/BsHtmlHelper.php:197
+msgid "View"
+msgstr ""
+
+#: View/Helper/BsHtmlHelper.php:202
+msgid "Edit"
+msgstr ""
+
+#: View/Helper/BsHtmlHelper.php:207
+msgid "Delete"
+msgstr ""
+
+#: View/Helper/BsHtmlHelper.php:207
+msgid "delete"
+msgstr ""
+
+#: View/Helper/BsHtmlHelper.php:212
+msgid "Up"
+msgstr ""
+
+#: View/Helper/BsHtmlHelper.php:217
+msgid "Down"
+msgstr ""
+
+#: View/Helper/BsHtmlHelper.php:237
+msgid "Put as Principal"
+msgstr ""
+
+#: View/Helper/BsHtmlHelper.php:253
+msgid "Deactivate"
+msgstr ""
+
+#: View/Helper/BsHtmlHelper.php:261
+msgid "Activate"
+msgstr ""
+
+#: View/Helper/BsHtmlHelper.php:368
+msgid "Site crée par {0}"
+msgstr ""
+
+#: View/Helper/BsHtmlHelper.php:436
+msgid "{0} Alert should be one of the following : {1}"
+msgstr ""
+
+#: View/Helper/BsHtmlHelper.php:510
+msgid "{0}Button should be one of the following : {1}"
+msgstr ""
+
+#: View/Helper/BsHtmlHelper.php:535
+msgid "{0}Label should be one of the following : {1}"
+msgstr ""
+
+#: View/Helper/BsHtmlHelper.php:564
+msgid "Précédent"
+msgstr ""
+
+#: View/Helper/BsHtmlHelper.php:566
+msgid "Suivant"
+msgstr ""
+
+#: View/Helper/BsHtmlHelper.php:652
+msgid "Are you sure you want to delete # {0}?"
+msgstr ""
+
+#: View/Helper/BsHtmlHelper.php:656
+msgid "Are you sure you want to up # {0}?"
+msgstr ""
+
+#: View/Helper/BsHtmlHelper.php:660
+msgid "Are you sure you want to down # {0}?"
+msgstr ""
+
+#: View/Helper/BsHtmlHelper.php:715;721
+msgid "Are you sure you want to {0} # {1}?"
+msgstr ""
+
+#: View/Helper/BsHtmlHelper.php:751
+msgid "Are you sure you want to put as principal # {0}?"
+msgstr ""
+
+#: View/Helper/BsMultiselectHelper.php:63
+#: View/Helper/BsSliderHelper.php:63
+msgid "Configured JavaScript framework \"{0}\" is not supported. Only \"{1}\" are valid options."
+msgstr ""
+

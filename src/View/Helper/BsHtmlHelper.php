@@ -433,7 +433,7 @@ class BsHtmlHelper extends HtmlHelper {
 				'content' => $message
 			]);
 		endif;
-		return $this->alert(__d('bootstrap', $this->_types['error'] . 'Alert should be one of the following : ' . implode(', ', $this->_types['alert'])), ['type' => 'danger']);
+		return $this->alert(__d('bootstrap', '{0} Alert should be one of the following : {1}', $this->_types['error'], implode(', ', $this->_types['alert'])), ['type' => 'danger']);
 	}
 
 /**
