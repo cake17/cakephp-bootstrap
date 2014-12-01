@@ -13,7 +13,7 @@ $config = [
 	'checkboxFormGroup' => '{{label}}',
 	'checkboxWrapper' => '<div class="checkbox">{{label}}</div>',
 	'dateWidget' => '{{year}}{{month}}{{day}}{{hour}}{{minute}}{{second}}{{meridian}}',
-	'error' => '<div class=""alert alert-danger">{{content}}</div>',
+	'error' => '<div class="alert alert-danger">{{content}}</div>',
 	'errorList' => '<ul>{{content}}</ul>',
 	'errorItem' => '<li>{{text}}</li>',
 	'file' => '<input type="file" name="{{name}}"{{attrs}}>',
