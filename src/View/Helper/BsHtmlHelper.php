@@ -814,20 +814,31 @@ class BsHtmlHelper extends HtmlHelper {
  * @return array
  */
 	protected function _parseUrlElements(array $options = []) {
+		$prefix = null;
+		$plugin = null;
+
 		if (isset($this->_View->request->params['controller']) && !empty($this->_View->request->params['controller']) && (!isset($options['controller']) || empty($options['controller']))):
 			$options['controller'] = $this->_View->request->params['controller'];
 		endif;
-		if (isset($this->_View->request->params['plugin']) && !empty($this->_View->request->params['plugin']) && (!isset($options['plugin']) || empty($options['plugin']))) {
-			$options['plugin'] = $this->_View->request->params['plugin'];
-		} else {
-			$options['plugin'] = null;
-		}
 
-		if (isset($this->_View->request->params['prefix']) && !empty($this->_View->request->params['prefix']) && (!isset($options['prefix']) || empty($options['prefix']))) {
-			$options['prefix'] = $this->_View->request->params['prefix'];
+		if (isset($options['plugin'])) {
+			$plugin = $options['plugin'];
+		} elseif (isset($this->_View->request->params['plugin'])) {
+			$plugin = $this->_View->request->params['plugin'];
 		} else {
-			$options['prefix'] = null;
+			$plugin = null;
 		}
+		$options['plugin'] = $plugin;
+
+		if (isset($options['prefix'])) {
+			$prefix = $options['prefix'];
+		} elseif (isset($this->_View->request->params['prefix'])) {
+			$prefix = $this->_View->request->params['prefix'];
+		} else {
+			$prefix = null;
+		}
+		$options['prefix'] = $prefix;
+
 		$this->config($options);
 		return $options;
 	}
