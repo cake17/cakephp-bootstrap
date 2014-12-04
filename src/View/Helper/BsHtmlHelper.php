@@ -685,6 +685,15 @@ class BsHtmlHelper extends HtmlHelper {
 				$html .= $linkView;
 				$html .= $linkEdit;
 			break;
+			case 'e':
+				$html .= $linkEdit;
+			break;
+			case 'v':
+				$html .= $linkEdit;
+			break;
+			case 'd':
+				$html .= $linkEdit;
+			break;
 		}
 		$html .= '</div>';
 		//debug($html);
