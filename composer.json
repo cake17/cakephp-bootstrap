@@ -27,10 +27,6 @@
 		"cakephp/cakephp": "3.0.x-dev",
 		"cakephp/plugin-installer": "dev-master"
 	},
-	"require-dev": {
-		"phpunit/phpunit": "*",
-		"cakephp/cakephp-codesniffer": "dev-master"
-	},
 	"autoload": {
 		"psr-4": {
 			"Bootstrap\\": "src"
@@ -42,7 +38,9 @@
 		}
 	},
 	"suggest": {
-		"twbs/bootstrap": "Bootstrap framework"
+		"twbs/bootstrap": "Bootstrap framework",
+		"phpunit/phpunit": "*",
+		"cakephp/cakephp-codesniffer": "dev-master"
 	},
 	"extra": {
 		"installer-name": "Bootstrap"
