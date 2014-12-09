@@ -771,10 +771,14 @@ class BsHtmlHelper extends HtmlHelper {
  * @param array $actions : all links to add to the collapse
  * @return string : html of collapse box
  */
-	public function collapse($formName = "accordeon", array $actions = []) {
+	public function collapse($formName = "accordeon", array $actions = [], array $options = []) {
+		$type = $type = ' panel-default';
+		if (isset($options['type']) && !$options['type']) {
+			$type = '';
+		}
 		$html = '<div class="panel-group" id="' . $formName . '">';
 		foreach ($actions as $name => $links):
-			$html .= '<div class="panel panel-default">';
+			$html .= '<div class="panel' . $type . '">';
 			$html .= '<div class="panel-heading">';
 			$html .= '<h1 class="panel-title">';
 			$html .= '<a class="accordion-toggle" data-toggle="collapse" data-parent="#' . $formName . '" href="#' . $name . '">';
