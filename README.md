@@ -63,7 +63,7 @@ git clone git://github.com/cake17/cakephp-bootstrap.git Bootstrap
 
 Enable the plugin in your config/bootstrap.php file:
 
-    `Plugin::load('Bootstrap', ['routes' => false, 'bootstrap' => false]);`
+    Plugin::load('Bootstrap', ['routes' => false, 'bootstrap' => false]);
 
 More info in the [github docs](http://cake17.github.io/cakephp-bootstrap)
 
