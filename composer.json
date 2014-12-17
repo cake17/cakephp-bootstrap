@@ -1,48 +1,48 @@
 {
-	"name": "cake17/cakephp-bootstrap",
-	"type": "cakephp-plugin",
-	"description": "To easily use Bootstrap Twitter 3.x in CakePHP projects",
-	"keywords": [
-		"cakephp",
-		"bootstrap",
-		"twitter",
-		"helpers",
-		"form",
-		"html"
-	],
-	"homepage": "https://github.com/cake17/cakephp-bootstrap",
-	"license": "MIT",
-	"authors": [
-		{
-			"name": "cake17",
-			"email": "cake17@cake-websites.com"
-		}
-	],
-	"support": {
-		"issues": "https://github.com/cake17/cakephp-bootstrap/issues",
-		"source": "https://github.com/cake17/cakephp-bootstrap"
-	},
-	"require": {
-		"php": ">=5.4.16",
-		"cakephp/cakephp": "3.0.x-dev",
-		"cakephp/plugin-installer": "dev-master"
-	},
-	"autoload": {
-		"psr-4": {
-			"Bootstrap\\": "src"
-		}
-	},
-	"autoload-dev": {
-		"psr-4": {
-			"Bootstrap\\": "tests"
-		}
-	},
-	"suggest": {
-		"twbs/bootstrap": "Bootstrap framework",
-		"phpunit/phpunit": "*",
-		"cakephp/cakephp-codesniffer": "dev-master"
-	},
-	"extra": {
-		"installer-name": "Bootstrap"
-	}
+    "name": "cake17/cakephp-bootstrap",
+    "type": "cakephp-plugin",
+    "description": "To easily use Bootstrap Twitter 3.x in CakePHP projects",
+    "keywords": [
+        "cakephp",
+        "bootstrap",
+        "twitter",
+        "helpers",
+        "form",
+        "html"
+    ],
+    "homepage": "https://github.com/cake17/cakephp-bootstrap",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "cake17",
+            "email": "cake17@cake-websites.com"
+        }
+    ],
+    "support": {
+        "issues": "https://github.com/cake17/cakephp-bootstrap/issues",
+        "source": "https://github.com/cake17/cakephp-bootstrap"
+    },
+    "require": {
+        "php": ">=5.4.16",
+        "cakephp/cakephp": "3.0.x-dev",
+        "cakephp/plugin-installer": "dev-master"
+    },
+    "autoload": {
+        "psr-4": {
+            "Bootstrap\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Bootstrap\\": "tests"
+        }
+    },
+    "suggest": {
+        "twbs/bootstrap": "Bootstrap framework",
+        "phpunit/phpunit": "*",
+        "cakephp/cakephp-codesniffer": "dev-master"
+    },
+    "extra": {
+        "installer-name": "Bootstrap"
+    }
 }

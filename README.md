@@ -63,7 +63,7 @@ git clone git://github.com/cake17/cakephp-bootstrap.git Bootstrap
 
 Enable the plugin in your config/bootstrap.php file:
 
-	`Plugin::load('Bootstrap', ['routes' => false, 'bootstrap' => false]);`
+    `Plugin::load('Bootstrap', ['routes' => false, 'bootstrap' => false]);`
 
 More info in the [github docs](http://cake17.github.io/cakephp-bootstrap)
 
@@ -76,10 +76,10 @@ More info in the [github docs](http://cake17.github.io/cakephp-bootstrap)
 - Jquery v2.1.0 : with CDN google
 - textarea editor based on Twitter Bootstrap's wysihtml5 : wysihtml5-0.3.0.js, bootstrap-wysihtml5.js
 => To do so:
-	- copy textarea.js or textarea_mini.js where you want to use it
-	- Put the same id in textarea.js copied and in the form id that you want
-	- Possible to change the type of highlight of code in textarea/stylesheets with one the css in css/bootstrap/highlight/
-	- insert in the view echo $this->Html->script('NomPlugin.bootstrap/textarea.js');
+    - copy textarea.js or textarea_mini.js where you want to use it
+    - Put the same id in textarea.js copied and in the form id that you want
+    - Possible to change the type of highlight of code in textarea/stylesheets with one the css in css/bootstrap/highlight/
+    - insert in the view echo $this->Html->script('NomPlugin.bootstrap/textarea.js');
 - Multiselect for boostrap : bootstrap-multiselect.js and bootstrap-multiselect.default.js
 
 **CSS**
@@ -96,17 +96,17 @@ More info in the [github docs](http://cake17.github.io/cakephp-bootstrap)
 - BootstrapHtmlHelper
   Available functions:
 
-		- icon($class, array $options = [])
-		- label($message, array $options = [])
-		- alert($message, array $options = [])
-		- badge($message, array $options = [])
-		- button($message, array $options = [])
-		- link($title, $url = null, array $options = [])
-		- links($type, $options = [])
-		- linksActives($actif, $id, $options = [])
-		- linksPrincipal($principal, $id, $options = [])
-		- collapse($formName = "accordeon", $actions = [])
-		- pagination()
+        - icon($class, array $options = [])
+        - label($message, array $options = [])
+        - alert($message, array $options = [])
+        - badge($message, array $options = [])
+        - button($message, array $options = [])
+        - link($title, $url = null, array $options = [])
+        - links($type, $options = [])
+        - linksActives($actif, $id, $options = [])
+        - linksPrincipal($principal, $id, $options = [])
+        - collapse($formName = "accordeon", $actions = [])
+        - pagination()
 
 - BootstrapFormHelper
 

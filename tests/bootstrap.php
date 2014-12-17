@@ -15,20 +15,20 @@ define('CONFIG', dirname(__FILE__) . DS . 'config' . DS);
 require ROOT . '/vendor/cakephp/cakephp/src/basics.php';
 require ROOT . '/vendor/autoload.php';
 Cake\Core\Configure::write('App', [
-	'namespace' => 'App',
-	'encoding' => 'UTF-8'
+    'namespace' => 'App',
+    'encoding' => 'UTF-8'
 ]);
 Cake\Core\Configure::write('debug', true);
 mb_internal_encoding('UTF-8');
 
 // Cake\Datasource\ConnectionManager::config('test', [
-// 	'className' => 'Cake\Database\Connection',
-// 	'driver' => getenv('db_class'),
-// 	'dsn' => getenv('db_dsn'),
-// 	'database' => getenv('db_database'),
-// 	'login' => getenv('db_login'),
-// 	'password' => getenv('db_password'),
-// 	'timezone' => 'UTC',
-// 	'quoteIdentifiers' => true,
-// 	'cacheMetadata' => true,
+//     'className' => 'Cake\Database\Connection',
+//     'driver' => getenv('db_class'),
+//     'dsn' => getenv('db_dsn'),
+//     'database' => getenv('db_database'),
+//     'login' => getenv('db_login'),
+//     'password' => getenv('db_password'),
+//     'timezone' => 'UTC',
+//     'quoteIdentifiers' => true,
+//     'cacheMetadata' => true,
 // ]);
