@@ -116,6 +116,14 @@ More info in the [github docs](http://cake17.github.io/cakephp-bootstrap)
 - index
 - view
 
+## Support & Contribution ##
+
+For support and feature request, please contact me through Github issues
+
+Please feel free to contribute to the plugin with new issues, requests, unit tests and code fixes or new features. If you want to contribute some code,
+create a feature branch, and send us your pull request.
+Unit tests for new features and issues detected are mandatory to keep quality high.
+
 ## License ##
 
 Copyright (c) [2014] [cake17]
