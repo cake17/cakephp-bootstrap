@@ -18,12 +18,12 @@ $config = [
     'errorItem' => '<li>{{text}}</li>',
     'file' => '<input type="file" name="{{name}}"{{attrs}}>',
     'fieldset' => '<fieldset>{{content}}</fieldset>',
-    'formstart' => '<form{{attrs}} class="form-inline" role="form">',
-    'formend' => '</form>',
+    'formStart' => '<form{{attrs}} class="form-inline" role="form">',
+    'formEnd' => '</form>',
     'formGroup' => '{{label}}{{input}}',
-    'hiddenblock' => '<div style="display:none;">{{content}}</div>',
+    'hiddenBlock' => '<div style="display:none;">{{content}}</div>',
     'input' => '<input class="form-control" type="{{type}}" name="{{name}}"{{attrs}}>',
-    'inputsubmit' => '<input type="{{type}}"{{attrs}}>',
+    'inputSubmit' => '<input type="{{type}}"{{attrs}}>',
     'inputContainer' => '<div class="form-group input {{type}}{{required}}">{{content}}</div>',
     'inputContainerError' => '<div class="form-group input {{type}}{{required}} has-error has-feedback">{{content}}{{error}}<span class="glyphicon glyphicon-remove form-control-feedback"></div>',
     'label' => '<label{{attrs}} class="sr-only">{{text}}</label>',
@@ -36,5 +36,5 @@ $config = [
     'radio' => '<input type="radio" name="{{name}}" value="{{value}}"{{attrs}}>',
     'radioWrapper' => '{{label}}',
     'textarea' => '<textarea class="form-control" name="{{name}}"{{attrs}}>{{value}}</textarea>',
-    'submitContainer' => '<div class="submit">{{content}}</div>'
+    'submitContainer' => '<div class="submit">{{content}}</div>',
 ];
