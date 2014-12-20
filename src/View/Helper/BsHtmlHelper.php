@@ -435,11 +435,11 @@ class BsHtmlHelper extends HtmlHelper
 
         if (in_array($options['type'], $this->_types['alert'])):
             $classAlert = $options['type'];
-            if (isset($options['dismissable']) && $options['dismissable'] === true) {
-                $classAlert .= ' alert-dismissable';
-                $message .= $this->config('templates.button_alert');
-            }
-            return $this->formatTemplate('alert', [
+        if (isset($options['dismissable']) && $options['dismissable'] === true) {
+            $classAlert .= ' alert-dismissable';
+            $message .= $this->config('templates.button_alert');
+        }
+        return $this->formatTemplate('alert', [
                 'type' => $classAlert,
                 'content' => $message
             ]);
@@ -465,7 +465,7 @@ class BsHtmlHelper extends HtmlHelper
             if (isset($options['class'])) {
                 $options['class'] = 'img-responsive ' . $options['class'];
             }
-            $options['class'] = 'img-responsive';
+        $options['class'] = 'img-responsive';
         endif;
         return parent::image($path, $options);
     }
@@ -821,41 +821,41 @@ class BsHtmlHelper extends HtmlHelper
         $html = '<div class="panel-group" id="' . $formName . '">';
         foreach ($actions as $name => $links):
             $html .= '<div class="panel' . $type . '">';
-            $html .= '<div class="panel-heading">';
-            $html .= '<h1 class="panel-title">';
-            $html .= '<a class="accordion-toggle" data-toggle="collapse" data-parent="#' . $formName . '" href="#' . $name . '">';
-            $html .= $links['titleMenu'];
-            $html .= "</a>";
-            $html .= "</h1>";
-            $html .= "</div>";
-            $html .= '<div id="' . $name . '" class="panel-collapse collapse';
-            if (isset($links['open']) && $links['open'] === 'in') {
-                $html .= " " . $links['open'];
-            }
-            $html .= '">';
-            $html .= '<div class="panel-body">';
-            if (isset($links['links']) && !empty($links['links'])) {
-                $html .= '<ul class="nav nav-pills nav-stacked">';
-                foreach ($links as $title => $values):
+        $html .= '<div class="panel-heading">';
+        $html .= '<h1 class="panel-title">';
+        $html .= '<a class="accordion-toggle" data-toggle="collapse" data-parent="#' . $formName . '" href="#' . $name . '">';
+        $html .= $links['titleMenu'];
+        $html .= "</a>";
+        $html .= "</h1>";
+        $html .= "</div>";
+        $html .= '<div id="' . $name . '" class="panel-collapse collapse';
+        if (isset($links['open']) && $links['open'] === 'in') {
+            $html .= " " . $links['open'];
+        }
+        $html .= '">';
+        $html .= '<div class="panel-body">';
+        if (isset($links['links']) && !empty($links['links'])) {
+            $html .= '<ul class="nav nav-pills nav-stacked">';
+            foreach ($links as $title => $values):
                     if ($title === 'links'):
                         foreach ($values as $link):
                             // On cherche si dans le lien il y a la valeur class=activation
                             $liActive = "";
-                            if (strpos($link, 'class="activation"') !== false) {
-                                $liActive = ' class="active"';
-                            }
-                            $html .= "<li" . $liActive . ">" . $link . "</li>";
-                        endforeach;
-                    endif;
-                endforeach;
-                $html .= "</ul>";
+            if (strpos($link, 'class="activation"') !== false) {
+                $liActive = ' class="active"';
             }
-            if (isset($links['content']) && !empty($links['content'])) {
-                $html .= $links['content'];
-            }
-            $html .= "</div>";
-            $html .= "</div>";
-            $html .= "</div>";
+            $html .= "<li" . $liActive . ">" . $link . "</li>";
+            endforeach;
+            endif;
+            endforeach;
+            $html .= "</ul>";
+        }
+        if (isset($links['content']) && !empty($links['content'])) {
+            $html .= $links['content'];
+        }
+        $html .= "</div>";
+        $html .= "</div>";
+        $html .= "</div>";
         endforeach;
         $html .= "</div>";
         return $html;

@@ -85,11 +85,11 @@ class BsMultiselectHelper extends Helper
         endif;
         if (isset($options['css']) && !empty($options['css'])):
             $this->config('assets.css', $options['css']);
-            unset($options['css']);
+        unset($options['css']);
         endif;
         if (isset($options['js']) && !empty($options['js'])):
             $this->config('assets.js', $options['js']);
-            unset($options['js']);
+        unset($options['js']);
         endif;
         $this->_loadScripts();
         return $this->_View->Form->input($fieldName, $options);
@@ -107,23 +107,23 @@ class BsMultiselectHelper extends Helper
         if ($this->config('assets.print_default_assets')):
             foreach ($this->config('default_assets.js') as $jsFile):
                 echo $this->_View->Html->script($jsFile, ['block' => true]);
-            endforeach;
-            foreach ($this->config('default_assets.css') as $cssFile):
+        endforeach;
+        foreach ($this->config('default_assets.css') as $cssFile):
                 echo $this->_View->Html->css($cssFile, ['block' => 'css']);
-            endforeach;
+        endforeach;
         endif;
         //print assets if not empty
         $js = $this->config('assets.js');
         if (!empty($js)):
             foreach ($this->config('assets.js') as $jsFile):
                 echo $this->_View->Html->script($jsFile, ['block' => true]);
-            endforeach;
+        endforeach;
         endif;
         $css = $this->config('assets.css');
         if (!empty($css)):
             foreach ($this->config('assets.css') as $cssFile):
                 echo $this->_View->Html->css($cssFile, ['block' => 'css']);
-            endforeach;
+        endforeach;
         endif;
     }
 
