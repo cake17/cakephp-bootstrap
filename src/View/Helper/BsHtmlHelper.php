@@ -363,13 +363,13 @@ class BsHtmlHelper extends HtmlHelper
         $options = Hash::merge($this->config('footer'), $options);
         $html = '';
 
-        if (isset($options['type']) && !empty($options['type'])):
+        if (isset($options['type']) && !empty($options['type'])) {
             $html .= $options['type'];
-        endif;
-        if (isset($options['description']) && !empty($options['description'])):
+        }
+        if (isset($options['description']) && !empty($options['description'])) {
             $html .= ' - ' . $options['description'] . ' ';
-        endif;
-        if (isset($options['webcreateur']) && !empty($options['webcreateur']) && isset($options['url_webcreateur']) && !empty($options['url_webcreateur'])):
+        }
+        if (isset($options['webcreateur']) && !empty($options['webcreateur']) && isset($options['url_webcreateur']) && !empty($options['url_webcreateur'])) {
             $html .= $this->link(
                 $this->image('logos/cake-websites.png',
                 [
@@ -381,7 +381,7 @@ class BsHtmlHelper extends HtmlHelper
                     'target' => '_blank'
                 ]
             );
-        endif;
+        }
         return $this->navbar($html, $options);
     }
 
