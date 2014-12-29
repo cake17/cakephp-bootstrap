@@ -14,9 +14,8 @@ This plugin adds functionnalities to use Twitter Bootstrap in CakePHP projects.
 
 ## Requirements ##
 
-- PHP 5.4.16
+- PHP >= 5.4.16
 - [CakePHP 3.x](http://book.cakephp.org/3.0/en/index.html)
-- [Bootstrap Twitter 3.2.x](http://getbootstrap.com)
 
 ## Installation ##
 

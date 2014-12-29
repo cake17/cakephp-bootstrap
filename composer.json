@@ -20,7 +20,8 @@
     ],
     "support": {
         "issues": "https://github.com/cake17/cakephp-bootstrap/issues",
-        "source": "https://github.com/cake17/cakephp-bootstrap"
+        "source": "https://github.com/cake17/cakephp-bootstrap",
+        "wiki": "http://getbootstrap.com"
     },
     "require": {
         "php": ">=5.4.16",
@@ -39,8 +40,8 @@
     },
     "suggest": {
         "twbs/bootstrap": "Bootstrap framework",
-        "phpunit/phpunit": "*",
-        "cakephp/cakephp-codesniffer": "dev-master"
+        "phpunit/phpunit": "To launch Unit Tests",
+        "cakephp/cakephp-codesniffer": "To check your code with CakePHP Standards"
     },
     "extra": {
         "installer-name": "Bootstrap"
