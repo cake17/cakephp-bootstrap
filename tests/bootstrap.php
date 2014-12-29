@@ -12,6 +12,7 @@
 require dirname(__DIR__) . '/vendor/cakephp/cakephp/src/basics.php';
 require dirname(__DIR__) . '/vendor/autoload.php';
 
+use Cake\Cache\Cache;
 define('APP', sys_get_temp_dir());
 define('ROOT', dirname(__DIR__));
 Cake\Core\Configure::write('App', [
