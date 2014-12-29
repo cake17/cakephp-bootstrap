@@ -239,9 +239,11 @@
 
             // Manually add button width if set.
             if (this.options.buttonWidth && this.options.buttonWidth !== 'auto') {
-                this.$button.css({
-                    'width': this.options.buttonWidth
-                });
+                this.$button.css(
+                    {
+                        'width': this.options.buttonWidth
+                    }
+                );
             }
 
             // Keep the tab index from the select.
@@ -267,11 +269,13 @@
             // Set max height of dropdown menu to activate auto scrollbar.
             if (this.options.maxHeight) {
                 // TODO: Add a class for this option to move the css declarations.
-                this.$ul.css({
-                    'max-height': this.options.maxHeight + 'px',
-                    'overflow-y': 'auto',
-                    'overflow-x': 'hidden'
-                });
+                this.$ul.css(
+                    {
+                        'max-height': this.options.maxHeight + 'px',
+                        'overflow-y': 'auto',
+                        'overflow-x': 'hidden'
+                    }
+                );
             }
 
             this.$container.append(this.$ul);
@@ -285,13 +289,11 @@
             this.$select.children().each($.proxy(function (index, element) {
 
                 // Support optgroups and options without a group simultaneously.
-                var tag = $(element).prop('tagName')
-                    .toLowerCase();
+                var tag = $(element).prop('tagName').toLowerCase();
 
                 if (tag === 'optgroup') {
                     this.createOptgroup(element);
                 } else if (tag === 'option') {
-
                     if ($(element).data('role') === 'divider') {
                         this.createDivider();
                     } else {
@@ -424,9 +426,7 @@
                 if ($('input[type="text"]', this.$container).is(':focus')) {
                     return;
                 }
-                if ((event.keyCode === 9 || event.keyCode === 27)
-                    && this.$container.hasClass('open')) {
-
+                if ((event.keyCode === 9 || event.keyCode === 27) && this.$container.hasClass('open')) {
                     // Close on tab or escape.
                     this.$button.click();
                 } else {
@@ -548,14 +548,11 @@
         buildSelectAll: function () {
             var alreadyHasSelectAll = this.hasSelectAll();
 
-            if (!alreadyHasSelectAll && this.options.includeSelectAllOption && this.options.multiple
-                && $('option[data-role!="divider"]', this.$select).length > this.options.includeSelectAllIfMoreThan) {
-
+            if (!alreadyHasSelectAll && this.options.includeSelectAllOption && this.options.multiple && $('option[data-role!="divider"]', this.$select).length > this.options.includeSelectAllIfMoreThan) {
                 // Check whether to add a divider after the select all.
                 if (this.options.includeSelectAllDivider) {
                     this.$select.prepend('<option value="" disabled="disabled" data-role="divider">');
                 }
-
                 this.$select.prepend('<option value="' + this.options.selectAllValue + '">' + this.options.selectAllText + '</option>');
             }
         },
@@ -569,7 +566,6 @@
                 var enableFilterLength = Math.max(this.options.enableFiltering, this.options.enableCaseInsensitiveFiltering);
 
                 if (this.$select.find('option').length >= enableFilterLength) {
-
                     this.$filter = $(this.options.templates.filter);
                     $('input', this.$filter).attr('placeholder', this.options.filterPlaceholder);
                     this.$ul.prepend(this.$filter);
@@ -689,8 +685,7 @@
                 var $checkbox = this.getInputByValue(value);
 
                 if (this.options.selectedClass) {
-                    $checkbox.parents('li')
-                        .addClass(this.options.selectedClass);
+                    $checkbox.parents('li').addClass(this.options.selectedClass);
                 }
 
                 $checkbox.prop('checked', true);
@@ -708,7 +703,6 @@
             var selected = this.getSelected();
 
             if (selected.length) {
-
                 var arry = [];
 
                 for (var i = 0; i < selected.length; i = i + 1) {
@@ -730,7 +724,6 @@
             }
 
             for (var i = 0; i < deselectValues.length; i++) {
-
                 var value = deselectValues[i];
 
                 var $option = this.getOptionByValue(value);
@@ -786,8 +779,7 @@
          */
         enable: function () {
             this.$select.prop('disabled', false);
-            this.$button.prop('disabled', false)
-                .removeClass('disabled');
+            this.$button.prop('disabled', false).removeClass('disabled');
         },
         /**
          * Disable the multiselect.

@@ -348,8 +348,8 @@ class BsHtmlHelper extends HtmlHelper
     /**
      * Print a footer
      *
-     * @param string $title : title of the site
-     * @param array $options
+     * @param string $title : Title of the site.
+     * @param array $options Options.
      * - Description
      * - webcreateur
      * - url_webcreateur
@@ -371,8 +371,7 @@ class BsHtmlHelper extends HtmlHelper
         }
         if (isset($options['webcreateur']) && !empty($options['webcreateur']) && isset($options['url_webcreateur']) && !empty($options['url_webcreateur'])) {
             $html .= $this->link(
-                $this->image('logos/cake-websites.png',
-                [
+                $this->image('logos/cake-websites.png', [
                     "alt" => __d('bootstrap', "Site crée par {0}", $options['webcreateur'])
                 ]),
                 $options['url_webcreateur'],
@@ -388,8 +387,8 @@ class BsHtmlHelper extends HtmlHelper
     /**
      * Print a navbar
      *
-     * @param string $content : html content for nabar
-     * @param array $options
+     * @param string $content : html content for nabar.
+     * @param array $options Options.
      * => type
      *    either 'fixed-top', 'fixed-bottom' or 'static-top'
      *    default to fixed-top
@@ -418,10 +417,10 @@ class BsHtmlHelper extends HtmlHelper
      ************************************/
 
     /**
-     * Print alert elements
+     * Print alert elements.
      *
-     * @param string $message : message to output
-     * @param array $options
+     * @param string $message : Message to output.
+     * @param array $options Options.
      * - type
      *    => either 'success', 'info', 'warning', 'danger' (see $_types)
      *    => default to success
@@ -433,13 +432,13 @@ class BsHtmlHelper extends HtmlHelper
     {
         $options = Hash::merge($this->config('alert'), $options);
 
-        if (in_array($options['type'], $this->_types['alert'])):
+        if (in_array($options['type'], $this->_types['alert'])) :
             $classAlert = $options['type'];
-        if (isset($options['dismissable']) && $options['dismissable'] === true) {
-            $classAlert .= ' alert-dismissable';
-            $message .= $this->config('templates.button_alert');
-        }
-        return $this->formatTemplate('alert', [
+            if (isset($options['dismissable']) && $options['dismissable'] === true) {
+                $classAlert .= ' alert-dismissable';
+                $message .= $this->config('templates.button_alert');
+            }
+            return $this->formatTemplate('alert', [
                 'type' => $classAlert,
                 'content' => $message
             ]);
@@ -461,11 +460,11 @@ class BsHtmlHelper extends HtmlHelper
     {
         $options = Hash::merge($this->config('image'), $options);
 
-        if ($options['responsive']):
+        if ($options['responsive']) :
             if (isset($options['class'])) {
                 $options['class'] = 'img-responsive ' . $options['class'];
             }
-        $options['class'] = 'img-responsive';
+            $options['class'] = 'img-responsive';
         endif;
         return parent::image($path, $options);
     }
@@ -495,8 +494,8 @@ class BsHtmlHelper extends HtmlHelper
     /**
      * Print a button
      *
-     * @param string $message : message to output
-     * @param array $options
+     * @param string $message Message to output.
+     * @param array $options Options.
      * - type
      *    => either 'default', 'primary', 'success', 'info', 'warning' or 'danger' (see $_types)
      *    => default to default
@@ -510,10 +509,10 @@ class BsHtmlHelper extends HtmlHelper
 
         if (in_array($options['type'], $this->_types['button'])) {
             $attrs = $options['type'];
-            if (isset($options['class']) && !empty($options['class'])):
+            if (isset($options['class']) && !empty($options['class'])) :
                 $attrs .= " " . $options['class'];
             endif;
-            if (isset($options['id']) && !empty($options['id'])):
+            if (isset($options['id']) && !empty($options['id'])) :
                 $attrs .= '" id="' . $options['id'] . '"';
             endif;
             return $this->formatTemplate('button', [
@@ -527,8 +526,8 @@ class BsHtmlHelper extends HtmlHelper
     /**
      * Print a label
      *
-     * @param string $message : message to output
-     * @param array $options
+     * @param string $message : Message to output.
+     * @param array $options Options.
      * => either default, primary, success, info, warning, danger
      * => default to 'default'
      * @return string
@@ -539,7 +538,7 @@ class BsHtmlHelper extends HtmlHelper
 
         if (in_array($options['type'], $this->_types['label'])) {
             $classLabel = $options['type'];
-            if (isset($options['class']) && !empty($options['class'])):
+            if (isset($options['class']) && !empty($options['class'])) :
                 $classLabel .= " " . $options['class'];
             endif;
             return $this->formatTemplate('label', [
@@ -553,7 +552,7 @@ class BsHtmlHelper extends HtmlHelper
     /**
      * Print a badge
      *
-     * @param string $message : message to output
+     * @param string $message Message to output.
      * @return string
      */
     public function badge($message)
@@ -614,7 +613,7 @@ class BsHtmlHelper extends HtmlHelper
             unset($options['icon']);
         }
         $lang = $this->_View->request->query('lang');
-        if (!isset($url['lang']) && is_array($url) && isset($lang) && !empty($lang)):
+        if (!isset($url['lang']) && is_array($url) && isset($lang) && !empty($lang)) :
             $url['lang'] = $lang;
         endif;
         // we add class = activation to a link that matches the current page
@@ -644,7 +643,7 @@ class BsHtmlHelper extends HtmlHelper
      *        'delete' => ['id' => '', 'title' => '', 'alt' => '')
      *    ));
      *
-     * @param string $type
+     * @param string $type Type.
      * - default: print view, edit and delete links
      * - tree: print view, edit, up, down and delete links
      * - mix: custom values. example : ed => output links edit and delete
@@ -685,7 +684,7 @@ class BsHtmlHelper extends HtmlHelper
         switch ($type) {
             case 'default':
                 if (isset($options['actions']) && is_array($options['actions'])) {
-                    foreach ($options['actions'] as $action):
+                    foreach ($options['actions'] as $action) :
                         $html .= ${'link' . ucfirst($action)};
                     endforeach;
                 } else {
@@ -808,8 +807,8 @@ class BsHtmlHelper extends HtmlHelper
     /**
      * To print a collapse box
      *
-     * @param string $formName : default accordeon
-     * @param array $actions : all links to add to the collapse
+     * @param string $formName : default accordeon.
+     * @param array $actions : all links to add to the collapse.
      * @return string : html of collapse box
      */
     public function collapse($formName = "accordeon", array $actions = [], array $options = [])
@@ -819,43 +818,43 @@ class BsHtmlHelper extends HtmlHelper
             $type = '';
         }
         $html = '<div class="panel-group" id="' . $formName . '">';
-        foreach ($actions as $name => $links):
+        foreach ($actions as $name => $links) :
             $html .= '<div class="panel' . $type . '">';
-        $html .= '<div class="panel-heading">';
-        $html .= '<h1 class="panel-title">';
-        $html .= '<a class="accordion-toggle" data-toggle="collapse" data-parent="#' . $formName . '" href="#' . $name . '">';
-        $html .= $links['titleMenu'];
-        $html .= "</a>";
-        $html .= "</h1>";
-        $html .= "</div>";
-        $html .= '<div id="' . $name . '" class="panel-collapse collapse';
-        if (isset($links['open']) && $links['open'] === 'in') {
-            $html .= " " . $links['open'];
-        }
-        $html .= '">';
-        $html .= '<div class="panel-body">';
-        if (isset($links['links']) && !empty($links['links'])) {
-            $html .= '<ul class="nav nav-pills nav-stacked">';
-            foreach ($links as $title => $values):
-                    if ($title === 'links'):
-                        foreach ($values as $link):
+            $html .= '<div class="panel-heading">';
+            $html .= '<h1 class="panel-title">';
+            $html .= '<a class="accordion-toggle" data-toggle="collapse" data-parent="#' . $formName . '" href="#' . $name . '">';
+            $html .= $links['titleMenu'];
+            $html .= "</a>";
+            $html .= "</h1>";
+            $html .= "</div>";
+            $html .= '<div id="' . $name . '" class="panel-collapse collapse';
+            if (isset($links['open']) && $links['open'] === 'in') {
+                $html .= " " . $links['open'];
+            }
+            $html .= '">';
+            $html .= '<div class="panel-body">';
+            if (isset($links['links']) && !empty($links['links'])) {
+                $html .= '<ul class="nav nav-pills nav-stacked">';
+                foreach ($links as $title => $values) :
+                    if ($title === 'links') :
+                        foreach ($values as $link) :
                             // On cherche si dans le lien il y a la valeur class=activation
                             $liActive = "";
-            if (strpos($link, 'class="activation"') !== false) {
-                $liActive = ' class="active"';
+                            if (strpos($link, 'class="activation"') !== false) {
+                                $liActive = ' class="active"';
+                            }
+                            $html .= "<li" . $liActive . ">" . $link . "</li>";
+                        endforeach;
+                    endif;
+                endforeach;
+                $html .= "</ul>";
             }
-            $html .= "<li" . $liActive . ">" . $link . "</li>";
-            endforeach;
-            endif;
-            endforeach;
-            $html .= "</ul>";
-        }
-        if (isset($links['content']) && !empty($links['content'])) {
-            $html .= $links['content'];
-        }
-        $html .= "</div>";
-        $html .= "</div>";
-        $html .= "</div>";
+            if (isset($links['content']) && !empty($links['content'])) {
+                $html .= $links['content'];
+            }
+            $html .= "</div>";
+            $html .= "</div>";
+            $html .= "</div>";
         endforeach;
         $html .= "</div>";
         return $html;
@@ -873,7 +872,7 @@ class BsHtmlHelper extends HtmlHelper
         $prefix = null;
         $plugin = null;
 
-        if (isset($this->_View->request->params['controller']) && !empty($this->_View->request->params['controller']) && (!isset($options['controller']) || empty($options['controller']))):
+        if (isset($this->_View->request->params['controller']) && !empty($this->_View->request->params['controller']) && (!isset($options['controller']) || empty($options['controller']))) :
             $options['controller'] = $this->_View->request->params['controller'];
         endif;
 

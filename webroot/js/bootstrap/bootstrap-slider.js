@@ -35,7 +35,8 @@
             updateSlider = true;
             this.picker = parent;
         } else {
-            this.picker = $('<div class="slider">' +
+            this.picker = $(
+                '<div class="slider">' +
                 '<div class="slider-track">' +
                 '<div class="slider-selection"></div>' +
                 '<div class="slider-handle min-slider-handle"></div>' +
@@ -44,9 +45,10 @@
                 '<div id="tooltip" class="tooltip"><div class="tooltip-arrow"></div><div class="tooltip-inner"></div></div>' +
                 '<div id="tooltip_min" class="tooltip"><div class="tooltip-arrow"></div><div class="tooltip-inner"></div></div>' +
                 '<div id="tooltip_max" class="tooltip"><div class="tooltip-arrow"></div><div class="tooltip-inner"></div></div>' +
-                '</div>')
-                .insertBefore(this.element)
-                .append(this.element);
+                '</div>'
+            )
+            .insertBefore(this.element)
+            .append(this.element);
         }
 
         this.id = this.element.data('slider-id') || options.id;
@@ -105,24 +107,28 @@
         }
 
         var self = this;
-        $.each(['min',
+        $.each(
+            [
+            'min',
             'max',
             'step',
             'precision',
             'value',
             'reversed',
             'handle'
-        ], function (i, attr) {
-            if (typeof el.data('slider-' + attr) !== 'undefined') {
-                self[attr] = el.data('slider-' + attr);
-            } else if (typeof options[attr] !== 'undefined') {
-                self[attr] = options[attr];
-            } else if (typeof el.prop(attr) !== 'undefined') {
-                self[attr] = el.prop(attr);
-            } else {
-                self[attr] = 0; // to prevent empty string issues in calculations in IE
+            ],
+            function (i, attr) {
+                if (typeof el.data('slider-' + attr) !== 'undefined') {
+                    self[attr] = el.data('slider-' + attr);
+                } else if (typeof options[attr] !== 'undefined') {
+                    self[attr] = options[attr];
+                } else if (typeof el.prop(attr) !== 'undefined') {
+                    self[attr] = el.prop(attr);
+                } else {
+                    self[attr] = 0; // to prevent empty string issues in calculations in IE
+                }
             }
-        });
+        );
 
         if (this.value instanceof Array) {
             if (updateSlider && !this.range) {
@@ -170,23 +176,31 @@
 
         this.setValue(this.value);
 
-        this.handle1.on({
-            keydown: $.proxy(this.keydown, this, 0)
-        });
-        this.handle2.on({
-            keydown: $.proxy(this.keydown, this, 1)
-        });
+        this.handle1.on(
+            {
+                keydown: $.proxy(this.keydown, this, 0)
+            }
+        );
+        this.handle2.on(
+            {
+                keydown: $.proxy(this.keydown, this, 1)
+            }
+        );
 
         if (this.touchCapable) {
             // Touch: Bind touch events:
-            this.picker.on({
-                touchstart: $.proxy(this.mousedown, this)
-            });
+            this.picker.on(
+                {
+                    touchstart: $.proxy(this.mousedown, this)
+                }
+            );
         }
         // Bind mouse events:
-        this.picker.on({
-            mousedown: $.proxy(this.mousedown, this)
-        });
+        this.picker.on(
+            {
+                mousedown: $.proxy(this.mousedown, this)
+            }
+        );
 
         if (tooltip === 'hide') {
             this.tooltip.addClass('hide');
@@ -196,18 +210,24 @@
             this.showTooltip();
             this.alwaysShowTooltip = true;
         } else {
-            this.picker.on({
-                mouseenter: $.proxy(this.showTooltip, this),
-                mouseleave: $.proxy(this.hideTooltip, this)
-            });
-            this.handle1.on({
-                focus: $.proxy(this.showTooltip, this),
-                blur: $.proxy(this.hideTooltip, this)
-            });
-            this.handle2.on({
-                focus: $.proxy(this.showTooltip, this),
-                blur: $.proxy(this.hideTooltip, this)
-            });
+            this.picker.on(
+                {
+                    mouseenter: $.proxy(this.showTooltip, this),
+                    mouseleave: $.proxy(this.hideTooltip, this)
+                }
+            );
+            this.handle1.on(
+                {
+                    focus: $.proxy(this.showTooltip, this),
+                    blur: $.proxy(this.hideTooltip, this)
+                }
+            );
+            this.handle2.on(
+                {
+                    focus: $.proxy(this.showTooltip, this),
+                    blur: $.proxy(this.hideTooltip, this)
+                }
+            );
         }
 
         this.enabled = options.enabled &&
@@ -276,7 +296,7 @@
             if (this.range) {
                 this.tooltipInner.text(
                     this.formater(this.value[0]) + this.tooltip_separator + this.formater(this.value[1])
-                    );
+                );
                 this.tooltip[0].style[this.stylePos] = (positionPercentages[1] + positionPercentages[0]) / 2 + '%';
                 if (this.orientation === 'vertical') {
                     this.tooltip.css('margin-top', -this.tooltip.outerHeight() / 2 + 'px');
@@ -291,10 +311,10 @@
                 }
                 this.tooltipInner_min.text(
                     this.formater(this.value[0])
-                    );
+                );
                 this.tooltipInner_max.text(
                     this.formater(this.value[1])
-                    );
+                );
 
                 this.tooltip_min[0].style[this.stylePos] = positionPercentages[0] + '%';
                 if (this.orientation === 'vertical') {
@@ -311,7 +331,7 @@
             } else {
                 this.tooltipInner.text(
                     this.formater(this.value[0])
-                    );
+                );
                 this.tooltip[0].style[this.stylePos] = positionPercentages[0] + '%';
                 if (this.orientation === 'vertical') {
                     this.tooltip.css('margin-top', -this.tooltip.outerHeight() / 2 + 'px');
@@ -349,23 +369,30 @@
 
             if (this.touchCapable) {
                 // Touch: Bind touch events:
-                $(document).on({
-                    touchmove: $.proxy(this.mousemove, this),
-                    touchend: $.proxy(this.mouseup, this)
-                });
+                $(document).on(
+                    {
+                        touchmove: $.proxy(this.mousemove, this),
+                        touchend: $.proxy(this.mouseup, this)
+                    }
+                );
             }
             // Bind mouse events:
-            $(document).on({
-                mousemove: $.proxy(this.mousemove, this),
-                mouseup: $.proxy(this.mouseup, this)
-            });
+            $(document).on(
+                {
+                    mousemove: $.proxy(this.mousemove, this),
+                    mouseup: $.proxy(this.mouseup, this)
+                }
+            );
 
             this.inDrag = true;
             var val = this.calculateValue();
-            this.element.trigger({
-                type: 'slideStart',
-                value: val
-            })
+            this.element
+                .trigger(
+                    {
+                        type: 'slideStart',
+                        value: val
+                    }
+                )
                 .data('value', val)
                 .prop('value', val);
             this.setValue(val);
@@ -422,20 +449,25 @@
 
             var val = this.calculateValue();
 
-            this.element.trigger({
-                type: 'slideStart',
-                value: val
-            })
+            this.element
+                .trigger(
+                    {
+                        type: 'slideStart',
+                        value: val
+                    }
+                )
                 .data('value', val)
                 .prop('value', val);
 
             this.setValue(val, true);
 
             this.element
-                .trigger({
-                    type: 'slideStop',
-                    value: val
-                })
+                .trigger(
+                    {
+                        type: 'slideStop',
+                        value: val
+                    }
+                )
                 .data('value', val)
                 .prop('value', val);
             return false;
@@ -476,16 +508,21 @@
             }
             if (this.touchCapable) {
                 // Touch: Unbind touch event handlers:
-                $(document).off({
-                    touchmove: this.mousemove,
-                    touchend: this.mouseup
-                });
+                $(document)
+                    .off(
+                        {
+                            touchmove: this.mousemove,
+                            touchend: this.mouseup
+                        }
+                    );
             }
             // Unbind mouse event handlers:
-            $(document).off({
-                mousemove: this.mousemove,
-                mouseup: this.mouseup
-            });
+            $(document).off(
+                {
+                    mousemove: this.mousemove,
+                    mouseup: this.mouseup
+                }
+            );
 
             this.inDrag = false;
             if (this.over === false) {
@@ -496,10 +533,12 @@
             this.element
                 .data('value', val)
                 .prop('value', val)
-                .trigger({
-                    type: 'slideStop',
-                    value: val
-                });
+                .trigger(
+                    {
+                        type: 'slideStop',
+                        value: val
+                    }
+                );
             return false;
         },
         calculateValue: function () {
@@ -600,10 +639,12 @@
             if (triggerSlideEvent === true) {
                 var slideEventValue = this.range ? this.value : this.value[0];
                 this.element
-                    .trigger({
-                        'type': 'slide',
-                        'value': slideEventValue
-                    })
+                    .trigger(
+                        {
+                            'type': 'slide',
+                            'value': slideEventValue
+                        }
+                    )
                     .data('value', slideEventValue)
                     .prop('value', slideEventValue);
             }
