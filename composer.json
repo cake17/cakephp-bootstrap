@@ -24,9 +24,12 @@
         "wiki": "http://getbootstrap.com"
     },
     "require": {
-        "php": ">=5.4.16",
-        "cakephp/cakephp": "3.0.x-dev",
-        "cakephp/plugin-installer": "dev-master"
+        "cakephp/cakephp": "3.0.*-dev",
+        "cakephp/plugin-installer": "*",
+        "cakephp/cakephp-codesniffer": "dev-master"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "4.1.*"
     },
     "autoload": {
         "psr-4": {
@@ -39,9 +42,7 @@
         }
     },
     "suggest": {
-        "twbs/bootstrap": "Bootstrap framework",
-        "phpunit/phpunit": "To launch Unit Tests",
-        "cakephp/cakephp-codesniffer": "To check your code with CakePHP Standards"
+        "twbs/bootstrap": "Bootstrap framework"
     },
     "extra": {
         "installer-name": "Bootstrap"
