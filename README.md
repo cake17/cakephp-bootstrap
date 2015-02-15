@@ -33,31 +33,6 @@ Add the plugin to your project's `composer.json` - something like this:
 
 Because this plugin has the type `cakephp-plugin` set in it's own `composer.json`, composer knows to install it inside your `/plugins` directory, rather than in the usual vendors file. It is recommended that you add `/plugins/Bootstrap` to your .gitignore file. (Why? [read this](http://getcomposer.org/doc/faqs/should-i-commit-the-dependencies-in-my-vendor-directory.md).)
 
-_[Manual]_
-
-- Download this: http://github.com/cake17/cakephp-bootstrap/zipball/master
-- Unzip that download.
-- Copy the resulting folder to `/plugins`
-- Rename the folder you just copied to `Bootstrap`
-
-_[GIT Submodule]_
-
-In your app directory type:
-
-```bash
-git submodule add git://github.com/cake17/cakephp-bootstrap.git plugins/Bootstrap
-git submodule init
-git submodule update
-```
-
-_[GIT Clone]_
-
-In your plugin directory type
-
-```bash
-git clone git://github.com/cake17/cakephp-bootstrap.git Bootstrap
-```
-
 ## Usage of plugin ##
 
 Enable the plugin in your config/bootstrap.php file:
