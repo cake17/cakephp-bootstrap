@@ -71,7 +71,7 @@ class BsHtmlHelper extends HtmlHelper
             'label' => '<span class="label label-{{attrs}}">{{content}}</span>',
             'badge' => '<span class="badge">{{content}}</span>',
             'alert' => '<div class="alert alert-{{type}}" role="alert">{{content}}</div>',
-            'button_alert' => '<button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span</button>',
+            'button_alert' => '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>',
             'button' => '<button type="button" class="btn btn-{{attrs}}">{{content}}</button>',
             'navbar' => '<nav class="navbar navbar-{{navbarClass}} navbar-{{type}}" role="navigation"><div class="{{containerClass}}">{{content}}</div></nav>'
             //'breadcrumb' => '',
