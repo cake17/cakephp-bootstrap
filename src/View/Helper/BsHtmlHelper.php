@@ -185,6 +185,7 @@ class BsHtmlHelper extends HtmlHelper
         'label' => ['default', 'primary', 'success', 'info', 'warning', 'danger'],
         'button' => ['default', 'primary', 'success', 'info', 'warning', 'danger'],
         //'progressBar' => ['basic', 'success', 'info', 'warning', 'danger'],
+        'image' => ['rounded', 'circle', 'thumbnail'],
         'error' => 'Error in BsHtml Helper : '
         //'button_sizes' => ['xs', 'lg', 'sm', ''],
     ];
@@ -463,6 +464,7 @@ class BsHtmlHelper extends HtmlHelper
      * @param string $path Path to the image file, relative to the app/webroot/img/ directory.
      * @param array $options Array of HTML attributes. See above for special options.
      *    => 'responsive' : add a class 'img-responsive' if true, default to false
+     *    => 'type' => rounded, circle, thumbnail
      * @return string End tag header
      */
     public function image($path, array $options = [])
@@ -474,6 +476,9 @@ class BsHtmlHelper extends HtmlHelper
                 $options['class'] = 'img-responsive ' . $options['class'];
             }
             $options['class'] = 'img-responsive';
+        endif;
+        if (isset($options['type']) && in_array($options['type'], $this->_types['image'])) :
+            $options['class'] .= ' img-' . $options['type'];
         endif;
         return parent::image($path, $options);
     }
