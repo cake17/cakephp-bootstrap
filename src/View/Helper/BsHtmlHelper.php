@@ -73,7 +73,8 @@ class BsHtmlHelper extends HtmlHelper
             'alert' => '<div class="alert alert-{{type}}" role="alert">{{content}}</div>',
             'button_alert' => '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>',
             'button' => '<button type="button" class="btn btn-{{attrs}}">{{content}}</button>',
-            'navbar' => '<nav class="navbar navbar-{{navbarClass}} navbar-{{type}}" role="navigation"><div class="{{containerClass}}">{{content}}</div></nav>'
+            'navbar' => '<nav class="navbar navbar-{{navbarClass}} navbar-{{type}}" role="navigation"><div class="{{containerClass}}">{{content}}</div></nav>',
+            //'progressBar' => '<div class="progress"><div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100">{{percentage}}</div></div>'
             //'breadcrumb' => '',
             //'jumbotron' => '<div class="jumbotron"><h1>%s</h1><p>%s</p>%s</div></div>',
             //'page-header' => '<div class="page-header"><h1>%s<small>%s</small></h1></div>',
@@ -145,6 +146,13 @@ class BsHtmlHelper extends HtmlHelper
             'type' => 'success',
             'dismissable' => false
         ],
+        // 'progressBar' => [
+        //     'type' => 'basic',
+        //     'striped' => false,
+        //     'animated' => false,
+        //     'min' => 0,
+        //     'max' => 100,
+        // ],
         'image' => [
             'responsive' => false
         ],
@@ -176,6 +184,7 @@ class BsHtmlHelper extends HtmlHelper
         'alert' => ['success', 'info', 'warning', 'danger'],
         'label' => ['default', 'primary', 'success', 'info', 'warning', 'danger'],
         'button' => ['default', 'primary', 'success', 'info', 'warning', 'danger'],
+        //'progressBar' => ['basic', 'success', 'info', 'warning', 'danger'],
         'error' => 'Error in BsHtml Helper : '
         //'button_sizes' => ['xs', 'lg', 'sm', ''],
     ];
@@ -561,6 +570,40 @@ class BsHtmlHelper extends HtmlHelper
             'content' => $message,
         ]);
     }
+
+    /**
+     * Print a progressBar
+     *
+     * @param string $percentage : Percentage.
+     * @param array $options Options.
+     * - label
+     * - type
+     *
+     * @return string
+     */
+    // public function progressBar($percentage, array $options = [])
+    // {
+    //     $options = Hash::merge($this->config('progressBar'), $options);
+    //     debug($options);
+    //     if (in_array($options['type'], $this->_types['progressBar'])) {
+    //         $classProgressBar = '';
+    //         if (isset($options['type']) && !empty($options['type']) && $options['type'] !== 'basic') :
+    //             $classProgressBar .= " progress-bar-" . $options['type'];
+    //         endif;
+    //         $label = '';
+    //         if (isset($options['label']) && !empty($options['label'])) :
+    //             $label .= $options['label'];
+    //         endif;
+    //         return $this->formatTemplate('progressBar', [
+    //             // 'attrs' => $classProgressBar,
+    //             'percentage' => $percentage,
+    //             // 'label' => $label,
+    //             // 'min' => $options['min'],
+    //             // 'max' => $options['max']
+    //         ]);
+    //     }
+    //     return $this->alert(__d('bootstrap', '{0}progressBar should be one of the following : {1}', $this->_types['error'], implode(', ', $this->_types['progressBar'])), ['type' => 'danger']);
+    // }
 
     /**
      * Print a pagination
