@@ -108,7 +108,7 @@ class BsHtmlHelper extends HtmlHelper
                 ],
                 'bootstrap' => [
                     'url' => 'https://maxcdn.bootstrapcdn.com/bootstrap/%s/js/bootstrap.min.js',
-                    'last' => '3.2.0'
+                    'last' => '3.3.2'
                 ],
                 'foundation' => [
                     'url' => 'https://cdnjs.cloudflare.com/ajax/libs/foundation/%s/js/foundation.min.js',

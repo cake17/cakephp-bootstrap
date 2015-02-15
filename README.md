@@ -45,7 +45,7 @@ More info in the [github docs](http://cake17.github.io/cakephp-bootstrap)
 
 **JS**
 
-- Bootstrap Twitter v3.1.1 : with CDN netdna
+- Bootstrap Twitter v3.3.2 : with CDN netdna
 - Jquery-ui v1.10.4 : with CDN google
 - Jquery v2.1.0 : with CDN google
 - textarea editor based on Twitter Bootstrap's wysihtml5 : wysihtml5-0.3.0.js, bootstrap-wysihtml5.js
@@ -100,7 +100,7 @@ Unit tests for new features and issues detected are mandatory to keep quality hi
 
 ## License ##
 
-Copyright (c) [2014] [cake17]
+Copyright (c) [2014-2015] [cake17]
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
