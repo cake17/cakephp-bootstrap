@@ -90,6 +90,12 @@ More info in the [github docs](http://cake17.github.io/cakephp-bootstrap)
 - index
 - view
 
+## Tests ##
+
+To test the plugin, clone it and run composer install. Then run
+- `./vendor/bin/phpunit`
+- `./vendor/bin/phpcs -n -p --extensions=php --standard=vendor/cakephp/cakephp-codesniffer/CakePHP ./src ./tests --ignore=vendor`
+
 ## Support & Contribution ##
 
 For support and feature request, please contact me through Github issues
