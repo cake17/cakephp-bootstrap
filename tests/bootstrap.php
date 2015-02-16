@@ -10,6 +10,11 @@
  * @license       http://www.opensource.org/licenses/mit-license.php MIT License
  */
 
+// include autoload from Composer
 require dirname(__DIR__) . '/vendor/autoload.php';
 
+// include paths from CakePHP
 require dirname(__DIR__) . '/tests/paths.php';
+
+// disable cache to avoid errors on tests
+\Cake\Cache\Cache::disable();
