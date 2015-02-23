@@ -101,11 +101,11 @@ class BsHtmlHelper extends HtmlHelper
             'js' => [
                 'jquery' => [
                     'url' => 'http://ajax.googleapis.com/ajax/libs/jquery/%s/jquery.min.js',
-                    'last' => '2.1.1'
+                    'last' => '2.1.3'
                 ],
                 'jquery-ui' => [
                     'url' => 'http://ajax.googleapis.com/ajax/libs/jqueryui/%s/jquery-ui.min.js',
-                    'last' => '1.11.1'
+                    'last' => '1.11.3'
                 ],
                 'bootstrap' => [
                     'url' => 'https://maxcdn.bootstrapcdn.com/bootstrap/%s/js/bootstrap.min.js',
@@ -119,11 +119,11 @@ class BsHtmlHelper extends HtmlHelper
             'css' => [
                 'bootstrap' => [
                     'url' => 'https://maxcdn.bootstrapcdn.com/bootstrap/%s/css/bootstrap.min.css',
-                    'last' => '3.2.0'
+                    'last' => '3.3.2'
                 ],
                 'jquery-ui' => [
                     'url' => 'http://ajax.googleapis.com/ajax/libs/jqueryui/%s/themes/smoothness/jquery-ui.css',
-                    'last' => '1.11.1'
+                    'last' => '1.11.3'
                 ],
                 'foundation' => [
                     'url' => 'https://cdnjs.cloudflare.com/ajax/libs/foundation/%s/css/foundation.min.css',
@@ -852,6 +852,14 @@ class BsHtmlHelper extends HtmlHelper
         return $html;
     }
 
+    /**
+     * To print a modal
+     *
+     * @return string $html
+     */
+    public function modal() {
+        return $this->_View->element('Bootstrap.BsHtml/modal');
+    }
     /**
      * To print a collapse box
      *

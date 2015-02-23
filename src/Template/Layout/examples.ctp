@@ -26,7 +26,7 @@
                         <li><?= $this->Html->link(__d('bootstrap', "Nos Offres"), ['controller' => 'Pages', 'action' => 'offres']); ?>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
-                        <li><?= $this->Html->link(__d('bootstrap', 'Connexion'), ['plugin' => 'CakeWSUser', 'prefix' => false, 'controller' => 'Users', 'action' => 'login']); ?></li>
+                        <li><?= $this->Html->link(__d('bootstrap', 'Connexion'), ['plugin' => 'Users', 'prefix' => false, 'controller' => 'Users', 'action' => 'login']); ?></li>
                     </ul>
                 </div>
             </div>
