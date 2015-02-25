@@ -857,7 +857,8 @@ class BsHtmlHelper extends HtmlHelper
      *
      * @return string $html
      */
-    public function modal() {
+    public function modal()
+    {
         return $this->_View->element('Bootstrap.BsHtml/modal');
     }
     /**
