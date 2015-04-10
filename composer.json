@@ -23,11 +23,9 @@
         "source": "https://github.com/cake17/cakephp-bootstrap",
         "wiki": "http://getbootstrap.com"
     },
-    "require": {
-        "cakephp/cakephp": "3.0.*-dev"
-    },
     "require-dev": {
-        "phpunit/phpunit": "*",
+        "cakephp/cakephp": "~3.0",
+        "phpunit/phpunit": "~4.6",
         "cakephp/cakephp-codesniffer": "dev-master"
     },
     "autoload": {
