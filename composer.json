@@ -23,10 +23,13 @@
         "source": "https://github.com/cake17/cakephp-bootstrap",
         "wiki": "http://getbootstrap.com"
     },
+    "require": {
+        "friendsofcake/bootstrap-ui": "dev-master"
+    },
     "require-dev": {
         "cakephp/cakephp": "~3.0",
-        "phpunit/phpunit": "~4.6",
-        "cakephp/cakephp-codesniffer": "dev-master"
+        "phpunit/phpunit": "~4.8",
+        "cakephp/cakephp-codesniffer": "2.*"
     },
     "autoload": {
         "psr-4": {
@@ -37,11 +40,5 @@
         "psr-4": {
             "Bootstrap\\": "tests"
         }
-    },
-    "suggest": {
-        "twbs/bootstrap": "Bootstrap framework"
-    },
-    "extra": {
-        "installer-name": "Bootstrap"
     }
 }
