@@ -11,10 +11,9 @@ namespace Bootstrap\View\Helper;
 
 use Cake\Utility\Hash;
 use Cake\Utility\Inflector;
-use Cake\View\Helper\HtmlHelper;
 use Cake\View\View;
 
-class BsHtmlHelper extends HtmlHelper
+class HtmlHelper extends \BootstrapUI\View\Helper\HtmlHelper
 {
     /**
      * Helpers used for this helper
@@ -546,22 +545,22 @@ class BsHtmlHelper extends HtmlHelper
      * => default to 'default'
      * @return string
      */
-    public function label($message, array $options = [])
-    {
-        $options = Hash::merge($this->config('label'), $options);
-
-        if (in_array($options['type'], $this->_types['label'])) {
-            $classLabel = $options['type'];
-            if (isset($options['class']) && !empty($options['class'])) :
-                $classLabel .= " " . $options['class'];
-            endif;
-            return $this->formatTemplate('label', [
-                'attrs' => $classLabel,
-                'content' => $message
-            ]);
-        }
-        return $this->alert(__d('bootstrap', '{0}Label should be one of the following : {1}', $this->_types['error'], implode(', ', $this->_types['label'])), ['type' => 'danger']);
-    }
+    // public function label($message, array $options = [])
+    // {
+    //     $options = Hash::merge($this->config('label'), $options);
+    //
+    //     if (in_array($options['type'], $this->_types['label'])) {
+    //         $classLabel = $options['type'];
+    //         if (isset($options['class']) && !empty($options['class'])) :
+    //             $classLabel .= " " . $options['class'];
+    //         endif;
+    //         return $this->formatTemplate('label', [
+    //             'attrs' => $classLabel,
+    //             'content' => $message
+    //         ]);
+    //     }
+    //     return $this->alert(__d('bootstrap', '{0}Label should be one of the following : {1}', $this->_types['error'], implode(', ', $this->_types['label'])), ['type' => 'danger']);
+    // }
 
     /**
      * Print a badge
@@ -569,12 +568,12 @@ class BsHtmlHelper extends HtmlHelper
      * @param string $message Message to output.
      * @return string
      */
-    public function badge($message)
-    {
-        return $this->formatTemplate('badge', [
-            'content' => $message,
-        ]);
-    }
+    // public function badge($message)
+    // {
+    //     return $this->formatTemplate('badge', [
+    //         'content' => $message,
+    //     ]);
+    // }
 
     /**
      * Print a progressBar

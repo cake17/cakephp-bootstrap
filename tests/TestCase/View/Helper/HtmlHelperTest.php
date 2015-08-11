@@ -1,6 +1,6 @@
 <?php
 /**
- * BsHtmlHelperTest
+ * HtmlHelperTest
  *
  * @author   cake17
  * @license  http://www.opensource.org/licenses/mit-license.php The MIT License
@@ -9,16 +9,16 @@
  */
 namespace Bootstrap\Test\TestCase\View\Helper;
 
-use Bootstrap\View\Helper\BsHtmlHelper;
+use Bootstrap\View\Helper\HtmlHelper;
 use Cake\Routing\Router;
 use Cake\TestSuite\TestCase;
 use Cake\View\Helper\HtmlHelper;
 use Cake\View\View;
 
 /**
- * Bootstrap\View\Helper\BsHtmlHelper Test Case
+ * Bootstrap\View\Helper\HtmlHelper Test Case
  */
-class BsHtmlHelperTest extends TestCase
+class HtmlHelperTest extends TestCase
 {
     /**
      * setUp method
@@ -29,7 +29,7 @@ class BsHtmlHelperTest extends TestCase
     {
         parent::setUp();
         $view = new View();
-        $this->BsHtml = new BsHtmlHelper($view);
+        $this->Html = new HtmlHelper($view);
     }
 
     /**
@@ -39,7 +39,7 @@ class BsHtmlHelperTest extends TestCase
      */
     public function tearDown()
     {
-        unset($this->BsHtml);
+        unset($this->Html);
 
         parent::tearDown();
     }
@@ -52,7 +52,7 @@ class BsHtmlHelperTest extends TestCase
     public function testHead()
     {
         // default
-        // /$results = $this->BsHtml->head();
+        // /$results = $this->Html->head();
         // $jqueryUiCss = "http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.1/themes/smoothness/jquery-ui.css";
         // $bootstrapCss = "https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css";
         // $this->assertContains($bootstrapCss, $results);
@@ -69,7 +69,7 @@ class BsHtmlHelperTest extends TestCase
     public function testFooter()
     {
         // default
-        // $results = $this->BsHtml->footer('My title');
+        // $results = $this->Html->footer('My title');
         // $this->assertContains('Description', $results);
         // $this->assertContains('WebCreateur', $results);
     }
@@ -82,7 +82,7 @@ class BsHtmlHelperTest extends TestCase
     public function testNavbar()
     {
         // default
-        $results = $this->BsHtml->navbar("Info inside navbar");
+        $results = $this->Html->navbar("Info inside navbar");
         $this->assertContains('container-fluid', $results);
         $this->assertContains('default', $results);
         $this->assertContains('fixed-top', $results);
@@ -96,10 +96,10 @@ class BsHtmlHelperTest extends TestCase
     public function testAlert()
     {
         // default
-        $results = $this->BsHtml->alert('Message alert');
+        $results = $this->Html->alert('Message alert');
         $this->assertContains('success', $results);
         // dismissable
-        $results = $this->BsHtml->alert('Message alert', ['type' => 'info', 'dismissable' => true]);
+        $results = $this->Html->alert('Message alert', ['type' => 'info', 'dismissable' => true]);
         $this->assertContains('info', $results);
         $this->assertContains('dismissable', $results);
     }
@@ -112,7 +112,7 @@ class BsHtmlHelperTest extends TestCase
     public function testImage()
     {
         // default
-        //$results = $this->BsHtml->image(WEBROOT . '');
+        //$results = $this->Html->image(WEBROOT . '');
         //$this->assertContains('img-responsive', $results);
     }
 
@@ -124,7 +124,7 @@ class BsHtmlHelperTest extends TestCase
     public function testIcon()
     {
         // default
-        $results = $this->BsHtml->icon('search');
+        $results = $this->Html->icon('search');
         $this->assertContains('icon', $results);
     }
 
@@ -136,11 +136,11 @@ class BsHtmlHelperTest extends TestCase
     public function testButton()
     {
         // default
-        $results = $this->BsHtml->button('Message button');
+        $results = $this->Html->button('Message button');
         $this->assertContains('default', $results);
 
         // add an incorrect type
-        $results = $this->BsHtml->button('Message', ['type' => 'fff']);
+        $results = $this->Html->button('Message', ['type' => 'fff']);
         $this->assertContains('Button should be one of the following : ', $results);
     }
 
@@ -149,28 +149,28 @@ class BsHtmlHelperTest extends TestCase
      *
      * @return void
      */
-    public function testLabel()
-    {
-        // default
-        $results = $this->BsHtml->label('Message label');
-        $this->assertContains('default', $results);
-
-        // add an incorrect type
-        $results = $this->BsHtml->label('Message', ['type' => 'fff']);
-        $this->assertContains('Label should be one of the following : ', $results);
-    }
+    // public function testLabel()
+    // {
+    //     // default
+    //     $results = $this->Html->label('Message label');
+    //     $this->assertContains('default', $results);
+    //
+    //     // add an incorrect type
+    //     $results = $this->Html->label('Message', ['type' => 'fff']);
+    //     $this->assertContains('Label should be one of the following : ', $results);
+    // }
 
     /**
      * testBadge method
      *
      * @return void
      */
-    public function testBadge()
-    {
-        // default
-        $results = $this->BsHtml->badge('Message label');
-        $this->assertContains('class="badge"', $results);
-    }
+    // public function testBadge()
+    // {
+    //     // default
+    //     $results = $this->Html->badge('Message label');
+    //     $this->assertContains('class="badge"', $results);
+    // }
 
     /**
      * testPagination method
@@ -180,7 +180,7 @@ class BsHtmlHelperTest extends TestCase
     public function testPagination()
     {
         // default
-        //$results = $this->BsHtml->pagination();
+        //$results = $this->Html->pagination();
         //$this->assertContains('text-center', $results);
         //$this->assertContains('<ul class="pagination">', $results);
     }
@@ -194,7 +194,7 @@ class BsHtmlHelperTest extends TestCase
     {
         Router::connect('/:controller/:action/*');
         // default
-        $results = $this->BsHtml->link('Title', ['controller' => 'Users']);
+        $results = $this->Html->link('Title', ['controller' => 'Users']);
         $this->assertContains('Title', $results);
     }
 
@@ -207,7 +207,7 @@ class BsHtmlHelperTest extends TestCase
     {
         Router::connect('/:controller/:action/*');
         // default
-        $results = $this->BsHtml->links('default', ['controller' => 'Users', 'id' => 1]);
+        $results = $this->Html->links('default', ['controller' => 'Users', 'id' => 1]);
         $this->assertContains('View', $results);
         $this->assertContains('Edit', $results);
         $this->assertContains('Delete', $results);
@@ -222,11 +222,11 @@ class BsHtmlHelperTest extends TestCase
     {
         Router::connect('/:controller/:action/*');
         // for a link that is to true
-        $results = $this->BsHtml->linksActives(true, 1, ['controller' => 'Users']);
+        $results = $this->Html->linksActives(true, 1, ['controller' => 'Users']);
         $this->assertContains('Active', $results);
         $this->assertContains('Deactivate', $results);
         // for a link that is to false
-        $results = $this->BsHtml->linksActives(false, 1, ['controller' => 'Users']);
+        $results = $this->Html->linksActives(false, 1, ['controller' => 'Users']);
         $this->assertContains('Not Active', $results);
         $this->assertContains('Activate', $results);
     }
@@ -241,11 +241,11 @@ class BsHtmlHelperTest extends TestCase
         Router::connect('/:controller/:action/*');
         // for a link that is to true
         $expected = '<div class="btn-group"><button type="button" class="btn btn-success btn btn-default btn-xs">Principal</button> </div>';
-        $results = $this->BsHtml->linksPrincipal(true, 1, ['controller' => 'Users']);
+        $results = $this->Html->linksPrincipal(true, 1, ['controller' => 'Users']);
         $this->assertContains($expected, $results);
         $this->assertContains('Principal', $results);
         // for a link that is to false
-        $results = $this->BsHtml->linksPrincipal(false, 1, ['controller' => 'Users']);
+        $results = $this->Html->linksPrincipal(false, 1, ['controller' => 'Users']);
         $this->assertContains('Not Principal', $results);
         $this->assertContains('Put as Principal', $results);
     }
@@ -258,7 +258,7 @@ class BsHtmlHelperTest extends TestCase
     public function testCollapse()
     {
         // default
-        $results = $this->BsHtml->collapse('CollapseNameBox', []);
+        $results = $this->Html->collapse('CollapseNameBox', []);
         $this->assertContains('<div class="panel-group" id="CollapseNameBox"></div', $results);
     }
 }
