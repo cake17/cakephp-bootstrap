@@ -860,11 +860,13 @@ class HtmlHelper extends \BootstrapUI\View\Helper\HtmlHelper
     {
         return $this->_View->element('Bootstrap.BsHtml/modal');
     }
+
     /**
      * To print a collapse box
      *
      * @param string $formName : default accordeon.
      * @param array $actions : all links to add to the collapse.
+     * @param array $options : Options.
      * @return string : html of collapse box
      */
     public function collapse($formName = "accordeon", array $actions = [], array $options = [])

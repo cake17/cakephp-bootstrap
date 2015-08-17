@@ -72,28 +72,28 @@ class BsSliderHelper extends Helper
      * @param array $options : Options
      * @return string
      */
-    public function input($fieldName, array $options = [])
-    {
-        //$options['type'] = 'select';
-        //$options['multiple'] = 'multiple';
-        //// si un class existe non vide, on lui ajoute form-control
-        //if (isset($options['class']) && !empty($options['class'])):
-        //    $options['class'] .= ' form-control';
-        //endif;
-        //if (!isset($options['class']) || empty($options['class'])):
-        //    $options['class'] = $this->_defaultConfig['input']['class'];
-        //endif;
-        //if (isset($options['css']) && !empty($options['css'])):
-        //    $this->_defaultConfig['assets']['css'] = $options['css'];
-        //    unset($options['css']);
-        //endif;
-        //if (isset($options['js']) && !empty($options['js'])):
-        //    $this->_defaultConfig['assets']['js'] = $options['js'];
-        //    unset($options['js']);
-        //endif;
-        //$this->_loadScripts();
-        //return $this->_View->Form->input($fieldName, $options);
-    }
+    // public function input($fieldName, array $options = [])
+    // {
+    //     $options['type'] = 'select';
+    //     $options['multiple'] = 'multiple';
+    //     // si un class existe non vide, on lui ajoute form-control
+    //     if (isset($options['class']) && !empty($options['class'])):
+    //        $options['class'] .= ' form-control';
+    //     endif;
+    //     if (!isset($options['class']) || empty($options['class'])):
+    //        $options['class'] = $this->_defaultConfig['input']['class'];
+    //     endif;
+    //     if (isset($options['css']) && !empty($options['css'])):
+    //        $this->_defaultConfig['assets']['css'] = $options['css'];
+    //        unset($options['css']);
+    //     endif;
+    //     if (isset($options['js']) && !empty($options['js'])):
+    //        $this->_defaultConfig['assets']['js'] = $options['js'];
+    //        unset($options['js']);
+    //     endif;
+    //     $this->_loadScripts();
+    //     return $this->_View->Form->input($fieldName, $options);
+    // }
 
     /**
      * Loads all scripts needed

@@ -64,7 +64,8 @@
         };
     }
 
-    function isObservableArray(obj) {
+    function isObservableArray(obj)
+    {
         return ko.isObservable(obj) && !(obj.destroyAll === undefined);
     }
 
@@ -75,8 +76,8 @@
      * @param {Object} options
      * @returns {Multiselect}
      */
-    function Multiselect(select, options) {
-
+    function Multiselect(select, options)
+    {
         this.options = this.mergeOptions(options);
         this.$select = $(select);
 
@@ -268,7 +269,7 @@
 
             // Set max height of dropdown menu to activate auto scrollbar.
             if (this.options.maxHeight) {
-                // TODO: Add a class for this option to move the css declarations.
+                // to do: Add a class for this option to move the css declarations.
                 this.$ul.css(
                     {
                         'max-height': this.options.maxHeight + 'px',
@@ -614,7 +615,7 @@
                                 }, this));
                             }
 
-                            // TODO: check whether select all option needs to be updated.
+                            // to do: check whether select all option needs to be updated.
                         }, this), 300, this);
                     }, this));
                 }

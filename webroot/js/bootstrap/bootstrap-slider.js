@@ -724,7 +724,8 @@
         }
     };
 
-    function invokePublicMethod(methodName, args) {
+    function invokePublicMethod(methodName, args)
+    {
         if (publicMethods[methodName]) {
             var sliderObject = retrieveSliderObjectFromElement(this);
             var result = publicMethods[methodName].apply(sliderObject, args);
@@ -739,7 +740,8 @@
         }
     }
 
-    function retrieveSliderObjectFromElement(element) {
+    function retrieveSliderObjectFromElement(element)
+    {
         var sliderObject = $(element).data('slider');
         if (sliderObject && sliderObject instanceof Slider) {
             return sliderObject;
@@ -748,7 +750,8 @@
         }
     }
 
-    function createNewSliderInstance(opts) {
+    function createNewSliderInstance(opts)
+    {
         var $this = $(this);
         $this.each(function () {
             var $this = $(this),
