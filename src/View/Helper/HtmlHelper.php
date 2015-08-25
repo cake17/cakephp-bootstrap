@@ -520,9 +520,19 @@ class HtmlHelper extends \BootstrapUI\View\Helper\HtmlHelper
     {
         $options = Hash::merge($this->config('button'), $options);
 
+        // $attrs = $this->templater()->formatAttributes($options);
+
         if (in_array($options['type'], $this->_types['button'])) {
+            $attrs = $options['type'];
+            if (isset($options['class']) && !empty($options['class'])) {
+                $attrs .= " " . $options['class'];
+            }
+            if (isset($options['id']) && !empty($options['id'])) {
+                $attrs .= '" id="' . $options['id'] . '"';
+            }
+
             return $this->formatTemplate('button', [
-                'attrs' => $this->templater()->formatAttributes($options),
+                'attrs' => $attrs,
                 'content' => $message
             ]);
         }
@@ -811,7 +821,6 @@ class HtmlHelper extends \BootstrapUI\View\Helper\HtmlHelper
     public function linksPrincipal($principal, $id, array $options = [])
     {
         $options = Hash::merge($this->config('linksPrincipal'), $options);
-
         // parse elements of url routes to fix eventual issues
         $options = $this->_parseUrlElements($options);
 
@@ -832,6 +841,7 @@ class HtmlHelper extends \BootstrapUI\View\Helper\HtmlHelper
                     'class' => 'btn-xs'
                 ]
             ) . " ";
+
             $html .= $this->_View->Form->postLink(
                 $this->icon(
                     $options['not_principal']['btn_icon']

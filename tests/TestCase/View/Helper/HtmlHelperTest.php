@@ -244,6 +244,7 @@ class HtmlHelperTest extends TestCase
         $results = $this->Html->linksPrincipal(true, 1, ['controller' => 'Users']);
         $this->assertContains($expected, $results);
         $this->assertContains('Principal', $results);
+
         // for a link that is to false
         $results = $this->Html->linksPrincipal(false, 1, ['controller' => 'Users']);
         $this->assertContains('Not Principal', $results);
