@@ -521,15 +521,8 @@ class HtmlHelper extends \BootstrapUI\View\Helper\HtmlHelper
         $options = Hash::merge($this->config('button'), $options);
 
         if (in_array($options['type'], $this->_types['button'])) {
-            $attrs = $options['type'];
-            if (isset($options['class']) && !empty($options['class'])) :
-                $attrs .= " " . $options['class'];
-            endif;
-            if (isset($options['id']) && !empty($options['id'])) :
-                $attrs .= '" id="' . $options['id'] . '"';
-            endif;
             return $this->formatTemplate('button', [
-                'attrs' => $attrs,
+                'attrs' => $this->templater()->formatAttributes($options),
                 'content' => $message
             ]);
         }
