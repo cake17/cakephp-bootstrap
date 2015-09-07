@@ -32,6 +32,6 @@ class HeadbarHelper extends Helper
     public function add(array $options = [])
     {
         $this->config($options);
-        return $this->_View->element('Bootstrap.layouts/Headbar', $this->config());
+        return $this->_View->element('Bootstrap.layouts/headbar', $this->config());
     }
 }
